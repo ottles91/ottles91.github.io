@@ -15,4 +15,7 @@ function includeHTML(selector, url) {
 
 document.addEventListener("DOMContentLoaded", () => {
   includeHTML("#sidebar-placeholder", "/components/sidebar.html");
+  //TODO: Add header
+  // includeHTML("#header-placeholder", "/components/header.html");;
+  includeHTML("#footer-placeholder", "/components/footer.html");
 });
