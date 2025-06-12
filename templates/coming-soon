@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Coming Soon – Cameron Ottley</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+          <li><a href="/index.html">🏠 Home</a></li>
+          <li><a href="/projects/flare/">🔥 Flare</a></li>
+          <li><a href="/projects/shortcuts/">🍎 Shortcuts</a></li>
+        </ul>
+      </nav>
+
+      <main class="content">
+        <h1>🚧 Coming Soon</h1>
+        <p>
+          This page is still under construction. Check back soon for updates!
+        </p>
+      </main>
+    </div>
+  </body>
+</html>
