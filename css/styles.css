@@ -6,6 +6,8 @@
     --color-text-light: #ffffff;
     --link-color-body: #007acc;
     --link-color-header: #000;
+    --footer-bg: #2E3338;
+    --footer-text-color: #ccc;
     --font-family: sans-serif;
     --content-max-width: 800px;
     --padding: 1rem;
@@ -49,6 +51,14 @@ body {
 .content a:hover {
     text-decoration: underline;
     color: #005fbb;
+}
+
+.site-footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text-color);
+    text-align: center;
+    padding: var(--padding);
+    font-size: 0.9rem;
 }
 
 h1,
