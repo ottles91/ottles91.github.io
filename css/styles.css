@@ -1,20 +1,32 @@
 :root {
-    -sidebar-bg: #f4f4f4;
-    --primary-color: #000;
-    --heading-color: #ffffff;
-    --color-text-light: #ffffff;
+    /* Color Palette */
+    --body-background-color: #4C5259;
+    --body-text-color: white;
+    --h1-h2-color: #ffffff;
+    --nav-link-color: #000;
     --link-color-body: #007acc;
     --link-color-header: #000;
     --footer-bg: #2E3338;
     --footer-text-color: #ccc;
+    --link-hover-background: rgba(255, 255, 255, 0.2);
+
+    /* Typography */
     --font-family: sans-serif;
+    --body-line-height: 1.6;
+
+    /* Layout & Spacing */
     --content-max-width: 800px;
     --padding: 1rem;
-    --header-height: 64px;
     --nav-gap: 1.5rem;
-    --shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
+    --header-height: 64px;
+    --body-margin: 0;
 
+    /* Effects */
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    --link-border-radius: 4px;
+    --header-link-hover-radius: 8px; }
+
+/* ========== Base ========== */
 *,
 *::before,
 *::after {
@@ -22,16 +34,21 @@
 }
 
 body {
-    margin: 0;
+    margin: var(--body-margin);
     font-family: var(--font-family);
-    line-height: 1.6;
+    line-height: var(--body-line-height);
     min-height: 100vh;
-    background-color: #4C5259;
+    background-color: var(--body-background-color);
 }
 
+/* ========== Layout ========== */
 .container {
     display: flex;
     min-height: 100vh;
+}
+
+#header-placeholder {
+    height: var(--header-height);
 }
 
 .content {
@@ -39,54 +56,40 @@ body {
     max-width: var(--content-max-width);
     margin: 2rem auto;
     padding: var(--padding);
-    background-color: #4C5259;
-    color: white;
+    background-color: var(--body-background-color);
+    color: var(--body-text-color);
+}
+
+/* ========== Typography ========== */
+h1,
+h2 {
+    color: var(--h1-h2-color);
+}
+
+a {
+    color: var(--nav-link-color);
+    text-decoration: none;
 }
 
 .content a {
-    /* color: var(--link-color-body); */
-    color: var(--color-text-light);
-    text-decoration:underline;
-}
-
-.content a:hover {
-    /* text-decoration: underline */
-    /* color :#005fbb; */
-    text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.2);
-    /* soft light highlight */
-    border-radius: 4px;
-}
-
-.site-footer {
-    background-color: var(--footer-bg);
-    color: var(--footer-text-color);
-    text-align: center;
-    padding: var(--padding);
-    font-size: 0.9rem;
-}
-
-h1,
-h2 {
-    color: var(--heading-color);
-}
-
-a,
-.nav-links li a {
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-a:hover,
-.nav-links li a:hover {
+    color: var(--body-text-color);
     text-decoration: underline;
 }
 
+.content a:hover {
+    text-decoration: none;
+    background-color: var(--link-hover-background);
+    border-radius: var(--link-border-radius);
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+/* ========== Navigation / Header ========== */
 .site-header {
-    /* background-color: var(--sidebar-bg); */
     background-image: linear-gradient(to right, #f39953, #D76464, #3264E1);
-    color:var(--link-color-header);
-    /* color: var(--color-text-light); */
+    color: var(--link-color-header);
     padding: var(--padding);
     box-shadow: var(--shadow);
     position: sticky;
@@ -99,13 +102,6 @@ a:hover,
     margin: 0 auto;
 }
 
-.site-header a:hover {
-    /* text-decoration: underline; */
-    /* text-decoration: none; */
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-}
-
 .nav-links {
     list-style: none;
     display: flex;
@@ -114,11 +110,32 @@ a:hover,
     margin: 0;
 }
 
-.nav-links a.active {
+.nav-links a {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--nav-link-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.nav-links a.active span{
     text-decoration: underline;
     text-underline-offset: 4px;
-    font-weight: bold; }
+    font-weight: bold;
+}
 
-#header-placeholder {
-    height: var(--header-height);
+.site-header .nav-links a:hover {
+    text-decoration: none;
+    background-color: var(--link-hover-background);
+    border-radius: var(--header-link-hover-radius);
+}
+
+/* ========== Footer ========== */
+.site-footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text-color);
+    text-align: center;
+    padding: var(--padding);
+    font-size: 0.9rem;
 }
