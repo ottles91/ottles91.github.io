@@ -1,11 +1,13 @@
-function includeHTML(selector, url) {
+function includeHTML(selector, url, callback) {
   fetch(url)
     .then(response => response.text())
     .then(data => {
       const container = document.querySelector(selector);
       if (container) {
         container.innerHTML = data;
-        document.body.classList.add("sidebar-loaded");
+        if (typeof callback === "function") {
+          callback();
+        }
       }
     })
     .catch(error => {
@@ -14,6 +16,24 @@ function includeHTML(selector, url) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  includeHTML("#header-placeholder", "/components/header.html");;
+  includeHTML("#header-placeholder", "/components/header.html", () => {
+    highlightActiveNav();
+  });
   includeHTML("#footer-placeholder", "/components/footer.html");
 });
+
+function highlightActiveNav() {
+  const currentPath = window.location.pathname;
+  const navLinks = document.querySelectorAll(".nav-links a");
+
+  navLinks.forEach(link => {
+    const linkPath = new URL(link.href).pathname;
+
+    if (
+      linkPath === currentPath ||
+      (linkPath.endsWith("/index.html") && currentPath === linkPath.replace("index.html", ""))
+    ) {
+      link.classList.add("active");
+    }
+  });
+}
