@@ -1,7 +1,6 @@
 :root {
     -sidebar-bg: #f4f4f4;
     --primary-color: #000;
-    /* --heading-color: #333; */
     --heading-color: #ffffff;
     --color-text-light: #ffffff;
     --link-color-body: #007acc;
@@ -45,12 +44,18 @@ body {
 }
 
 .content a {
-    color: var(--link-color-body);
+    /* color: var(--link-color-body); */
+    color: var(--color-text-light);
+    text-decoration:underline;
 }
 
 .content a:hover {
-    text-decoration: underline;
-    color: #005fbb;
+    /* text-decoration: underline */
+    /* color :#005fbb; */
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    /* soft light highlight */
+    border-radius: 4px;
 }
 
 .site-footer {
@@ -95,7 +100,10 @@ a:hover,
 }
 
 .site-header a:hover {
-    text-decoration: underline;
+    /* text-decoration: underline; */
+    /* text-decoration: none; */
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
 }
 
 .nav-links {
