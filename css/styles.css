@@ -1,7 +1,8 @@
 :root {
     -sidebar-bg: #f4f4f4;
     --primary-color: #000;
-    --heading-color: #333;
+    /* --heading-color: #333; */
+    --heading-color: #ffffff;
     --color-text-light: #ffffff;
     --link-color-body: #007acc;
     --link-color-header: #000;
@@ -24,6 +25,7 @@ body {
     font-family: var(--font-family);
     line-height: 1.6;
     min-height: 100vh;
+    background-color: #4C5259;
 }
 
 .container {
@@ -36,6 +38,8 @@ body {
     max-width: var(--content-max-width);
     margin: 2rem auto;
     padding: var(--padding);
+    background-color: #4C5259;
+    color: white;
 }
 
 .content a {
