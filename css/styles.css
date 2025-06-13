@@ -1,8 +1,10 @@
 :root {
-    --sidebar-width: 220px;
-    --sidebar-bg: #f4f4f4;
-    --primary-color: #007acc;
+    -sidebar-bg: #f4f4f4;
+    --primary-color: #000;
     --heading-color: #333;
+    --color-text-light: #ffffff;
+    --link-color-body: #007acc;
+    --link-color-header: #000;
     --font-family: sans-serif;
     --content-max-width: 800px;
     --padding: 1rem;
@@ -36,6 +38,15 @@ body {
     padding: var(--padding);
 }
 
+.content a {
+    color: var(--link-color-body);
+}
+
+.content a:hover {
+    text-decoration: underline;
+    color: #005fbb;
+}
+
 h1,
 h2 {
     color: var(--heading-color);
@@ -53,7 +64,10 @@ a:hover,
 }
 
 .site-header {
-    background-color: var(--sidebar-bg);
+    /* background-color: var(--sidebar-bg); */
+    background-image: linear-gradient(to right, #f39953, #D76464, #3264E1);
+    color:var(--link-color-header);
+    /* color: var(--color-text-light); */
     padding: var(--padding);
     box-shadow: var(--shadow);
     position: sticky;
@@ -64,6 +78,10 @@ a:hover,
 .site-header nav {
     max-width: var(--content-max-width);
     margin: 0 auto;
+}
+
+.site-header a:hover {
+    text-decoration: underline;
 }
 
 .nav-links {
