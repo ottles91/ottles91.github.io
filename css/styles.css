@@ -114,6 +114,11 @@ a:hover,
     margin: 0;
 }
 
+.nav-links a.active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-weight: bold; }
+
 #header-placeholder {
     height: var(--header-height);
 }
