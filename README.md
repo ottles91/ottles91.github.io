@@ -10,6 +10,7 @@ The site includes:
 
 ## 📁 Structure
 
+```
 /
 ├── index.html # Main homepage
 ├── projects/
@@ -21,10 +22,11 @@ The site includes:
 ├── js/
 │ └── includes.js # JS to dynamically load partials
 ├── templates/ # Templates used to create new pages
-│ ├── base.html  
-│ ├── coming-soon.html  
+│ ├── base.html
+│ ├── coming-soon.html
 │ └── project-template.html
 └── README.md
+```
 
 ## 🔧 Technologies Used
 
