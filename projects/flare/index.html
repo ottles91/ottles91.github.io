@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>Flare iOS App - Cameron Ottley</title>
     <link rel="stylesheet" href="../../css/styles.css" />
-    <script src="js/script.js"></script>
+    <script src="/js/script.js"></script>
     <script src="/js/includes.js"></script>
   </head>
   <body>
@@ -34,28 +34,30 @@
               >github.com/ottles91/flare-frontend</a></li>
         </ul>
         <!-- Table of Contents -->
-        <nav class="toc">
-          <h2>📚 Table of Contents</h2>
-          <ul>
-            <li><a href="#features">Key Features</a></li>
-            <li><a href="#technologies">Technologies Used</a></li>
-            <li><a href="#tools">Tools & Platforms</a></li>
-            <li><a href="#frontend">Frontend</a></li>
-            <li><a href="#backend">Backend API</a></li>
-            <li>
-              <a href="#overview">Feature Overview</a>
-              <ul>
-                <li><a href="#create-account">Account Creation</a></li>
-                <li><a href="#map-screen">Flare Map Screen</a></li>
-                <li><a href="#view-flare">Viewing a Flare</a></li>
-                <li><a href="#create-flare">Creating a Flare</a></li>
-                <li><a href="#edit-flare">Editing a Flare</a></li>
-                <li><a href="#friends-list">Friends List</a></li>
-                <li><a href="#search-users">Searching Users & Adding Friends</a></li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
+        <div class="toc-wrapper">
+          <button class="toc-master-toggle" aria-expanded="true">Table of Contents</button>
+          <nav class="toc" id="toc-content">
+            <ul>
+              <li><a href="#features">Key Features</a></li>
+              <li><a href="#technologies">Technologies Used</a></li>
+              <li><a href="#tools">Tools & Platforms</a></li>
+              <li><a href="#frontend">Frontend</a></li>
+              <li><a href="#backend">Backend API</a></li>
+              <li>
+                <a href="#overview">Feature Overview</a>
+                <ul>
+                  <li><a href="#create-account">Account Creation</a></li>
+                  <li><a href="#map-screen">Flare Map Screen</a></li>
+                  <li><a href="#view-flare">Viewing a Flare</a></li>
+                  <li><a href="#create-flare">Creating a Flare</a></li>
+                  <li><a href="#edit-flare">Editing a Flare</a></li>
+                  <li><a href="#friends-list">Friends List</a></li>
+                  <li><a href="#search-users">Searching Users & Adding Friends</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
         <!-- Key Features -->
         <h2 id="features">🧩 Key Features</h2>
         <ul>
