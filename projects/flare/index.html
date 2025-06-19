@@ -33,8 +33,31 @@
             <li>Frontend Repository: <a href="https://github.com/ottles91/flare-frontend" target="_blank"
               >github.com/ottles91/flare-frontend</a></li>
         </ul>
+
+        <!-- Table of Contents -->
+        <nav class="toc">
+          <h2>📚 Table of Contents</h2>
+          <ul>
+            <li><a href="#features">Key Features</a></li>
+            <li><a href="#technologies">Technologies Used</a></li>
+            <li><a href="#tools">Tools & Platforms</a></li>
+            <li><a href="#frontend">Frontend</a></li>
+            <li><a href="#backend">Backend API</a></li>
+            <li><a href="#overview">Feature Overview</a></li>
+            <ul>
+              <li><a href="#create-account">Account Creation</a></li>
+              <li><a href="#map-screen">Flare Map Screen</a></li>
+              <li><a href="#view-flare">Viewing a Flare</a></li>
+              <li><a href="#create-flare">Creating a Flare</a></li>
+              <li><a href="#edit-flare">Editing a Flare</a></li>
+              <li><a href="#friends-list">Friends List</a></li>
+              <li><a href="#search-users">Searching Users & Adding Friends</a></li>
+            </ul>
+          </ul>
+        </nav>
+
         <!-- Key Features -->
-        <h2>🧩 Key Features</h2>
+        <h2 id="features">🧩 Key Features</h2>
         <ul>
           <li><strong>Secure user login and session management</strong> with persistent access</li>
           <li><strong>Location-based event discovery</strong> with real-time filtering</li>
@@ -43,7 +66,7 @@
           <li><strong>Scalable architecture</strong> built for future platform expansion</li>
         </ul>
         <!-- Technologies Used -->
-        <h2>🛠️ Technologies Used</h2>
+        <h2 id="technologies">🛠️ Technologies Used</h2>
         <ul>
           <li><strong>Swift & SwiftUI</strong> for building native iOS interfaces</li>
           <li><strong>MVVM architecture</strong> for clean separation of concerns</li>
@@ -54,7 +77,7 @@
           <li><strong>Git & GitHub</strong> for source control and collaboration</li>
         </ul>
         <!-- Tools & Platforms -->
-        <h2>🧰 Tools & Platforms</h2>
+        <h2 id="tools">🧰 Tools & Platforms</h2>
         <ul>
           <li><strong>Xcode</strong> for iOS development and debugging</li>
           <li><strong>Visual Studio Code</strong> for backend API development</li>
@@ -67,7 +90,7 @@
           <li><strong>Figma</strong> for UI prototyping</li>
         </ul>
         <!-- Frontend -->
-        <h2>📱 Frontend</h2>
+        <h2 id="frontend">📱 Frontend</h2>
         <ul>
           <li>Built with <strong>Swift and SwiftUI</strong>, using a modular <strong>MVVM architecture</strong></li>
           <li><strong>ViewModels</strong> manage state and decouple business logic from views</li>
@@ -78,7 +101,7 @@
           <li>Theming-ready layout with support for <strong>dark mode</strong> and dynamic system fonts</li>
         </ul>
         <!-- Backend API -->
-        <h2>💻 Backend API</h2>
+        <h2 id="backend">💻 Backend API</h2>
         <ul>
           <li><strong>RESTful API</strong> built with <strong>ASP.NET Core</strong> and structured around <strong>controller-based routing</strong></li>
           <li><strong>JWT-based authentication</strong> with <strong>role-based authorization</strong> for protected endpoints</li>
@@ -90,13 +113,13 @@
         </ul>
         <h2>Feature Overview</h2>
         <!-- Account Creation -->
+        <h3 id="create-account">Account Creation</h3>
         <div class="screenshot-section">
           <figure class="screenshot-figure">
             <img src="/projects/flare/images/create-account.jpg" alt="Login Screen" class="screenshot-img" loading="lazy">
             <figcaption class="screenshot-caption">Flare account creation screen</figcaption>
           </figure>
           <div class="screenshot-details">
-            <h3>Account Creation</h3>
             <p>
               To get started with Flare, you'll need to create an account. On the sign-up screen, you'll need tp provide the following details in order to create your account:
             </p>
@@ -121,13 +144,13 @@
             then be redirected to the login screen to sign in and start using Flare</p>
         </div>
         <!-- Flare Map Screen -->
+        <h3 id="map-screen">The Map View</h3>
         <div class="screenshot-section">
           <figure class="screenshot-figure">
             <img src="/projects/flare/images/map.jpg" alt="Flare Map Screen" class="screenshot-img" loading="lazy">
             <figcaption class="screenshot-caption">The Map view in Flare</figcaption>
           </figure>
           <div class="screenshot-details">
-            <h3>The Map View</h3>
             <p>
               After logging in, you'll be taken to the main screen, which features a large interactive map and a tab bar at the bottom for easy navigation between different sections of the app
             </p>
@@ -154,6 +177,7 @@
           </div>
         </div>
         <!-- Viewing a Flare -->
+        <h3 id="view-flare">Viewing a Flare</h3>
         <div class="screenshot-section">
           <figure class="screenshot-figure">
             <img
@@ -165,7 +189,6 @@
             <figcaption class="screenshot-caption">The Flare details screen</figcaption>
           </figure>
           <div class="screenshot-details">
-            <h3>Viewing a Flare</h3>
             <p>
               Tapping on a Flare pin on the map opens its details screen, which provides information about that Flare. The details screen includes:
             </p>
@@ -179,10 +202,10 @@
             <p>You can also get <strong>driving directions</strong> to the Flare location via Apple Maps. If you created
               the Flare, you'll have the option to edit its details using the <strong>“Edit”</strong> button. When you're
               done, tap <strong>“Done”</strong> to return to the map view.</p>
-              
           </div>
         </div>
         <!-- Creating a Flare -->
+        <h3 id="create-flare">Creating a Flare</h3>
         <div class="screenshot-section">
           <figure class="screenshot-figure">
             <img
@@ -194,7 +217,6 @@
             <figcaption class="screenshot-caption">Creating a new Flare</figcaption>
           </figure>
           <div class="screenshot-details">
-            <h3>Creating a Flare</h3>
             <p>You can create a Flare in one of two ways:</p>
             <ul>
               <li><strong>Long-Press on the Map</strong> - This opens a new Flare creation screen with the location
@@ -220,6 +242,7 @@
           </div>
         </div>
         <!-- Editing a Flare -->
+        <h3 id="edit-flare">Editing a Flare</h3>
         <div class="screenshot-section">
           <figure class="screenshot-figure">
             <img
@@ -231,7 +254,6 @@
             <figcaption class="screenshot-caption">Editing a Pre-Existing Flare</figcaption>
           </figure>
           <div class="screenshot-details">
-            <h3>Editing a Flare</h3>
             <p>
               If you created a Flare, you can edit its details at any time by tapping the <strong>“Edit”</strong> button on the Flare details screen. The following details can be modified:
             </p>
@@ -253,6 +275,7 @@
           </div>
         </div>
         <!-- Friends List -->
+        <h3 id="friends-list">The Friends List</h3>
         <div class="screenshot-section">
           <figure class="screenshot-figure">
             <img
@@ -264,25 +287,24 @@
             <figcaption class="screenshot-caption">Flare's Friend List</figcaption>
           </figure>
           <div class="screenshot-details">
-            <h3>The Friends List</h3>
             <p>The <strong>Friends</strong> tab displays all of your current friends. When you first create a Flare
               account, your list will be empty—but don't worry! You can use the <strong>Search</strong> bar to explore
               all Flare users and send friend requests to start building your network!</p>
           </div>
         </div>
         <!-- Searching and Adding Friends -->
+        <h3 id="search-users">Searching Users & Adding Friends</h3>
         <div class="screenshot-section">
           <figure class="screenshot-figure">
             <img
               src="/projects/flare/images/search-friends.jpg"
-              alt="Searching for friends in"
+              alt="Searching Users & Adding Friends in Flare"
               class="screenshot-img"
               loading="lazy"
             />
             <figcaption class="screenshot-caption">Flare's friend search feature</figcaption>
           </figure>
           <div class="screenshot-details">
-            <h3>Searching and Adding Friends</h3>
             <p>When you search in the <strong>Friends</strong> tab, users will appear in the following order:</p>
             <ol>
               <li><strong>Current friends</strong></li>
