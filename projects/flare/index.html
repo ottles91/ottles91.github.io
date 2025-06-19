@@ -2,21 +2,300 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Flare iOS App – Cameron Ottley</title>
+    <title>Flare iOS App - Cameron Ottley</title>
     <link rel="stylesheet" href="../../css/styles.css" />
+    <script src="js/script.js"></script>
+    <script src="/js/includes.js"></script>
   </head>
   <body>
     <div id="header-placeholder"></div>
     <div class="container">
       <main class="content">
-        <h1>🔥 Flare iOS App</h1>
+        <h1>
+          <img
+            src="/projects/flare/images/flare-icon.png"
+            alt="Flare logo"
+            style="height: 1.5em; vertical-align: middle; margin-right: 0.5em"
+          />
+          Flare iOS App
+        </h1>
+        <p class="tagline">Built to spark real-world connections — not just scrolls.</p>
         <p>
-          Coming soon! This page will include features, mockups, and details
-          about the Flare app project.
+          <p>
+            Flare is a Swift-based iOS social media app designed to make it easier for friends to share and discover local events and spontaneous hangouts. 
+            Unlike traditional platforms, Flare focuses on short-term, in-person plans — helping users coordinate meetups in real time without the noise of global feeds or long-term planning.
+            The app emphasizes lightweight interactions, intuitive UI, and privacy-conscious design to keep the experience fast, friendly, and focused.
+          </p>
         </p>
+        <ul> 
+          <li>Backend Repository: <a href="https://github.com/ottles91/flare-api" target="_blank"
+            >github.com/ottles91/flare-api</a></li>
+            <li>Frontend Repository: <a href="https://github.com/ottles91/flare-frontend" target="_blank"
+              >github.com/ottles91/flare-frontend</a></li>
+        </ul>
+        <!-- Key Features -->
+        <h2>🧩 Key Features</h2>
+        <ul>
+          <li><strong>Secure user login and session management</strong> with persistent access</li>
+          <li><strong>Location-based event discovery</strong> with real-time filtering</li>
+          <li><strong>Clean, responsive UI</strong> optimized for modern iOS devices</li>
+          <li><strong>Personalized user profiles</strong> with event history</li>
+          <li><strong>Scalable architecture</strong> built for future platform expansion</li>
+        </ul>
+        <!-- Technologies Used -->
+        <h2>🛠️ Technologies Used</h2>
+        <ul>
+          <li><strong>Swift & SwiftUI</strong> for building native iOS interfaces</li>
+          <li><strong>MVVM architecture</strong> for clean separation of concerns</li>
+          <li><strong>ASP.NET Core</strong> with <strong>C#</strong> for the backend API</li>
+          <li><strong>MySQL</strong> database with <strong>Entity Framework Core</strong> ORM</li>
+          <li><strong>JWT authentication</strong> for secure API access</li>
+          <li><strong>XCTest</strong> for unit testing and <strong>Postman</strong> for API validation</li>
+          <li><strong>Git & GitHub</strong> for source control and collaboration</li>
+        </ul>
+        <!-- Tools & Platforms -->
+        <h2>🧰 Tools & Platforms</h2>
+        <ul>
+          <li><strong>Xcode</strong> for iOS development and debugging</li>
+          <li><strong>Visual Studio Code</strong> for backend API development</li>
+          <li><strong>iOS Simulator</strong> for testing on various device configurations</li>
+          <li><strong>XCTest</strong> for unit testing Swift code</li>
+          <li><strong>Postman</strong> for API testing and documentation</li>
+          <li><strong>Docker</strong> for containerized development environments</li>
+          <li><strong>GitHub</strong> for source control</li>
+          <li><strong>Jira</strong> for project management</li>
+          <li><strong>Figma</strong> for UI prototyping</li>
+        </ul>
+        <!-- Frontend -->
+        <h2>📱 Frontend</h2>
+        <ul>
+          <li>Built with <strong>Swift and SwiftUI</strong>, using a modular <strong>MVVM architecture</strong></li>
+          <li><strong>ViewModels</strong> manage state and decouple business logic from views</li>
+          <li>Asynchronous data loading via <code>async/await</code> with <strong>Combine</strong> or <strong>Task API</strong></li>
+          <li>Integrated search functionality with live filtering of friend data</li>
+          <li>Reusable custom components for <strong>user cards</strong> and <strong>empty states</strong></li>
+          <li>Unit-tested with <strong>XCTest</strong> to verify state changes and data bindings</li>
+          <li>Theming-ready layout with support for <strong>dark mode</strong> and dynamic system fonts</li>
+        </ul>
+        <!-- Backend API -->
+        <h2>💻 Backend API</h2>
+        <ul>
+          <li><strong>RESTful API</strong> built with <strong>ASP.NET Core</strong> and structured around <strong>controller-based routing</strong></li>
+          <li><strong>JWT-based authentication</strong> with <strong>role-based authorization</strong> for protected endpoints</li>
+          <li><strong>MySQL database</strong> integration using <strong>Entity Framework Core</strong> for schema mapping</li>
+          <li><strong>DTOs</strong> used to decouple domain models from API surface</li>
+          <li>Logging and error handling middleware for centralized exception tracking</li>
+          <li>Unit and integration tests for key endpoints using <strong>xUnit</strong></li>
+          <li>Organized into layered architecture (<strong>Controllers</strong>, <strong>Services</strong>, <strong>Repositories</strong>)</li>
+        </ul>
+        <h2>Feature Overview</h2>
+        <!-- Account Creation -->
+        <div class="screenshot-section">
+          <figure class="screenshot-figure">
+            <img src="/projects/flare/images/create-account.jpg" alt="Login Screen" class="screenshot-img" loading="lazy">
+            <figcaption class="screenshot-caption">Flare account creation screen</figcaption>
+          </figure>
+          <div class="screenshot-details">
+            <h3>Account Creation</h3>
+            <p>
+              To get started with Flare, you'll need to create an account. On the sign-up screen, you'll need tp provide the following details in order to create your account:
+            </p>
+            <ul>
+              <li><strong>First Name</strong></li>
+              <li><strong>Last Name</strong></li>
+              <li><strong>Username - </strong>Must be unique</li>
+              <li><strong>Email Address - </strong>A valid email is required, as it may be used for password
+                recovery or account-related notifications</li>
+              <li><strong>Date of Birth - </strong>Users must be at least 13 years old to register for account</li>
+              <li><strong>Password - </strong>All passwords must meet the following security requirements</li>
+              <ul>
+                <li>At least 8 characters long</li>
+                <li>At least one uppercase letter</li>
+                <li>At least one lowercase letter</li>
+                <li>At least one number</li>
+                <li>At least one special character (e.g., !@#$%^&*)</li>
+              </ul>
+            </ul>
+          </div>
+          <p>Once you've entered your details, tap <strong>“Sign Up”</strong> to create your account. You'll
+            then be redirected to the login screen to sign in and start using Flare</p>
+        </div>
+        <!-- Flare Map Screen -->
+        <div class="screenshot-section">
+          <figure class="screenshot-figure">
+            <img src="/projects/flare/images/map.jpg" alt="Flare Map Screen" class="screenshot-img" loading="lazy">
+            <figcaption class="screenshot-caption">The Map view in Flare</figcaption>
+          </figure>
+          <div class="screenshot-details">
+            <h3>The Map View</h3>
+            <p>
+              After logging in, you'll be taken to the main screen, which features a large interactive map and a tab bar at the bottom for easy navigation between different sections of the app
+            </p>
+            <ul>
+              <li><strong>Map - </strong>The primary view of Flare. If you grant location permissions, the map
+                centers on your current location and displays nearby Flares and Events</li>
+              <li><strong>Friends - </strong>View your current friends and search for new connections</li>
+              <li><strong>Events - </strong>Browse events hosted by businesses, which function similarly to Flares
+                but are officially sponsored</li>
+              <li><strong>Explore - </strong>Get personalized recommendations for nearby Flares and Events
+                based on your interests and your friends activities</li>
+              <li><strong>Settings - </strong>Manage your account preferences and app settings</li>
+            </ul>
+            <h4>Using the Map</h4>
+            <p>
+              The map is the heart of Flare, allowing you to discover and interact with Flares and Events in your area. In addition to exploring by panning and zooming, there are a few additional helpful controls:
+            </p>
+            <ul>
+              <li><strong>Compass (Top-Right Corner) - </strong>Centers the map to your current
+                location</li>
+                <li><strong>3D Button - </strong>Switches to a more realistic perspective for an enhanced view of
+                  your surroundings</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Viewing a Flare -->
+        <div class="screenshot-section">
+          <figure class="screenshot-figure">
+            <img
+              src="/projects/flare/images/flare-details.jpg"
+              alt="The Flare Details Screen"
+              class="screenshot-img"
+              loading="lazy"
+            />
+            <figcaption class="screenshot-caption">The Flare details screen</figcaption>
+          </figure>
+          <div class="screenshot-details">
+            <h3>Viewing a Flare</h3>
+            <p>
+              Tapping on a Flare pin on the map opens its details screen, which provides information about that Flare. The details screen includes:
+            </p>
+            <ul>
+              <li><strong>Location</strong></li>
+              <li><strong>Start Time</strong></li>
+              <li><strong>End Time</strong></li>
+              <li><strong>Location</strong></li>
+              <li><strong>List of attendes</strong></li>
+            </ul>
+            <p>You can also get <strong>driving directions</strong> to the Flare location via Apple Maps. If you created
+              the Flare, you'll have the option to edit its details using the <strong>“Edit”</strong> button. When you're
+              done, tap <strong>“Done”</strong> to return to the map view.</p>
+              
+          </div>
+        </div>
+        <!-- Creating a Flare -->
+        <div class="screenshot-section">
+          <figure class="screenshot-figure">
+            <img
+              src="/projects/flare/images/new-flare.jpg"
+              alt="Creating a new Flare"
+              class="screenshot-img"
+              loading="lazy"
+            />
+            <figcaption class="screenshot-caption">Creating a new Flare</figcaption>
+          </figure>
+          <div class="screenshot-details">
+            <h3>Creating a Flare</h3>
+            <p>You can create a Flare in one of two ways:</p>
+            <ul>
+              <li><strong>Long-Press on the Map</strong> - This opens a new Flare creation screen with the location
+                pre-filled</li>
+              <li>Tap the <strong>“+”</strong> button at the top bar of the main map view
+                pre-filled</li>
+            </ul>
+            <h4>Required Flare Details</h4>
+            <p>To create a Flare, you'll need to provide the following information:</p>
+            <ul>
+              <li><strong>Title - </strong>A short, descriptive title for the Flare</li>
+              <li><strong>Start Time - </strong>The date and time when the Flare begins</li>
+              <li><strong>End Time - </strong>The date and time when the Flare ends</li>
+              <li><strong>Location - </strong>The physical location of the Flare, which can be set by long-pressing on
+                the map or entering an address</li>
+              <li><strong>Flare Visibility - </strong>Choose who can see your Flare</li>
+              <ul>
+                <li><strong>All Friends - </strong>Only visible to your friends</li>
+                <li><strong>Public - </strong>Visible to all users on Flare</li>
+                <li><strong>Custom - </strong>Allows you to select specific friends who can view the Flare</li>
+              </ul>
+            </ul>
+          </div>
+        </div>
+        <!-- Editing a Flare -->
+        <div class="screenshot-section">
+          <figure class="screenshot-figure">
+            <img
+              src="/projects/flare/images/edit-flare.jpg"
+              alt="Editing a pre-existing Flare"
+              class="screenshot-img"
+              loading="lazy"
+            />
+            <figcaption class="screenshot-caption">Editing a Pre-Existing Flare</figcaption>
+          </figure>
+          <div class="screenshot-details">
+            <h3>Editing a Flare</h3>
+            <p>
+              If you created a Flare, you can edit its details at any time by tapping the <strong>“Edit”</strong> button on the Flare details screen. The following details can be modified:
+            </p>
+            <ul>
+              <li><strong>Title</strong></li>
+              <li><strong>Start Time</strong></li>
+              <li><strong>End Time</strong></li>
+              <li><strong>Location</strong></li>
+              <li><strong>Flare Visibility - </strong>Visibility can be toggled between the three options</li>
+              <ul>
+                <li><strong>All Friends</strong></li>
+                <li><strong>Public</strong></li>
+                <li><strong>Custom</strong></li>
+              </ul>
+            </ul>
+            <p>You can also delete the Flare by tapping the <strong>trashcan</strong> icon.</p>
+            <p>Once you've made your changes, tap <strong>“Save”</strong> to apply them and return to the map
+              screen.</p>
+          </div>
+        </div>
+        <!-- Friends List -->
+        <div class="screenshot-section">
+          <figure class="screenshot-figure">
+            <img
+              src="/projects/flare/images/view-friends.jpg"
+              alt="Flare Friends List"
+              class="screenshot-img"
+              loading="lazy"
+            />
+            <figcaption class="screenshot-caption">Flare's Friend List</figcaption>
+          </figure>
+          <div class="screenshot-details">
+            <h3>The Friends List</h3>
+            <p>The <strong>Friends</strong> tab displays all of your current friends. When you first create a Flare
+              account, your list will be empty—but don't worry! You can use the <strong>Search</strong> bar to explore
+              all Flare users and send friend requests to start building your network!</p>
+          </div>
+        </div>
+        <!-- Searching and Adding Friends -->
+        <div class="screenshot-section">
+          <figure class="screenshot-figure">
+            <img
+              src="/projects/flare/images/search-friends.jpg"
+              alt="Searching for friends in"
+              class="screenshot-img"
+              loading="lazy"
+            />
+            <figcaption class="screenshot-caption">Flare's friend search feature</figcaption>
+          </figure>
+          <div class="screenshot-details">
+            <h3>Searching and Adding Friends</h3>
+            <p>When you search in the <strong>Friends</strong> tab, users will appear in the following order:</p>
+            <ol>
+              <li><strong>Current friends</strong></li>
+              <li><strong>Incoming Friend Requests - </strong>Users who have sent you a request, with <strong>“Accept”</strong>
+              and <strong>“Reject”</strong> options available</li>
+              <li><strong>Pending Requests - </strong>Users you've sent a friend request to who haven't
+                responded yet</li>
+              <li><strong>All Other Users - </strong>Users who are not currently your friends. You can send a friend request by tapping the <strong>"Add Friend"</strong> button</li>
+            </ol>
+          </div>
+        </div>
       </main>
     </div>
-    <script src="/js/includes.js"></script>
     <div id="footer-placeholder"></div>
   </body>
 </html>
