@@ -47,7 +47,7 @@
                 <a href="#overview">Feature Overview</a>
                 <ul>
                   <li><a href="#create-account">Account Creation</a></li>
-                  <li><a href="#map-screen">Flare Map Screen</a></li>
+                  <li><a href="#map-screen">The Map</a></li>
                   <li><a href="#view-flare">Viewing a Flare</a></li>
                   <li><a href="#create-flare">Creating a Flare</a></li>
                   <li><a href="#edit-flare">Editing a Flare</a></li>
@@ -113,9 +113,10 @@
           <li>Unit and integration tests for key endpoints using <strong>xUnit</strong></li>
           <li>Organized into layered architecture (<strong>Controllers</strong>, <strong>Services</strong>, <strong>Repositories</strong>)</li>
         </ul>
-        <h2>Feature Overview</h2>
+        <h2 id="overview">Feature Overview</h2>
         <!-- Account Creation -->
-        <h3 id="create-account">Account Creation</h3>
+        <details open class="collapsible-section">
+        <summary><span class="summary-title" id="create-account">Account Creation</span></summary>
         <div class="screenshot-section">
           <figure class="screenshot-figure">
             <img src="/projects/flare/images/create-account.jpg" alt="Login Screen" class="screenshot-img" loading="lazy">
@@ -145,41 +146,38 @@
           <p>Once you've entered your details, tap <strong>“Sign Up”</strong> to create your account. You'll
             then be redirected to the login screen to sign in and start using Flare</p>
         </div>
+      </details>
         <!-- Flare Map Screen -->
-        <h3 id="map-screen">The Map View</h3>
-        <div class="screenshot-section">
-          <figure class="screenshot-figure">
-            <img src="/projects/flare/images/map.jpg" alt="Flare Map Screen" class="screenshot-img" loading="lazy">
-            <figcaption class="screenshot-caption">The Map view in Flare</figcaption>
-          </figure>
-          <div class="screenshot-details">
-            <p>
-              After logging in, you'll be taken to the main screen, which features a large interactive map and a tab bar at the bottom for easy navigation between different sections of the app
-            </p>
-            <ul>
-              <li><strong>Map - </strong>The primary view of Flare. If you grant location permissions, the map
-                centers on your current location and displays nearby Flares and Events</li>
-              <li><strong>Friends - </strong>View your current friends and search for new connections</li>
-              <li><strong>Events - </strong>Browse events hosted by businesses, which function similarly to Flares
-                but are officially sponsored</li>
-              <li><strong>Explore - </strong>Get personalized recommendations for nearby Flares and Events
-                based on your interests and your friends activities</li>
-              <li><strong>Settings - </strong>Manage your account preferences and app settings</li>
-            </ul>
-            <h4>Using the Map</h4>
-            <p>
-              The map is the heart of Flare, allowing you to discover and interact with Flares and Events in your area. In addition to exploring by panning and zooming, there are a few additional helpful controls:
-            </p>
-            <ul>
-              <li><strong>Compass (Top-Right Corner) - </strong>Centers the map to your current
-                location</li>
-                <li><strong>3D Button - </strong>Switches to a more realistic perspective for an enhanced view of
-                  your surroundings</li>
-            </ul>
+        <details open class="collapsible-section">
+          <summary><span class="summary-title" id="map-screen">The Map</span></summary>
+          <div class="screenshot-section">
+            <figure class="screenshot-figure">
+              <img src="/projects/flare/images/map.jpg" alt="Flare Map Screen" class="screenshot-img" loading="lazy">
+              <figcaption class="screenshot-caption">The Map view in Flare</figcaption>
+            </figure>
+            <div class="screenshot-details">
+              <p>
+                After logging in, you'll be taken to the main screen, which features a large interactive map and a tab bar at the bottom for easy navigation between different sections of the app.
+              </p>
+              <ul>
+                <li><strong>Map - </strong>The primary view of Flare...</li>
+                <li><strong>Friends - </strong>View your current friends and search for new connections</li>
+                <li><strong>Events - </strong>Browse events hosted by businesses...</li>
+                <li><strong>Explore - </strong>Get personalized recommendations...</li>
+                <li><strong>Settings - </strong>Manage your account preferences...</li>
+              </ul>
+              <h4>Using the Map</h4>
+              <p>The map is the heart of Flare...</p>
+              <ul>
+                <li><strong>Compass - </strong>Centers the map to your current location</li>
+                <li><strong>3D Button - </strong>Switches to a more realistic perspective...</li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <!-- Viewing a Flare -->
-        <h3 id="view-flare">Viewing a Flare</h3>
+        </details>
+        <!-- Viewing a Flare -->  
+        <details open class="collapsible-section">
+        <summary><span class="summary-title" id="view-flare">Viewing a Flare</span></summary>
         <div class="screenshot-section">
           <figure class="screenshot-figure">
             <img
@@ -206,8 +204,10 @@
               done, tap <strong>“Done”</strong> to return to the map view.</p>
           </div>
         </div>
+      </details>
         <!-- Creating a Flare -->
-        <h3 id="create-flare">Creating a Flare</h3>
+        <details open class="collapsible-section">
+        <summary><span class="summary-title" id="create-flare">Creating a Flare</span></summary>
         <div class="screenshot-section">
           <figure class="screenshot-figure">
             <img
@@ -243,8 +243,10 @@
             </ul>
           </div>
         </div>
+      </details>
         <!-- Editing a Flare -->
-        <h3 id="edit-flare">Editing a Flare</h3>
+        <details open class="collapsible-section">
+        <summary><span class="summary-title" id="edit-flare">Editing a Flare</span></summary>
         <div class="screenshot-section">
           <figure class="screenshot-figure">
             <img
@@ -276,8 +278,10 @@
               screen.</p>
           </div>
         </div>
+      </details>
         <!-- Friends List -->
-        <h3 id="friends-list">The Friends List</h3>
+        <details open class="collapsible-section">
+        <summary><span class="summary-title" id="friends-list">Friends List</span></summary>
         <div class="screenshot-section">
           <figure class="screenshot-figure">
             <img
@@ -294,8 +298,11 @@
               all Flare users and send friend requests to start building your network!</p>
           </div>
         </div>
+      </details>
         <!-- Searching and Adding Friends -->
-        <h3 id="search-users">Searching Users & Adding Friends</h3>
+        <!-- <h3 id="search-users">Searching Users & Adding Friends</h3> -->
+        <details open class="collapsible-section">
+        <summary><span class="summary-title" id="search-users">Searching Users & Adding Friends</span></summary>
         <div class="screenshot-section">
           <figure class="screenshot-figure">
             <img
@@ -318,6 +325,7 @@
             </ol>
           </div>
         </div>
+      </details>
       </main>
     </div>
     <div id="footer-placeholder"></div>
