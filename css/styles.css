@@ -353,8 +353,9 @@ details[open] .screenshot-section {
         max-height: 0;
         position: absolute;
         top: 100%;
-        left: 0;
-        width: 100%;
+        left: var(--padding);
+        width: max-content;
+        max-width: calc(100% - 2 * var(--padding));
         background-color: var(--nav-dropdown-bg);
         padding: 0;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -362,12 +363,13 @@ details[open] .screenshot-section {
         flex-direction: column;
         border-radius: 0 0 8px 8px;
         transition: max-height 0.3s ease, padding 0.3s ease;
+        border: none;
     }
 
     .nav-links.show {
         max-height: 1000px;
         border: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 1rem 0;
+        padding: 1rem;
     }
 
     .nav-links.show {
