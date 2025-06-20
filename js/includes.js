@@ -26,6 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (toggleButton && navLinks) {
       toggleButton.addEventListener("click", () => {
         navLinks.classList.toggle("show");
+
+        const isExpanded = navLinks.classList.contains("show");
+        toggleButton.setAttribute("aria-expanded", isExpanded);
+        toggleButton.textContent = isExpanded ? "✕ Close" : "☰ Menu";
       });
     }
   });
