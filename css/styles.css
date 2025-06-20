@@ -148,7 +148,7 @@ img {
     color: var(--link-color-header);
     padding: var(--padding);
     box-shadow: var(--shadow);
-    position: sticky;
+    position: relative;
     top: 0;
     z-index: 1000;
 }
@@ -347,13 +347,22 @@ details[open] .screenshot-section {
     }
 
     .nav-links {
-        flex-direction: column;
-        max-height: 0;
-        overflow: hidden;
+        display: none;
+        position: absolute;
+        top: 100%;
+        /* Just below the header */
+        left: 0;
+        width: 100%;
         background-color: var(--body-background-color);
-        border-radius: 8px;
-        margin-top: 0.5rem;
-        transition: max-height 0.3s ease;
+        padding: 1rem 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+        flex-direction: column;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .nav-links.show {
+        display: flex;
     }
 
     .nav-links.show {
