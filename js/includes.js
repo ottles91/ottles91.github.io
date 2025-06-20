@@ -15,10 +15,28 @@ function includeHTML(selector, url, callback) {
     });
 }
 
+// document.addEventListener("DOMContentLoaded", () => {
+//   includeHTML("#header-placeholder", "/components/header.html", () => {
+//     highlightActiveNav();
+//   });
+//   includeHTML("#footer-placeholder", "/components/footer.html");
+// });
+
 document.addEventListener("DOMContentLoaded", () => {
   includeHTML("#header-placeholder", "/components/header.html", () => {
     highlightActiveNav();
+
+    // Mobile menu toggle logic
+    const toggleButton = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (toggleButton && navLinks) {
+      toggleButton.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+    }
   });
+
   includeHTML("#footer-placeholder", "/components/footer.html");
 });
 
