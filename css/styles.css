@@ -150,6 +150,7 @@ img {
     padding: var(--padding);
     box-shadow: var(--shadow);
     position: relative;
+    overflow: visible;
     top: 0;
     z-index: 1000;
 }
@@ -157,6 +158,7 @@ img {
 .site-header nav {
     max-width: var(--content-max-width);
     margin: 0 auto;
+    overflow: visible;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -194,14 +196,53 @@ img {
 
 .menu-toggle {
     display: none;
+    width: 44px;
+    height: 44px;
     background: none;
     border: none;
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: var(--nav-link-color);
     cursor: pointer;
-    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1001;
 }
+
+.menu-toggle .bar {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    height: 3px;
+    background-color: var(--nav-link-color);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.menu-toggle .bar:nth-child(1) {
+    top: 12px;
+}
+
+.menu-toggle .bar:nth-child(2) {
+    top: 20px;
+}
+
+.menu-toggle .bar:nth-child(3) {
+    top: 28px;
+}
+
+.menu-toggle.open .bar:nth-child(1) {
+    transform: rotate(45deg);
+    top: 20px;
+}
+
+.menu-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open .bar:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 20px;
+}
+
+/* (Other rules like footer, table of contents, collapsible sections, and media queries remain unchanged) */
 
 /* ========== Footer ========== */
 .site-footer {
@@ -344,42 +385,45 @@ details[open] .screenshot-section {
     }
 
     .menu-toggle {
-        display: block;
+        display: flex;
+        min-width: 48px;
+        /* width: 48px; */
+    }
+
+    .menu-toggle .bar {
+        width: 28px;
+    }
+
+    .site-header nav {
+        flex-direction: column;
+        overflow: visible;
+        align-items: flex-start;
+        padding: 0.5rem 1rem;
+        position: relative;
     }
 
     .nav-links {
-        display: block;
-        overflow: hidden;
-        max-height: 0;
+        display: flex;
+        flex-direction: column;
         position: absolute;
         top: 100%;
         left: var(--padding);
         width: max-content;
         max-width: calc(100% - 2 * var(--padding));
+        overflow: hidden;
+        max-height: 0;
         background-color: var(--nav-dropdown-bg);
-        padding: 0;
+        border-radius: 0 0 8px 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         z-index: 999;
-        flex-direction: column;
-        border-radius: 0 0 8px 8px;
+        padding: 0;
         transition: max-height 0.3s ease, padding 0.3s ease;
-        border: none;
-    }
-
-    .nav-links.show {
-        max-height: 1000px;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 1rem;
     }
 
     .nav-links.show {
         max-height: 500px;
-    }
-
-    .site-header nav {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0.5rem 1rem;
+        padding: 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     .nav-links li {

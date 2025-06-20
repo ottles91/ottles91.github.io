@@ -19,17 +19,14 @@ document.addEventListener("DOMContentLoaded", () => {
   includeHTML("#header-placeholder", "/components/header.html", () => {
     highlightActiveNav();
 
-    // Mobile menu toggle logic
     const toggleButton = document.querySelector(".menu-toggle");
     const navLinks = document.querySelector(".nav-links");
 
     if (toggleButton && navLinks) {
       toggleButton.addEventListener("click", () => {
-        navLinks.classList.toggle("show");
-
-        const isExpanded = navLinks.classList.contains("show");
-        toggleButton.setAttribute("aria-expanded", isExpanded);
-        toggleButton.textContent = isExpanded ? "✕ Close" : "☰ Menu";
+        const isOpen = navLinks.classList.toggle("show");
+        toggleButton.classList.toggle("open", isOpen);
+        toggleButton.setAttribute("aria-expanded", isOpen);
       });
     }
   });
