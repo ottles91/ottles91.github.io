@@ -15,13 +15,6 @@ function includeHTML(selector, url, callback) {
     });
 }
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   includeHTML("#header-placeholder", "/components/header.html", () => {
-//     highlightActiveNav();
-//   });
-//   includeHTML("#footer-placeholder", "/components/footer.html");
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
   includeHTML("#header-placeholder", "/components/header.html", () => {
     highlightActiveNav();
