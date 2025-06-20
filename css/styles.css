@@ -4,6 +4,7 @@
     --body-background-color: #4C5259;
     --body-text-color: white;
     --h1-h2-color: #ffffff;
+    --nav-dropdown-bg: #f2f2f2;
     --nav-link-color: #000;
     --link-color-body: #007acc;
     --link-color-header: #000;
@@ -43,7 +44,6 @@ body {
     background-color: var(--body-background-color);
 }
 
-/* ========== Layout ========== */
 .container {
     display: flex;
     min-height: 100vh;
@@ -127,23 +127,6 @@ a {
     min-width: 240px;
 }
 
-@media (max-width: 768px) {
-    .screenshot-section {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .screenshot-img {
-        margin-bottom: 1rem;
-    }
-
-    .screenshot-details {
-        text-align: left;
-        padding: 0 1rem;
-    }
-}
-
 .screenshot-figure {
     margin: 0;
     text-align: center;
@@ -155,13 +138,19 @@ a {
     margin-top: 0.5rem;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* ========== Header ========== */
 .site-header {
     background-image: linear-gradient(to right, #f39953, #D76464, #3264E1);
     color: var(--link-color-header);
     padding: var(--padding);
     box-shadow: var(--shadow);
-    position: sticky;
+    position: relative;
+    overflow: visible;
     top: 0;
     z-index: 1000;
 }
@@ -169,6 +158,10 @@ a {
 .site-header nav {
     max-width: var(--content-max-width);
     margin: 0 auto;
+    overflow: visible;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nav-links {
@@ -177,6 +170,7 @@ a {
     gap: var(--nav-gap);
     padding: 0;
     margin: 0;
+    flex-direction: row;
 }
 
 .nav-links a {
@@ -199,6 +193,56 @@ a {
     background-color: var(--link-hover-background);
     border-radius: var(--header-link-hover-radius);
 }
+
+.menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 1001;
+}
+
+.menu-toggle .bar {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    height: 3px;
+    background-color: var(--nav-link-color);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.menu-toggle .bar:nth-child(1) {
+    top: 12px;
+}
+
+.menu-toggle .bar:nth-child(2) {
+    top: 20px;
+}
+
+.menu-toggle .bar:nth-child(3) {
+    top: 28px;
+}
+
+.menu-toggle.open .bar:nth-child(1) {
+    transform: rotate(45deg);
+    top: 20px;
+}
+
+.menu-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open .bar:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 20px;
+}
+
+/* (Other rules like footer, table of contents, collapsible sections, and media queries remain unchanged) */
 
 /* ========== Footer ========== */
 .site-footer {
@@ -327,4 +371,91 @@ details[open] .section-summary::after {
 
 details[open] .screenshot-section {
     animation: expandFade 0.3s ease-out;
+}
+
+/* ========== Mobile Styles ========== */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .content {
+        margin: 1rem;
+        padding: 0.75rem;
+    }
+
+    .menu-toggle {
+        display: flex;
+        min-width: 48px;
+        /* width: 48px; */
+    }
+
+    .menu-toggle .bar {
+        width: 28px;
+    }
+
+    .site-header nav {
+        flex-direction: column;
+        overflow: visible;
+        align-items: flex-start;
+        padding: 0.5rem 1rem;
+        position: relative;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: var(--padding);
+        width: max-content;
+        max-width: calc(100% - 2 * var(--padding));
+        overflow: hidden;
+        max-height: 0;
+        background-color: var(--nav-dropdown-bg);
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+        padding: 0;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .nav-links.show {
+        max-height: 500px;
+        padding: 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links li {
+        margin-bottom: 0.75rem;
+    }
+
+    .screenshot-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .screenshot-img {
+        margin-bottom: 1rem;
+    }
+
+    .screenshot-details {
+        text-align: left;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .nav-links a {
+        font-size: 1rem;
+    }
 }

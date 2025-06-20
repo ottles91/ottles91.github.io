@@ -18,7 +18,19 @@ function includeHTML(selector, url, callback) {
 document.addEventListener("DOMContentLoaded", () => {
   includeHTML("#header-placeholder", "/components/header.html", () => {
     highlightActiveNav();
+
+    const toggleButton = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (toggleButton && navLinks) {
+      toggleButton.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("show");
+        toggleButton.classList.toggle("open", isOpen);
+        toggleButton.setAttribute("aria-expanded", isOpen);
+      });
+    }
   });
+
   includeHTML("#footer-placeholder", "/components/footer.html");
 });
 
