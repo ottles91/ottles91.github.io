@@ -4,6 +4,7 @@
     --body-background-color: #4C5259;
     --body-text-color: white;
     --h1-h2-color: #ffffff;
+    --nav-dropdown-bg: #f2f2f2;
     --nav-link-color: #000;
     --link-color-body: #007acc;
     --link-color-header: #000;
@@ -350,10 +351,9 @@ details[open] .screenshot-section {
         display: none;
         position: absolute;
         top: 100%;
-        /* Just below the header */
         left: 0;
         width: 100%;
-        background-color: var(--body-background-color);
+        background-color: var(--nav-dropdown-bg);
         padding: 1rem 0;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         z-index: 999;
