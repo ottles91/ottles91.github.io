@@ -348,21 +348,29 @@ details[open] .screenshot-section {
     }
 
     .nav-links {
-        display: none;
+        display: block;
+        overflow: hidden;
+        max-height: 0;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
         background-color: var(--nav-dropdown-bg);
-        padding: 1rem 0;
+        padding: 0;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         z-index: 999;
         flex-direction: column;
         border-radius: 0 0 8px 8px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: max-height 0.3s ease;
+        transition: max-height 0.3s ease, padding 0.3s ease;
     }
 
+    /* When shown */
     .nav-links.show {
-        display: flex;
+        max-height: 500px;
+        /* adjust to fit your menu */
+        padding: 1rem 0;
     }
 
     .nav-links.show {
