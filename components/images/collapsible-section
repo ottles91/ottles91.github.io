@@ -1,0 +1,7 @@
+<a href="#features">Key Features</a>
+<details open class="collapsible-section">
+  <summary>
+    <span class="summary-title" id="features">Key Features</span>
+  </summary>
+  <p>This is an example of a collapsible section that can be created</p>
+</details>
