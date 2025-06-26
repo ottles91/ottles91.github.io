@@ -39,6 +39,7 @@
           <nav class="toc" id="toc-content">
             <ul>
               <li><a href="#philosophy">Philosophy</a></li>
+              <li><a href="#dexorder">My Problem with National Pokedex Order</a></li>
               <li><a href="#techstack">Tech Stack</a></li>
               <li><a href="#features">Key Features</a></li>
               <li>
@@ -113,8 +114,12 @@
             all of them in one place — in a way that felt
             <strong>logical</strong>.
           </p>
+          </details>
 
-          <h4>National Pokédex Order</h4>
+          <details open class="collapsible-section">
+            <summary>
+              <span class="summary-title" id="dexorder">My Problem with National Pokedex Order</span>
+            </summary>
           <p>
             The most common way to organize Pokémon is by their
             <strong>National Pokédex number</strong>, which lists Pokémon
@@ -127,7 +132,7 @@
             Mr. Mime line:
           </p>
 
-          <ul>
+          <ul class="pokemon-list"
             <li>Mime Jr.</li>
             <li>Mr. Mime</li>
             <li>Mr. Mime (Galarian Form)</li>
@@ -135,7 +140,7 @@
           </ul>
 
           <p>In National Dex order, this family appears like this:</p>
-          <ul>
+          <ul class="pokemon-list">
             <li>Mr. Mime (Slot 122)</li>
             <li>Mime Jr. (Slot 439)</li>
             <li>Mr. Rime (Slot 866)</li>
@@ -154,7 +159,7 @@
             together. My script makes sure that the entire Eevee line can be
             seen together in one location:
           </p>
-          <ul>
+          <ul class="pokemon-list">
             <li>Eevee</li>
             <li>Vaporeon</li>
             <li>Jolteon</li>
@@ -174,8 +179,8 @@
             strictly by Pokedex number. New additions to previouly-established
             Pokemon evolutionary lines include:
           </p>
-          <!-- TODO: Try a call-out box!! -->
-          <ol>
+
+          <ol class="pokemon-list">
             <li>Budew</li>
             <li>Roserade</li>
             <li>Ambipom</li>
@@ -206,6 +211,14 @@
             <li>Dusknoir</li>
             <li>Froslass</li>
           </ol>
+
+          <p>
+            Over time, I realized how much I enjoyed seeing all of my Pokémon organized
+            by their specific evolutionary families. I began manually sorting my collection 
+            in Pokémon Home this way, but as new games were released—bringing with them new 
+            forms and evolutions—it became increasingly difficult to keep everything 
+            neatly organized. What started as a fun system quickly became tedious to maintain.
+          </p>
 
           <h4>Why I Built This</h4>
           <p>
@@ -238,6 +251,7 @@
             <li>Then, <strong>National Pokédex order</strong></li>
           </ol>
         </details>
+      </details>
 
         <details open class="collapsible-section">
           <summary>
