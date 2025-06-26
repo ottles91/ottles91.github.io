@@ -248,7 +248,9 @@
           <li>Then, <strong>National Pokédex order</strong></li>
         </ol>
       </details>
-      </details>
+
+      <h1>TODO: ADD SECTION FOR FAMILY POKEDEX ORDER AND INCLUDE SCREENSHOTS</h1>
+
 
       <details open class="collapsible-section">
         <summary>
@@ -273,14 +275,64 @@
             that makes working with HTTP requests in Python really simple.
           </li>
         </ul>
-
       </details>
 
       <details open class="collapsible-section">
         <summary>
           <span class="summary-title" id="features">Key Features</span>
         </summary>
-        <p>This is the key features section</p>
+        <ul>
+          <li>
+            <strong>National Dex + Family-Based Sorting</strong> — The script intelligently groups Pokémon by
+            evolutionary family first, then orders those families by National Dex number. This hybrid system keeps
+            related forms and evolutions together, even when they span generations.
+          </li>
+          <li>
+            <strong>Accurate Handling of Regional Forms</strong> — Pokémon with region-specific forms (like Galarian Mr.
+            Mime or Hisuian Zorua) are included and grouped appropriately, so no variants are accidentally left out.
+          </li>
+          <li>
+            <strong>Readable Output Format</strong> — The script outputs a clean, plain-text list that's easy to copy
+            into a document or spreadsheet for organizing Pokémon Home boxes or collection trackers.
+          </li>
+          <li>
+            <strong>One-Command Simplicity</strong> — Run the script once and get a complete, formatted list — no setup
+            or extra tooling needed beyond Python and an internet connection.
+          </li>
+        </ul>
+        <h4>Example Output</h4>
+        <p>
+          Once the data is retrieved from PokéAPI, the script generates a plain-text output file. Here's a sample of the
+          formatted results you can expect:
+        </p>
+        <pre>
+          Voltorb
+          Voltorb (Hisui)
+          Electrode
+          Electrode (Hisui)
+          Exeggcute
+          Exeggutor
+          Exeggutor (Alola)
+          Cubone
+          Marowak
+          Marowak (Alola)
+          Marowak (Totem)
+          Lickitung
+          Lickilicky
+          Koffing
+          Weezing
+          Weezing (Galar)
+          Rhyhorn
+          Rhydon
+          Rhyperior
+          Tangela
+          Tangrowth
+          Kangaskhan
+          Horsea
+          Seadra   
+          Kingdra
+          </pre>
+        </pre>
       </details>
 
       <details open class="collapsible-section">
