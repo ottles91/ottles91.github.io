@@ -1,327 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PokeFamilyDex - Cameron Ottley</title>
-    <link rel="stylesheet" href="/css/styles.css" />
-    <script src="/js/includes.js"></script>
-  </head>
-  <body>
-    <div id="header-placeholder"></div>
-    <div class="container">
-      <main class="content">
-        <h1>PokeFamilyDex</h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PokeFamilyDex - Cameron Ottley</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script src="/js/includes.js"></script>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+  <div class="container">
+    <main class="content">
+      <h1>PokeFamilyDex</h1>
+      <p>
+        This Python script generates a clean, human-readable National
+        Dex-ordered list of Pokémon grouped by evolutionary family. This is a
+        passion project of mine. I've always wanted to organize my Pokemon
+        Home boxes by Pokemon family, but as far as I can tell there is no
+        resource out there that clealy organizes Pokemon by family. I wanted
+        to create a tool that would allow me to do this, and I hope it will be
+        useful to others as well. The script is designed to be run in a Python
+        environment and outputs the list in a text format that can be easily
+        copied into a document or spreadsheet.
+      </p>
+      <ul>
+        <li>
+          Repository:
+          <a href="https://github.com/ottles91/PokeFamilyDex" target="_blank">github.com/ottles91/PokeFamilyDex</a>
+        </li>
+      </ul>
+      <!-- Table of Contents -->
+      <div class="toc-wrapper">
+        <button class="toc-master-toggle" aria-expanded="true">
+          Table of Contents
+        </button>
+        <nav class="toc" id="toc-content">
+          <ul>
+            <li><a href="#philosophy">Philosophy</a></li>
+            <li><a href="#dexorder">My Problem with National Pokedex Order</a></li>
+            <li><a href="#techstack">Tech Stack</a></li>
+            <li><a href="#features">Key Features</a></li>
+            <li>
+              <a href="#details">Technical Details</a>
+              <ul>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#algorithm">Algorithm Design</a></li>
+                <li><a href="#edgecases">Edge Case Handling</a></li>
+              </ul>
+            </li>
+            <li><a href="#challenges">Implementation Challenges</a></li>
+            <li><a href="#whatilearned">What I Learned</a></li>
+            <li><a href="#upcomingfeatures">Upcoming Features</a></li>
+          </ul>
+        </nav>
+      </div>
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="philosophy">Philosophy</span>
+        </summary>
         <p>
-          This Python script generates a clean, human-readable National
-          Dex-ordered list of Pokémon grouped by evolutionary family. This is a
-          passion project of mine. I've always wanted to organize my Pokemon
-          Home boxes by Pokemon family, but as far as I can tell there is no
-          resource out there that clealy organizes Pokemon by family. I wanted
-          to create a tool that would allow me to do this, and I hope it will be
-          useful to others as well. The script is designed to be run in a Python
-          environment and outputs the list in a text format that can be easily
-          copied into a document or spreadsheet.
+          I've enjoyed Pokémon since I was a child. I fondly remember going to
+          my friend's house and playing <strong>Pokémon Red</strong> on his
+          GameBoy Color. Sometimes he would let me borrow his GameBoy, and I
+          would take it home and play for hours, desperately trying to get as
+          far as I could.
         </p>
-        <ul>
-          <li>
-            Repository:
-            <a href="https://github.com/ottles91/PokeFamilyDex" target="_blank"
-              >github.com/ottles91/PokeFamilyDex</a
-            >
-          </li>
-        </ul>
-        <!-- Table of Contents -->
-        <div class="toc-wrapper">
-          <button class="toc-master-toggle" aria-expanded="true">
-            Table of Contents
-          </button>
-          <nav class="toc" id="toc-content">
-            <ul>
-              <li><a href="#philosophy">Philosophy</a></li>
-              <li><a href="#dexorder">My Problem with National Pokedex Order</a></li>
-              <li><a href="#techstack">Tech Stack</a></li>
-              <li><a href="#features">Key Features</a></li>
-              <li>
-                <a href="#details">Technical Details</a>
-                <ul>
-                  <li><a href="#architecture">Architecture</a></li>
-                  <li><a href="#algorithm">Algorithm Design</a></li>
-                  <li><a href="#edgecases">Edge Case Handling</a></li>
-                </ul>
-              </li>
-              <li><a href="#challenges">Implementation Challenges</a></li>
-              <li><a href="#whatilearned">What I Learned</a></li>
-              <li><a href="#upcomingfeatures">Upcoming Features</a></li>
-            </ul>
-          </nav>
-        </div>
-        <details open class="collapsible-section">
-          <summary>
-            <span class="summary-title" id="philosophy">Philosophy</span>
-          </summary>
-          <p>
-            I've enjoyed Pokémon since I was a child. I fondly remember going to
-            my friend's house and playing <strong>Pokémon Red</strong> on his
-            GameBoy Color. Sometimes he would let me borrow his GameBoy, and I
-            would take it home and play for hours, desperately trying to get as
-            far as I could.
-          </p>
-          <p>
-            I remember struggling to beat Brock with my Charmander. It made
-            perfect sense to me — with enough heat, rocks could melt, so
-            obviously my fire-type Charmander could beat Brock's Onix.
-            Unfortunately, I didn't really understand how type matchups worked,
-            and I always hit a wall there.
-          </p>
+        <p>
+          I remember struggling to beat Brock with my Charmander. It made
+          perfect sense to me — with enough heat, rocks could melt, so
+          obviously my fire-type Charmander could beat Brock's Onix.
+          Unfortunately, I didn't really understand how type matchups worked,
+          and I always hit a wall there.
+        </p>
 
-          <p>
-            What intrigued me about Pokemon wasn't the battling — I was never
-            great at it, and honestly, I still don't find it that particuraly
-            fun. What I loved was the
-            <strong>collection</strong> aspect. There was this big, long list of
-            unknown Pokémon out there <strong>somewhere</strong>, waiting to be
-            discovered. I loved running through tall grass, never knowing what
-            I'd encounter next... it was magical.
-          </p>
-          <p>
-            Watching my Pokédex slowly fill up was the most satisfying part of
-            the game for me.
-          </p>
+        <p>
+          What intrigued me about Pokemon wasn't the battling — I was never
+          great at it, and honestly, I still don't find it that particuraly
+          fun. What I loved was the
+          <strong>collection</strong> aspect. There was this big, long list of
+          unknown Pokémon out there <strong>somewhere</strong>, waiting to be
+          discovered. I loved running through tall grass, never knowing what
+          I'd encounter next... it was magical.
+        </p>
+        <p>
+          Watching my Pokédex slowly fill up was the most satisfying part of
+          the game for me.
+        </p>
 
-          <h4>The Impetus</h4>
-          <p>
-            In the summer of 2016, <strong>Pokémon Go</strong> launched — and
-            like many others, it pulled me back in. Most people I knew played
-            for a couple months and then moved on. I didn't. Not only did I keep
-            playing, but I also dove back into the main series games that I'd
-            missed growing up.
-          </p>
-          <p>
-            Back then, there were only 150 Pokémon (or 151, if you counted the
-            playground rumors about Mew hiding under a truck). Now there were
-            over 800 — and I was once again hooked.
-          </p>
-          <p>
-            Over the next few years, I slowly played through
-            <em>Alpha Sapphire</em>, <em>X</em>, and <em>Ultra Moon</em>.
-            Between those three games, I was able to collect almost all
-            available Pokémon (minus a few legendaries and event-only
-            mythicals).
-          </p>
-          <p>
-            That's when my organizational instincts kicked in. I wanted to put
-            all of them in one place — in a way that felt
-            <strong>logical</strong>.
-          </p>
-          </details>
-
-          <details open class="collapsible-section">
-            <summary>
-              <span class="summary-title" id="dexorder">My Problem with National Pokedex Order</span>
-            </summary>
-          <p>
-            The most common way to organize Pokémon is by their
-            <strong>National Pokédex number</strong>, which lists Pokémon
-            chronologically based on the region they were introduced in.
-          </p>
-          <p>
-            While that makes sense historically, it always bothered me in one
-            specific way: Pokémon families that were expanded in later
-            generations often get split up. One of the clearest examples is the
-            Mr. Mime line:
-          </p>
-
-          <ul class="pokemon-list"
-            <li>Mime Jr.</li>
-            <li>Mr. Mime</li>
-            <li>Mr. Mime (Galarian Form)</li>
-            <li>Mr. Rime</li>
-          </ul>
-
-          <p>In National Dex order, this family appears like this:</p>
-          <ul class="pokemon-list">
-            <li>Mr. Mime (Slot 122)</li>
-            <li>Mime Jr. (Slot 439)</li>
-            <li>Mr. Rime (Slot 866)</li>
-          </ul>
-
-          <p>
-            That splits the family across hundreds of entries and ignores
-            regional form differences. Galarian Mr. Mime often gets skipped
-            entirely.
-          </p>
-
-          <p>
-            Another good usecase for organizing by family is the Eevee line.
-            Eevee has a total of 8 evoultions, but they're spread across four
-            different generations, meaning that they're not typically organized
-            together. My script makes sure that the entire Eevee line can be
-            seen together in one location:
-          </p>
-          <ul class="pokemon-list">
-            <li>Eevee</li>
-            <li>Vaporeon</li>
-            <li>Jolteon</li>
-            <li>Flareon</li>
-            <li>Espeon</li>
-            <li>Leafeon</li>
-            <li>Glaceon</li>
-            <li>Sylveon</li>
-          </ul>
-
-          <p>
-            The generation 4 games (Diamond, Pearl and Platinum) in particular
-            added nearly 30 Pokemon into previously-existing evolutionary
-            families, many originating from Pokemon Red, Green, Blue and Yellow.
-            I believe this generation in particular presents the strongest
-            argument for organzing Pokemon by evolutionary family rather than
-            strictly by Pokedex number. New additions to previouly-established
-            Pokemon evolutionary lines include:
-          </p>
-
-          <ol class="pokemon-list">
-            <li>Budew</li>
-            <li>Roserade</li>
-            <li>Ambipom</li>
-            <li>Mismagius</li>
-            <li>Honchkrow</li>
-            <li>Chingling</li>
-            <li>Bonsly</li>
-            <li>Mime Jr.</li>
-            <li>Happiny</li>
-            <li>Munchlax</li>
-            <li>Mantyke</li>
-            <li>Weavile</li>
-            <li>Magnezone</li>
-            <li>Lickilicky</li>
-            <li>Rhyperior</li>
-            <li>Tangrowth</li>
-            <li>Electivire</li>
-            <li>Magmortar</li>
-            <li>Togekiss</li>
-            <li>Yanmega</li>
-            <li>Leafeon</li>
-            <li>Glaceon</li>
-            <li>Gliscor</li>
-            <li>Mamoswine</li>
-            <li>Porygon-Z</li>
-            <li>Gallade</li>
-            <li>Probopass</li>
-            <li>Dusknoir</li>
-            <li>Froslass</li>
-          </ol>
-
-          <p>
-            Over time, I realized how much I enjoyed seeing all of my Pokémon organized
-            by their specific evolutionary families. I began manually sorting my collection 
-            in Pokémon Home this way, but as new games were released—bringing with them new 
-            forms and evolutions—it became increasingly difficult to keep everything 
-            neatly organized. What started as a fun system quickly became tedious to maintain.
-          </p>
-
-          <h4>Why I Built This</h4>
-          <p>
-            After manually organizing my Pokémon in Pokémon Home more times than
-            I'd like to admit, I realized:
-            <strong>why not automate it?</strong> Instead of scrolling through
-            spreadsheets and constantly dragging Pokémon into new boxes, I could
-            write a script to group them by family — exactly the way I wanted —
-            and output a clean, readable list.
-          </p>
-          <p>
-            This approach is especially helpful for collectors. It's designed to
-            group all members of a family together, even if they were introduced
-            in different generations or have regional forms.
-            <strong
-              >No more missing evolutions, skipped forms, or scattered
-              duplicates.</strong
-            >
-            It turns the National Dex into something that feels tailored to
-            completionists and box-organizers like me.
-          </p>
-
-          <p>
-            My goal with this project was to create a listing that organizes
-            Pokémon based on two priorities:
-          </p>
-
-          <ol>
-            <li><strong>Evolutionary family</strong> comes first</li>
-            <li>Then, <strong>National Pokédex order</strong></li>
-          </ol>
-        </details>
+        <h4>The Impetus</h4>
+        <p>
+          In the summer of 2016, <strong>Pokémon Go</strong> launched — and
+          like many others, it pulled me back in. Most people I knew played
+          for a couple months and then moved on. I didn't. Not only did I keep
+          playing, but I also dove back into the main series games that I'd
+          missed growing up.
+        </p>
+        <p>
+          Back then, there were only 150 Pokémon (or 151, if you counted the
+          playground rumors about Mew hiding under a truck). Now there were
+          over 800 — and I was once again hooked.
+        </p>
+        <p>
+          Over the next few years, I slowly played through
+          <em>Alpha Sapphire</em>, <em>X</em>, and <em>Ultra Moon</em>.
+          Between those three games, I was able to collect almost all
+          available Pokémon (minus a few legendaries and event-only
+          mythicals).
+        </p>
+        <p>
+          That's when my organizational instincts kicked in. I wanted to put
+          all of them in one place — in a way that felt
+          <strong>logical</strong>.
+        </p>
       </details>
 
-        <details open class="collapsible-section">
-          <summary>
-            <span class="summary-title" id="techstack">Tech Stack</span>
-          </summary>
-          <p>This is the tech stack section</p>
-        </details>
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="dexorder">My Problem with National Pokedex Order</span>
+        </summary>
+        <p>
+          The most common way to organize Pokémon is by their
+          <strong>National Pokédex number</strong>, which lists Pokémon
+          chronologically based on the region they were introduced in.
+        </p>
+        <p>
+          While that makes sense historically, it always bothered me in one
+          specific way: Pokémon families that were expanded in later
+          generations often get split up. One of the clearest examples is the
+          Mr. Mime line:
+        </p>
 
-        <details open class="collapsible-section">
-          <summary>
-            <span class="summary-title" id="features">Key Features</span>
-          </summary>
-          <p>This is the key features section</p>
-        </details>
+        <ul class="pokemon-list" <li>Mime Jr.</li>
+          <li>Mr. Mime</li>
+          <li>Mr. Mime (Galarian Form)</li>
+          <li>Mr. Rime</li>
+        </ul>
 
-        <details open class="collapsible-section">
-          <summary>
-            <span class="summary-title" id="details">Technical Details</span>
-          </summary>
-          <p>This is the technical details section</p>
-        </details>
+        <p>In National Dex order, this family appears like this:</p>
+        <ul class="pokemon-list">
+          <li>Mr. Mime (Slot 122)</li>
+          <li>Mime Jr. (Slot 439)</li>
+          <li>Mr. Rime (Slot 866)</li>
+        </ul>
 
-        <details open class="collapsible-section">
-          <summary>
-            <span class="summary-title" id="architecture">Architecture</span>
-          </summary>
-          <p>This is the architecture section</p>
-        </details>
+        <p>
+          That splits the family across hundreds of entries and ignores
+          regional form differences. Galarian Mr. Mime often gets skipped
+          entirely.
+        </p>
 
-        <details open class="collapsible-section">
-          <summary>
-            <span class="summary-title" id="algorithm">Algorithm Design</span>
-          </summary>
-          <p>This is the algorithm design section</p>
-        </details>
+        <p>
+          Another good usecase for organizing by family is the Eevee line.
+          Eevee has a total of 8 evoultions, but they're spread across four
+          different generations, meaning that they're not typically organized
+          together. My script makes sure that the entire Eevee line can be
+          seen together in one location:
+        </p>
+        <ul class="pokemon-list">
+          <li>Eevee</li>
+          <li>Vaporeon</li>
+          <li>Jolteon</li>
+          <li>Flareon</li>
+          <li>Espeon</li>
+          <li>Leafeon</li>
+          <li>Glaceon</li>
+          <li>Sylveon</li>
+        </ul>
 
-        <details open class="collapsible-section">
-          <summary>
-            <span class="summary-title" id="edgecases">Edge Case Handling</span>
-          </summary>
-          <p>This is the edge case handling section</p>
-        </details>
+        <p>
+          The generation 4 games (Diamond, Pearl and Platinum) in particular
+          added nearly 30 Pokemon into previously-existing evolutionary
+          families, many originating from Pokemon Red, Green, Blue and Yellow.
+          I believe this generation in particular presents the strongest
+          argument for organzing Pokemon by evolutionary family rather than
+          strictly by Pokedex number. New additions to previouly-established
+          Pokemon evolutionary lines include:
+        </p>
 
-        <details open class="collapsible-section">
-          <summary>
-            <span class="summary-title" id="challenges"
-              >Implementation Challenges</span
-            >
-          </summary>
-          <p>This is the implementation challenges section</p>
-        </details>
+        <ol class="pokemon-list">
+          <li>Budew</li>
+          <li>Roserade</li>
+          <li>Ambipom</li>
+          <li>Mismagius</li>
+          <li>Honchkrow</li>
+          <li>Chingling</li>
+          <li>Bonsly</li>
+          <li>Mime Jr.</li>
+          <li>Happiny</li>
+          <li>Munchlax</li>
+          <li>Mantyke</li>
+          <li>Weavile</li>
+          <li>Magnezone</li>
+          <li>Lickilicky</li>
+          <li>Rhyperior</li>
+          <li>Tangrowth</li>
+          <li>Electivire</li>
+          <li>Magmortar</li>
+          <li>Togekiss</li>
+          <li>Yanmega</li>
+          <li>Leafeon</li>
+          <li>Glaceon</li>
+          <li>Gliscor</li>
+          <li>Mamoswine</li>
+          <li>Porygon-Z</li>
+          <li>Gallade</li>
+          <li>Probopass</li>
+          <li>Dusknoir</li>
+          <li>Froslass</li>
+        </ol>
 
-        <details open class="collapsible-section">
-          <summary>
-            <span class="summary-title" id="whatilearned">What I Learned</span>
-          </summary>
-          <p>This is the what I learned section</p>
-        </details>
+        <p>
+          Over time, I realized how much I enjoyed seeing all of my Pokémon organized
+          by their specific evolutionary families. I began manually sorting my collection
+          in Pokémon Home this way, but as new games were released—bringing with them new
+          forms and evolutions—it became increasingly difficult to keep everything
+          neatly organized. What started as a fun system quickly became tedious to maintain.
+        </p>
 
-        <details open class="collapsible-section">
-          <summary>
-            <span class="summary-title" id="upcomingfeatures"
-              >Upcoming Features</span
-            >
-          </summary>
-          <p>This is the upcoming features section</p>
-        </details>
-      </main>
-    </div>
-    <div id="footer-placeholder"></div>
-    <script src="/js/script.js"></script>
-  </body>
+        <h4>Why I Built This</h4>
+        <p>
+          After manually organizing my Pokémon in Pokémon Home more times than
+          I'd like to admit, I realized:
+          <strong>why not automate it?</strong> Instead of scrolling through
+          spreadsheets and constantly dragging Pokémon into new boxes, I could
+          write a script to group them by family — exactly the way I wanted —
+          and output a clean, readable list.
+        </p>
+        <p>
+          This approach is especially helpful for collectors. It's designed to
+          group all members of a family together, even if they were introduced
+          in different generations or have regional forms.
+          <strong>No more missing evolutions, skipped forms, or scattered
+            duplicates.</strong>
+          It turns the National Dex into something that feels tailored to
+          completionists and box-organizers like me.
+        </p>
+
+        <p>
+          My goal with this project was to create a listing that organizes
+          Pokémon based on two priorities:
+        </p>
+
+        <ol>
+          <li><strong>Evolutionary family</strong> comes first</li>
+          <li>Then, <strong>National Pokédex order</strong></li>
+        </ol>
+      </details>
+      </details>
+
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="techstack">Tech Stack</span>
+        </summary>
+        <ul>
+          <li>
+            <strong>Python 3.12</strong> — The entire script is written in modern Python, taking advantage of features
+            like <code>match-case</code> statements and built-in type annotations to keep the code clean and readable. I
+            chose Python because it's flexible, approachable, and highly adaptable. Since this isn't a script that needs
+            to run constantly, performance wasn't a major concern — what mattered more was having something I could
+            easily tweak and adjust as my needs evolved.
+          </li>
+          <li>
+            <strong>PokéAPI</strong> — A public RESTful API that provides all the evolution chain, species, and form
+            data this script relies on. This project wouldn't be possible without it. The API is impressively
+            well-structured and consistent, and I'm grateful to the maintainers. You can explore it yourself
+            <a href="https://pokeapi.co/" target="_blank">here</a>.
+          </li>
+          <li>
+            <strong>Requests Library</strong> — Used to fetch data from the PokéAPI. It's a lightweight, no-fuss library
+            that makes working with HTTP requests in Python really simple.
+          </li>
+        </ul>
+
+      </details>
+
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="features">Key Features</span>
+        </summary>
+        <p>This is the key features section</p>
+      </details>
+
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="details">Technical Details</span>
+        </summary>
+        <p>This is the technical details section</p>
+      </details>
+
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="architecture">Architecture</span>
+        </summary>
+        <p>This is the architecture section</p>
+      </details>
+
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="algorithm">Algorithm Design</span>
+        </summary>
+        <p>This is the algorithm design section</p>
+      </details>
+
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="edgecases">Edge Case Handling</span>
+        </summary>
+        <p>This is the edge case handling section</p>
+      </details>
+
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="challenges">Implementation Challenges</span>
+        </summary>
+        <p>This is the implementation challenges section</p>
+      </details>
+
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="whatilearned">What I Learned</span>
+        </summary>
+        <p>This is the what I learned section</p>
+      </details>
+
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="upcomingfeatures">Upcoming Features</span>
+        </summary>
+        <p>This is the upcoming features section</p>
+      </details>
+    </main>
+  </div>
+  <div id="footer-placeholder"></div>
+  <script src="/js/script.js"></script>
+</body>
+
 </html>
