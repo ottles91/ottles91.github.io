@@ -5,8 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PokeFamilyDex - Cameron Ottley</title>
-  <link rel="stylesheet" href="/css/styles.css" />
   <script src="/js/includes.js"></script>
+  <!-- Highlight.js styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <!-- Highlight.js script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
 
 <body>
@@ -305,7 +310,7 @@
           Once the data is retrieved from PokéAPI, the script generates a plain-text output file. Here's a sample of the
           formatted results you can expect:
         </p>
-        <pre>
+        <pre class="bold-pre">
           Voltorb
           Voltorb (Hisui)
           Electrode
@@ -339,7 +344,98 @@
         <summary>
           <span class="summary-title" id="details">Technical Details</span>
         </summary>
-        <p>This is the technical details section</p>
+        <div class="screenshot-section">
+          <figure class="screenshot-figure">
+            <img src="/projects/pokefamilydex/images/PokeFamilyDexFlow.jpeg"
+              alt="An image showing the technical pipeline of the PokeFamilyDex script" class="screenshot-img"
+              loading="lazy">
+            <figcaption class="screenshot-caption">The Technical Pipeline of PokeFamilyDex</figcaption>
+          </figure>
+          <div class="screenshot-details">
+            <p>
+              The PokeFamilyDex script is built around a simple but effective pipeline: first fetch the raw Pokemon data
+              via
+              PokéAPI, transform it into logical family groupings, and output it in a clean, readable format that
+              prioritizes individual evolution families. While
+              the goal is straightforward, the process involves several key steps to ensure accuracy, especially when
+              dealing with branching evolutions, regional forms, and other edge cases. Below is a breakdown of the
+              technical
+              flow behind the script:
+            </p>
+          </div>
+        </div>
+        <ol>
+          <li>
+            <strong>Fetch all species data</strong>
+            <p>The script begins by calling the <code>/pokemon-species</code> endpoint from PokéAPI to retrieve metadata
+              for every Pokémon species. This includes the evolution chain URL for each species.</p>
+          </li>
+          <li>
+            <strong>Retrieve and parse evolution chains</strong>
+            <p>For each evolution chain, the script walks the structure recursively to flatten it into a linear list of
+              Pokémon. This ensures that branched evolutions and multi-stage families remain grouped.</p>
+            <pre><code class="language-python">
+                def flatten_chain(chain):
+                  names = [get_display_name(chain["species"])]
+                  for evo in chain.get("evolves_to", []):
+                    names.extend(flatten_chain(evo))
+                  return names
+              </code></pre>
+          </li>
+          <li>
+            <strong>Account for alternate forms</strong>
+            <p>The script checks the <code>varieties</code> field for alternate forms (e.g., Galarian, Hisuian, Alolan).
+              When one is detected, it modifies the display name to include the form label.</p>
+            <pre><code class="language-python">
+                def get_display_name(species):
+                  name = species["name"].title()
+                  if "galar" in name.lower():
+                    return f"{name} (Galar)"
+                  if "hisui" in name.lower():
+                    return f"{name} (Hisui)"
+                  if "alola" in name.lower():
+                    return f"{name} (Alola)" 
+                  return name</code></pre>
+          </li>
+          <li>
+            <strong>Local File Caching</strong>
+            <p>
+              To avoid making repeated requests to PokéAPI, the script caches API responses as JSON files locally. If a
+              cached version is available, the script uses it instead of calling the API again.
+            </p>
+          </li>
+          <li>
+            <strong>Sort Evolutionary Familiges</strong>
+            <p>
+              Once all evolutionary families are gathered, they are sorted by the lowest National Dex number found
+              within each family. This mostly preserves Dex order while keeping families grouped.
+            </p>
+          </li>
+          <li>
+            <strong>Handling Edge Cases</strong>
+          </li>
+          <li>
+            <strong>Generate the Output File</strong>
+            <p>
+              The final step is writing the output to a
+              <code>.txt</code> file. Each evolutionary family is printed on its
+              own,
+              grouped together and separated from the next. This makes it easy to copy into a document or spreadsheet.
+            </p>
+            <p>
+              Example:
+            </p>
+            <pre class="bold-pre">
+              Voltorb
+              Voltorb (Hisui)
+              Electrode
+              Electrode (Hisui)
+              Exeggcute
+              Exeggutor
+              Exeggutor (Alola)
+            </pre>
+          </li>
+        </ol>
       </details>
 
       <details open class="collapsible-section">
