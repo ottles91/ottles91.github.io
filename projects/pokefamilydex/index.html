@@ -405,7 +405,7 @@
             </p>
           </li>
           <li>
-            <strong>Sort Evolutionary Familiges</strong>
+            <strong>Sort Evolutionary Families</strong>
             <p>
               Once all evolutionary families are gathered, they are sorted by the lowest National Dex number found
               within each family. This mostly preserves Dex order while keeping families grouped.
@@ -442,14 +442,79 @@
         <summary>
           <span class="summary-title" id="architecture">Architecture</span>
         </summary>
-        <p>This is the architecture section</p>
+        <p>The architecture of the PokeFamilyDex script is designed around clarity, separation of concerns, and
+          long-term maintainability. While it's a single-file script at the moment, the internal structure reflects
+          modular thinking and careful flow management.</p>
+
+        <h4>Key Architectural Elements</h4>
+        <ul>
+          <li>
+            <strong>Functional Segmentation</strong>
+            <p>The script is divided into clearly scoped functions, each with a single responsibility:</p>
+            <ul>
+              <li><code>get_all_species_data()</code> — Fetches all Pokémon species from the PokéAPI.</li>
+              <li><code>get_evolution_chain()</code> — Retrieves the full evolution structure for a given species.</li>
+              <li><code>flatten_chain()</code> — Walks an evolution chain recursively to produce a linear family list.
+              </li>
+              <li><code>build_family_list()</code> — Deduplicates and builds the final ordered output.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Centralized Caching</strong>
+            <p>
+              To avoid unnecessary API calls during repeated script runs or debugging, the script caches both species
+              data and evolution chain responses to local JSON files (<code>species_cache.json</code> and
+              <code>evo_cache.json</code>). This dramatically speeds up development cycles and makes it possible to test
+              the script offline.
+            </p>
+          </li>
+          <li>
+            <strong>Loose Coupling of Data Sources</strong>
+            <p>
+              Species data and evolution chains are treated as independent sources. This makes it easy to swap out or
+              supplement PokéAPI with additional data in the future (like official sprite URLs, form descriptions,
+              etc.).
+            </p>
+          </li>
+          <li>
+            <strong>Priority-Based Sorting</strong>
+            <p>
+              Once all data is fetched and parsed, the script builds a final list of families based on two sorting
+              priorities:
+            </p>
+            <ol>
+              <li>Evolutionary groupings (i.e., all forms and evolutions are clustered together)</li>
+              <li>National Dex order (based on the earliest numbered member of each family)</li>
+            </ol>
+          </li>
+          <li>
+            <strong>Minimal Global State</strong>
+            <p>With the exception of the caches and a few constants, most functions do not rely on shared global
+              variables. This makes the script easier to reason about, test, and refactor.</p>
+          </li>
+        </ul>
+        <p>The architecture reflects the idea that even utility scripts deserve thoughtful structure. While
+          PokeFamilyDex is not a large-scale application, organizing the logic this way lets me maintain and evolve the
+          project with confidence—especially as more complex branching evolutions, alternate forms, and exceptions are
+          added.</p>
       </details>
 
       <details open class="collapsible-section">
         <summary>
           <span class="summary-title" id="algorithm">Algorithm Design</span>
         </summary>
-        <p>This is the algorithm design section</p>
+        <p>The heart of this project lies in its ability to <strong>determine and preserve Pokémon family
+            groupings</strong> in a way that feels natural to collectors. While the logic may seem straightforward at
+          first glance, building an accurate, de-duplicated, and evolution-aware list required some careful planning.
+        </p>
+        <ol>
+          <li>
+            <strong>Recursive Traversal of Evolution Chains</strong>
+            <p>Evolution chains in the PokéAPI are nested structures — a base Pokémon evolves into another, which may
+              then evolve further, and so on. To handle these variable-depth trees, I wrote a recursive function that
+              walks each chain and flattens it into a simple list.</p>
+          </li>
+        </ol>
       </details>
 
       <details open class="collapsible-section">
