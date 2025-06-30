@@ -346,7 +346,7 @@
         </summary>
         <div class="screenshot-section">
           <figure class="screenshot-figure">
-            <img src="/projects/pokefamilydex/images/PokeFamilyDexFlow.jpeg"
+            <img src="/projects/pokefamilydex/images/PokeFamilyDex Flow.jpeg"
               alt="An image showing the technical pipeline of the PokeFamilyDex script" class="screenshot-img"
               loading="lazy">
             <figcaption class="screenshot-caption">The Technical Pipeline of PokeFamilyDex</figcaption>
@@ -512,7 +512,50 @@
             <strong>Recursive Traversal of Evolution Chains</strong>
             <p>Evolution chains in the PokéAPI are nested structures — a base Pokémon evolves into another, which may
               then evolve further, and so on. To handle these variable-depth trees, I wrote a recursive function that
-              walks each chain and flattens it into a simple list.</p>
+              walks each chain and flattens it into a simple list. Take for example, the Ralts line, whose evolution
+              line is shown here:</p>
+            <figure class="screenshot-figure">
+              <img src="/projects/pokefamilydex/images/ralts_line.jpeg"
+                alt="An image showing full evotionary line of Ralts" class="screenshot-img" loading="lazy">
+              <figcaption class="screenshot-caption">The Ralts evolutionary family</figcaption>
+            </figure>
+            <div class="screenshot-details">
+            </div>
+            <p>By recursively calling each child node, I can capture all branches in the family — including split
+              evolutions like Gallade that aren't in a straight line
+            </p>
+          </li>
+          <li>
+            <strong>Preserving Order Without Duplicates</strong>
+            <p>
+              Because many Pokémon appear in multiple chains (like Eevee forms or split evolutions), I needed a way to
+              <strong>track seen species</strong> and <strong>only add each family once</strong>. The script uses a
+              <code>set()</code> to track added species IDs and skips over repeats.
+            </p>
+          </li>
+          <li>
+            <strong>Form Handling & Flattening</strong>
+            <p>Some Pokémon have alternate forms (like Meowstic or Zygarde) that show up as separate entries in the API.
+              I use logic to:</p>
+            <ul>
+              <li>Filter out cosmetic-only forms (like Spiky-Eared Pichu or Partner Pikachu)</li>
+              <li>
+                <p>Keep distinct forms if they evolve differently (like Hoenn vs. Galarian Zigzagoon)</p>
+              </li>
+            </ul>
+            <p>This ensures the list reflects <strong>mechanically relevant forms</strong>, not just visual variants.
+            </p>
+          </li>
+          <li>
+            <strong>Family-Based Sorting Strategy</strong>
+            <p>Instead of relying on strict numerical order (which splits families across generations), the script
+              anchors output by:</p>
+            <ol>
+              <li>Fetching the <strong>lowest National Dex number</strong> in the family</li>
+              <li>Using that number as the family's sorting key</li>
+            </ol>
+            <p>This means all related Pokémon appear together, even if they were introduced in different generations — a
+              must-have when organizing Pokémon Home boxes by family.</p>
           </li>
         </ol>
       </details>
