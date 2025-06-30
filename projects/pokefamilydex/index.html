@@ -564,7 +564,45 @@
         <summary>
           <span class="summary-title" id="edgecases">Edge Case Handling</span>
         </summary>
-        <p>This is the edge case handling section</p>
+        <p>Handling edge cases is very important when working with datasets as large as the one provided by the PokéAPI.
+          I wanted to handle these as eloquently as possible in order to produce results that I would be happy to use
+          for my own Pokemon organization. The evolution system in the Pokemon universe has grown extensively over the
+          years, and is now much more complicated that it was back when Pokemon Red, Green and Blue first hit the
+          market. Here are some of the edge cases that I had to specifically account for when writing my script:</p>
+        <ul>
+          <li>
+            <strong>Pokemon Species with Multiple Forms</strong>
+            <p>Certain Pokemon species include multiple forms that can all be stored in Pokemon Home. Some of these
+              include:</p>
+            <ul>
+              <li><strong>Voltorb</strong> (Kantonian and Hisuian)</li>
+              <li><strong>Raichu</strong> (Kantonian and Alolan)</li>
+              <li><strong>Deoxys</strong> (Which has Normal, Attack, Defense and Speed forms)</li>
+              <li><strong>Basculin</strong> (Red, Blue and White Stripe)</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Branching Evolutions</strong>
+            <p>Some species, like Eevee, can evolve into multiple different Pokémon depending on conditions like time of
+              day, friendship level, items used, or even the player's proximity to a mossy rock. To handle this, my
+              script recursively walks the entire evolution chain, collecting all possible evolutions in the correct
+              order. This ensures that Pokémon with branching paths still appear together in the same family group.</p>
+          </li>
+          <li>
+            <strong>Regional Forms with Diverging Evolutions</strong>
+            <p>Certain Pokémon, like <strong>Yamask</strong>, have different evolutions based on their regional form.
+              For example:</p>
+            <ul>
+              <li>The original (Unovian) <strong>Yamask</strong> evolves into <strong>Cofagrigus</strong></li>
+              <li><strong>Galarian Yamask</strong> evolves into <strong>Runerigus</strong> in Pokemon Sword and Pokemon
+                Shield</li>
+            </ul>
+            <p>Because the PokéAPI assigns these forms to the same base species, I had to account for the fact that the
+              evolution data might not differentiate between them clearly. In my approach, I wanted to display both
+              evolutions in the same family group in order to create a better overview of each Pokemon's entire
+              evolutionary family tree.</p>
+          </li>
+        </ul>
       </details>
 
       <details open class="collapsible-section">
