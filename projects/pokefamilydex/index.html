@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PokeFamilyDex - Cameron Ottley</title>
+  <script src="/js/includes.js"></script>
+  <!-- Highlight.js styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <!-- Highlight.js script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+  <div class="container">
+    <main class="content">
+      <h1>PokeFamilyDex</h1>
+      <p>
+        This Python script generates a clean, human-readable National
+        Dex-ordered list of Pokémon grouped by evolutionary family. This is a
+        passion project of mine. I've always wanted to organize my Pokemon
+        Home boxes by Pokemon family, but as far as I can tell there is no
+        resource out there that clealy organizes Pokemon by family. I wanted
+        to create a tool that would allow me to do this, and I hope it will be
+        useful to others as well. The script is designed to be run in a Python
+        environment and outputs the list in a text format that can be easily
+        copied into a document or spreadsheet.
+      </p>
+      <ul>
+        <li>
+          Repository:
+          <a href="https://github.com/ottles91/PokeFamilyDex" target="_blank">github.com/ottles91/PokeFamilyDex</a>
+        </li>
+      </ul>
+      <!-- Table of Contents -->
+      <div class="toc-wrapper">
+        <button class="toc-master-toggle" aria-expanded="true">
+          Table of Contents
+        </button>
+        <nav class="toc" id="toc-content">
+          <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#background">Background</a></li>
+            <li><a href="#dexorder">My Problem with National Pokedex Order</a></li>
+            <li><a href="#techstack">Tech Stack</a></li>
+            <li><a href="#features">Key Features</a></li>
+            <li>
+              <a href="#details">Technical Details</a>
+              <ul>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#algorithm">Algorithm Design</a></li>
+                <li><a href="#edgecases">Edge Case Handling</a></li>
+              </ul>
+            </li>
+            <li><a href="#whatilearned">What I Learned</a></li>
+            <li><a href="#upcomingfeatures">Upcoming Features</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Overview -->
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="overview">Overview</span>
+        </summary>
+        <p><strong>PokéFamilyDex</strong> is a project written in Python that helps organize your Pokémon in a more
+          organic and intuitive way. Rather than relying solely on National Pokédex order, this tool emphasizes grouping
+          by evolutionary family first.</p>
+        <p>To illustrate the difference, here's an example of a Pokémon HOME box organized purely by National Pokédex
+          order:</p>
+        <figure class="screenshot-figure">
+          <img src="/projects/pokefamilydex/images/national_order.JPG"
+            alt="An image showing Pokémon HOME boxes organized solely by National Pokédex order" class="screenshot-img"
+            loading="lazy">
+          <figcaption class="screenshot-caption">Typical National Pokédex Box Organization</figcaption>
+        </figure>
+        <p>This approach is perfectly valid and widely used. However, <strong>PokéFamilyDex</strong> organizes Pokémon
+          by evolutionary family first, while still respecting National Pokédex order as a secondary layer. Here's how
+          that same box looks when reorganized using this method:</p>
+        <figure class="screenshot-figure">
+          <img src="/projects/pokefamilydex/images/family_order.JPG"
+            alt="An image showing Pokémon HOME boxes organized with Family Pokédex order, where evolutionary families are prioritized over National Pokédex number"
+            class="screenshot-img" loading="lazy">
+          <figcaption class="screenshot-caption">Pokémon Family Box Sorting</figcaption>
+        </figure>
+        <p>Sorting by evolutionary family offers several advantages over traditional National Pokédex sorting:</p>
+        <ul>
+          <li>It groups related Pokémon together, such as placing Pichu next to Pikachu and Raichu—even though Pichu is
+            normally listed later in the Johto section.</li>
+          <li>It includes regional variants and evolutions of older species, such as Alolan Raichu and Mr. Rime, which
+            might otherwise be scattered or omitted when using strict Pokédex numbering.</li>
+        </ul>
+      </details>
+      <!-- Background -->
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="background">Background</span>
+        </summary>
+        <p>
+          I've enjoyed Pokémon since I was a kid. I fondly remember going to my friend's house and playing
+          <strong>Pokémon Red</strong> on his Game Boy Color. Sometimes, he'd let me borrow it—and I'd take it home and
+          play for hours, desperately trying to get as far as I could.
+        </p>
+        <p>
+          I remember struggling to beat Brock with my Charmander. It made perfect sense to me: with enough heat, rocks
+          should melt—so obviously, my Fire-type Charmander could take down Brock's Onix. Unfortunately, I didn't really
+          understand how type matchups worked yet, and I always hit a wall there.
+        </p>
+        <p>
+          What intrigued me about Pokémon wasn't the battling—I was never very good at it, and to be honest, I still
+          don't find it all that fun. What I loved was the <strong>collection</strong> aspect. There was this big,
+          mysterious list of unknown Pokémon out there <strong>somewhere</strong>, waiting to be discovered. I loved
+          running through tall grass, never knowing what I'd encounter next... it felt magical.
+        </p>
+        <p>
+          Watching my Pokédex slowly fill up was the most satisfying part of the game for me.
+        </p>
+        <h4>The Impetus</h4>
+        <p>
+          In the summer of 2016, <strong>Pokémon GO</strong> launched—and like many others, it pulled me right back in.
+          Most people I knew played for a month or two and then moved on. I didn't. Not only did I keep playing, but I
+          also dove back into the mainline games I'd missed over the years.
+        </p>
+        <p>
+          Back then, there were only 150 Pokémon (or 151, if you counted the playground rumors about Mew hiding under a
+          truck). Now there were over 800—and I was once again hooked.
+        </p>
+        <p>
+          Over the next few years, I slowly played through <em>Alpha Sapphire</em>, <em>X</em>, and <em>Ultra Moon</em>.
+          Between those three games, I managed to collect almost every available Pokémon—minus a few legendaries and
+          event-only mythicals.
+        </p>
+        <p>
+          That's when my organizational instincts kicked in. I wanted to put all of them in one place—in a way that felt
+          <strong>logical</strong>.
+        </p>
+      </details>
+      <!-- My Problem with National Pokedex Order -->
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="dexorder">My Problem with National Pokédex Order</span>
+        </summary>
+        <p>
+          The most common way to organize Pokémon is by their <strong>National Pokédex number</strong>, which lists
+          Pokémon chronologically based on the region they were introduced in.
+        </p>
+        <p>
+          While that makes sense historically, it always bothered me in one specific way: Pokémon families that were
+          expanded in later generations often get split up. One of the clearest examples is the Mr. Mime line:
+        </p>
+        <ul class="pokemon-list">
+          <li>Mime Jr.</li>
+          <li>Mr. Mime</li>
+          <li>Mr. Mime (Galarian Form)</li>
+          <li>Mr. Rime</li>
+        </ul>
+        <p>In National Dex order, this family appears like this:</p>
+        <ul class="pokemon-list">
+          <li>Mr. Mime (Slot 122)</li>
+          <li>Mime Jr. (Slot 439)</li>
+          <li>Mr. Rime (Slot 866)</li>
+        </ul>
+        <p>
+          That splits the family across hundreds of entries and often ignores regional form differences. Galarian Mr.
+          Mime sometimes gets skipped entirely.
+        </p>
+        <p>
+          Another strong example is the Eevee line. Eevee has a total of eight evolutions, but they're spread across
+          four different generations—so they're rarely displayed together. My script ensures the full evolution family
+          appears in one place:
+        </p>
+        <ul class="pokemon-list">
+          <li>Eevee</li>
+          <li>Vaporeon</li>
+          <li>Jolteon</li>
+          <li>Flareon</li>
+          <li>Espeon</li>
+          <li>Umbreon</li>
+          <li>Leafeon</li>
+          <li>Glaceon</li>
+          <li>Sylveon</li>
+        </ul>
+        <p>
+          The Generation 4 games (<em>Diamond</em>, <em>Pearl</em>, and <em>Platinum</em>) in particular added nearly 30
+          Pokémon to previously established evolution families, many from the original <em>Red, Green, Blue,</em> and
+          <em>Yellow</em> games. I believe this generation makes the strongest argument for organizing Pokémon by
+          evolutionary family instead of strictly by Pokédex number. Here are just a few of the additions from Gen 4:
+        </p>
+        <ol class="pokemon-list">
+          <li>Budew</li>
+          <li>Roserade</li>
+          <li>Ambipom</li>
+          <li>Mismagius</li>
+          <li>Honchkrow</li>
+          <li>Chingling</li>
+          <li>Bonsly</li>
+          <li>Mime Jr.</li>
+          <li>Happiny</li>
+          <li>Munchlax</li>
+          <li>Mantyke</li>
+          <li>Weavile</li>
+          <li>Magnezone</li>
+          <li>Lickilicky</li>
+          <li>Rhyperior</li>
+          <li>Tangrowth</li>
+          <li>Electivire</li>
+          <li>Magmortar</li>
+          <li>Togekiss</li>
+          <li>Yanmega</li>
+          <li>Leafeon</li>
+          <li>Glaceon</li>
+          <li>Gliscor</li>
+          <li>Mamoswine</li>
+          <li>Porygon-Z</li>
+          <li>Gallade</li>
+          <li>Probopass</li>
+          <li>Dusknoir</li>
+          <li>Froslass</li>
+        </ol>
+        <p>
+          Over time, I realized how much I enjoyed seeing my Pokémon organized by their evolutionary families. I began
+          manually sorting my collection in Pokémon HOME this way, but as new games introduced more forms and
+          evolutions, it became harder to keep everything neatly arranged. What started as a fun system quickly turned
+          into a maintenance chore.
+        </p>
+        <h4>Why I Built This</h4>
+        <p>
+          After manually organizing my Pokémon in Pokémon HOME more times than I'd like to admit, I realized:
+          <strong>why not automate it?</strong> Instead of scrolling through spreadsheets and dragging Pokémon around, I
+          could write a script that grouped them by family — exactly how I wanted — and output a clean, readable list.
+        </p>
+        <p>
+          This approach is especially helpful for collectors. It's designed to group all members of a family together,
+          even if they were introduced in different generations or have regional forms. <strong>No more missing
+            evolutions, skipped forms, or scattered duplicates.</strong> It turns the National Dex into something that
+          feels tailored to completionists and box-organizers like me.
+        </p>
+        <p>
+          My goal with this project was to create a listing that organizes Pokémon based on two priorities:
+        </p>
+        <ol>
+          <li><strong>Evolutionary family</strong> comes first</li>
+          <li>Then, <strong>National Pokédex order</strong></li>
+        </ol>
+      </details>
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="techstack">Tech Stack</span>
+        </summary>
+        <ul>
+          <li>
+            <strong>Python 3.12</strong> — The entire script is written in modern Python, taking advantage of features
+            like <code>match-case</code> statements and built-in type annotations to keep the code clean and readable. I
+            chose Python because it's flexible, approachable, and highly adaptable. Since this isn't a script that needs
+            to run constantly, performance wasn't a major concern — what mattered more was having something I could
+            easily tweak and adjust as my needs evolved.
+          </li>
+          <li>
+            <strong>PokéAPI</strong> — A public RESTful API that provides all the evolution chain, species, and form
+            data this script relies on. This project wouldn't be possible without it. The API is impressively
+            well-structured and consistent, and I'm grateful to the maintainers. You can explore it yourself
+            <a href="https://pokeapi.co/" target="_blank">here</a>.
+          </li>
+          <li>
+            <strong>Requests Library</strong> — Used to fetch data from the PokéAPI. It's a lightweight, no-fuss library
+            that makes working with HTTP requests in Python really simple.
+          </li>
+        </ul>
+      </details>
+
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="features">Key Features</span>
+        </summary>
+        <ul>
+          <li>
+            <strong>National Dex + Family-Based Sorting</strong> — The script intelligently groups Pokémon by
+            evolutionary family first, then orders those families by National Dex number. This hybrid system keeps
+            related forms and evolutions together, even when they span generations.
+          </li>
+          <li>
+            <strong>Accurate Handling of Regional Forms</strong> — Pokémon with region-specific forms (like Galarian Mr.
+            Mime or Hisuian Zorua) are included and grouped appropriately, so no variants are accidentally left out.
+          </li>
+          <li>
+            <strong>Readable Output Format</strong> — The script outputs a clean, plain-text list that's easy to copy
+            into a document or spreadsheet for organizing Pokémon Home boxes or collection trackers.
+          </li>
+          <li>
+            <strong>One-Command Simplicity</strong> — Run the script once and get a complete, formatted list — no setup
+            or extra tooling needed beyond Python and an internet connection.
+          </li>
+        </ul>
+        <h4>Example Output</h4>
+        <p>
+          Once the data is retrieved from PokéAPI, the script generates a plain-text output file. Here's a sample of the
+          formatted results you can expect:
+        </p>
+        <pre class="bold-pre">
+          Voltorb
+          Voltorb (Hisui)
+          Electrode
+          Electrode (Hisui)
+          Exeggcute
+          Exeggutor
+          Exeggutor (Alola)
+          Cubone
+          Marowak
+          Marowak (Alola)
+          Marowak (Totem)
+          Lickitung
+          Lickilicky
+          Koffing
+          Weezing
+          Weezing (Galar)
+          Rhyhorn
+          Rhydon
+          Rhyperior
+          Tangela
+          Tangrowth
+          Kangaskhan
+          Horsea
+          Seadra   
+          Kingdra
+          </pre>
+        </pre>
+      </details>
+      <!-- Technical Details -->
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="details">Technical Details</span>
+        </summary>
+        <div class="screenshot-section">
+          <figure class="screenshot-figure">
+            <img src="/projects/pokefamilydex/images/PokeFamilyDex Flow.jpeg"
+              alt="An image showing the technical pipeline of the PokeFamilyDex script" class="screenshot-img"
+              loading="lazy">
+            <figcaption class="screenshot-caption">The Technical Pipeline of PokeFamilyDex</figcaption>
+          </figure>
+          <div class="screenshot-details">
+            <p>
+              The PokeFamilyDex script is built around a simple but effective pipeline: first fetch the raw Pokémon data
+              from PokéAPI, transform it into logical family groupings, and output it in a clean, readable format that
+              prioritizes individual evolution families.
+            </p>
+            <p>
+              While the goal is straightforward, the process involves several key steps to ensure accuracy—especially
+              when dealing with branching evolutions, regional forms, and other edge cases. Below is a breakdown of the
+              technical flow behind the script:
+            </p>
+          </div>
+        </div>
+        <ol>
+          <li>
+            <strong>Fetch all species data</strong>
+            <p>
+              The script begins by calling the <code>/pokemon-species</code> endpoint from PokéAPI to retrieve metadata
+              for every Pokémon species. This includes the evolution chain URL for each species.
+            </p>
+          </li>
+          <li>
+            <strong>Retrieve and parse evolution chains</strong>
+            <p>
+              For each evolution chain, the script walks the structure recursively to flatten it into a linear list of
+              Pokémon. This ensures that branched evolutions and multi-stage families remain grouped.
+            </p>
+            <pre><code class="language-python">
+            def flatten_chain(chain):
+                names = [get_display_name(chain["species"])]
+                for evo in chain.get("evolves_to", []):
+                    names.extend(flatten_chain(evo))
+                return names
+                  </code></pre>
+          </li>
+          <li>
+            <strong>Account for alternate forms</strong>
+            <p>
+              The script checks the <code>varieties</code> field for alternate forms (e.g., Galarian, Hisuian, Alolan).
+              When one is detected, it modifies the display name to include the form label.
+            </p>
+            <pre><code class="language-python">
+            def get_display_name(species):
+                name = species["name"].title()
+                if "galar" in name.lower():
+                    return f"{name} (Galar)"
+                if "hisui" in name.lower():
+                    return f"{name} (Hisui)"
+                if "alola" in name.lower():
+                    return f"{name} (Alola)" 
+                return name
+                  </code></pre>
+          </li>
+          <li>
+            <strong>Local file caching</strong>
+            <p>
+              To avoid making repeated requests to PokéAPI, the script caches API responses as JSON files locally. If a
+              cached version is available, the script uses it instead of calling the API again.
+            </p>
+          </li>
+          <li>
+            <strong>Sort evolutionary families</strong>
+            <p>
+              Once all evolutionary families are gathered, they are sorted by the lowest National Pokédex number found
+              within each family. This mostly preserves Pokédex order while keeping families grouped.
+            </p>
+          </li>
+          <li>
+            <strong>Handle edge cases</strong>
+            <p>
+              Certain Pokémon require custom handling due to inconsistencies or missing links in the API data. These are
+              discussed further in the <a href="#edgecases">Edge Case Handling</a> section.
+            </p>
+          </li>
+          <li>
+            <strong>Generate the output file</strong>
+            <p>
+              The final step is writing the output to a <code>.txt</code> file. Each evolutionary family is printed on
+              its own, grouped together and separated from the next. This makes it easy to copy into a document or
+              spreadsheet.
+            </p>
+            <p>Example:</p>
+            <pre class="bold-pre">
+            Voltorb
+            Voltorb (Hisui)
+            Electrode
+            Electrode (Hisui)
+            Exeggcute
+            Exeggutor
+            Exeggutor (Alola)
+                  </pre>
+          </li>
+        </ol>
+      </details>
+      <!-- Architecture -->
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="architecture">Architecture</span>
+        </summary>
+        <p>
+          The architecture of the PokeFamilyDex script is designed with clarity, separation of concerns, and long-term
+          maintainability in mind. While it currently exists as a single-file script, its internal structure reflects
+          modular thinking and careful flow management.
+        </p>
+        <h4>Key Architectural Elements</h4>
+        <ul>
+          <li>
+            <strong>Functional Segmentation</strong>
+            <p>
+              The script is divided into clearly scoped functions, each with a single responsibility:
+            </p>
+            <ul>
+              <li><code>get_all_species_data()</code> — Fetches all Pokémon species from PokéAPI.</li>
+              <li><code>get_evolution_chain()</code> — Retrieves the full evolution structure for a given species.</li>
+              <li><code>flatten_chain()</code> — Recursively walks an evolution chain to produce a linear family list.
+              </li>
+              <li><code>build_family_list()</code> — Deduplicates and assembles the final ordered output.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Centralized Caching</strong>
+            <p>
+              To avoid unnecessary API calls during repeated runs or debugging, the script caches both species data and
+              evolution chain responses to local JSON files (<code>species_cache.json</code> and
+              <code>evo_cache.json</code>). This dramatically speeds up development and allows for offline testing.
+            </p>
+          </li>
+          <li>
+            <strong>Loose Coupling of Data Sources</strong>
+            <p>
+              Species data and evolution chains are treated as separate, swappable data sources. This makes it easy to
+              supplement or replace PokéAPI in the future—such as adding official sprite URLs, form descriptions, or
+              alternate sources.
+            </p>
+          </li>
+          <li>
+            <strong>Priority-Based Sorting</strong>
+            <p>
+              Once all data is gathered and parsed, the script builds a final list of families using two sorting
+              priorities:
+            </p>
+            <ol>
+              <li>Evolutionary grouping (i.e., all evolutions and regional forms are clustered together).</li>
+              <li>National Pokédex order (based on the lowest Pokédex number in each family).</li>
+            </ol>
+          </li>
+          <li>
+            <strong>Minimal Global State</strong>
+            <p>
+              With the exception of the caches and a few constants, most functions operate independently of shared
+              global variables. This keeps the codebase easier to reason about, test, and refactor.
+            </p>
+          </li>
+        </ul>
+        <p>
+          The architecture reflects the idea that even utility scripts deserve thoughtful structure. While PokeFamilyDex
+          isn't a large-scale application, organizing the logic this way lets me maintain and evolve the project with
+          confidence—especially as more complex branching evolutions, alternate forms, and edge cases are introduced.
+        </p>
+      </details>
+      <!-- Algorithm Design -->
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="algorithm">Algorithm Design</span>
+        </summary>
+        <p>
+          The heart of this project lies in its ability to <strong>determine and preserve Pokémon family
+            groupings</strong> in a way that feels natural to collectors. While the logic may seem straightforward at
+          first glance, building an accurate, de-duplicated, and evolution-aware list required some careful planning.
+        </p>
+
+        <ol>
+          <li>
+            <strong>Recursive Traversal of Evolution Chains</strong>
+            <p>
+              Evolution chains in PokéAPI are structured as nested trees — a base Pokémon evolves into another, which
+              may evolve further, potentially branching along the way. To handle these variable-depth chains, I wrote a
+              recursive function that walks each node and flattens the entire chain into a simple linear list.
+            </p>
+            <p>
+              For example, consider the Ralts family. The chain includes split evolutions into either Gardevoir or
+              Gallade. Using a recursive approach ensures that <strong>every branch</strong> is captured:
+            </p>
+            <figure class="screenshot-figure">
+              <img src="/projects/pokefamilydex/images/ralts_line.jpeg"
+                alt="An image showing full evolutionary line of Ralts" class="screenshot-img" loading="lazy" />
+              <figcaption class="screenshot-caption">The Ralts evolutionary family</figcaption>
+            </figure>
+            <p>
+              By recursively calling each child node, the script captures full families — even when they include
+              branching evolutions that wouldn't be visible in a simple linear list.
+            </p>
+          </li>
+          <li>
+            <strong>Preserving Order Without Duplicates</strong>
+            <p>
+              Since some Pokémon can appear in multiple evolution chains (like Eevee's many forms or branch evolutions),
+              I needed a way to <strong>track seen species</strong> and ensure each family only appears once in the
+              output. The script uses a <code>set()</code> to store seen species IDs and skips duplicates to avoid
+              redundancy.
+            </p>
+          </li>
+          <li>
+            <strong>Form Handling & Flattening</strong>
+            <p>
+              Many Pokémon have alternate forms — some purely cosmetic, others with unique stats or evolutions. The
+              script includes logic to:
+            </p>
+            <ul>
+              <li>Filter out cosmetic-only variants (like Spiky-Eared Pichu or Partner Pikachu)</li>
+              <li>Include mechanically distinct forms (like Galarian vs. Hoenn Zigzagoon) when they evolve differently
+              </li>
+            </ul>
+            <p>
+              This ensures that <strong>only forms with mechanical impact</strong> appear in the output — keeping the
+              list both useful and uncluttered.
+            </p>
+          </li>
+          <li>
+            <strong>Family-Based Sorting Strategy</strong>
+            <p>
+              Rather than listing Pokémon in strict National Pokédex order (which splits families across generations),
+              the script sorts by evolutionary family first:
+            </p>
+            <ol>
+              <li>Determine the <strong>lowest National Dex number</strong> within each family</li>
+              <li>Use that number as the family's sorting key</li>
+            </ol>
+            <p>
+              This strategy ensures that all related Pokémon — regardless of when they were introduced — appear
+              together. It's especially helpful when organizing Pokémon Home boxes where cohesion matters more than
+              release order.
+            </p>
+          </li>
+        </ol>
+      </details>
+      <!-- Edge Case Handling -->
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="edgecases">Edge Case Handling</span>
+        </summary>
+        <p>
+          Handling edge cases is critical when working with a dataset as large and complex as the one provided by
+          PokéAPI. I wanted to address these cases <strong>elegantly</strong> in order to produce results that I'd be
+          proud to use in my own Pokémon organization.
+        </p>
+        <p>
+          The evolution system in the Pokémon universe has grown extensively over the years and is now far more complex
+          than it was when Pokémon Red, Green, and Blue first launched. Here are some of the trickier edge cases I had
+          to account for when writing the script:
+        </p>
+        <ul>
+          <li>
+            <strong>Pokémon Species with Multiple Forms</strong>
+            <p>
+              Some Pokémon species have alternate forms that are treated as separate entries in Pokémon Home. These
+              needed to be grouped thoughtfully to reflect their shared identity while still accounting for their
+              differences. A few examples include:
+            </p>
+            <ul>
+              <li><strong>Voltorb</strong> (Kantonian and Hisuian forms)</li>
+              <li><strong>Raichu</strong> (Kantonian and Alolan forms)</li>
+              <li><strong>Deoxys</strong> (Normal, Attack, Defense, and Speed forms)</li>
+              <li><strong>Basculin</strong> (Red, Blue, and White Stripe forms)</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Branching Evolutions</strong>
+            <p>
+              Some species, like <strong>Eevee</strong>, can evolve into multiple different Pokémon based on conditions
+              such as time of day, friendship level, held items, or proximity to specific in-game locations. To support
+              these, the script <strong>recursively walks the entire evolution chain</strong>, collecting all possible
+              branches. This ensures that all members of a family — no matter how complex — appear together in the final
+              output.
+            </p>
+          </li>
+          <li>
+            <strong>Regional Forms with Diverging Evolutions</strong>
+            <p>
+              Certain Pokémon have region-specific forms that evolve into completely different species. One clear
+              example is <strong>Yamask</strong>:
+            </p>
+            <ul>
+              <li>Unovan Yamask evolves into <strong>Cofagrigus</strong></li>
+              <li>Galarian Yamask evolves into <strong>Runerigus</strong> in Pokémon Sword and Shield</li>
+            </ul>
+            <p>
+              Because PokéAPI treats these as the same base species, the evolution chain data doesn't always make this
+              distinction clear. My script compensates by <strong>including both regional branches in the same family
+                group</strong>, giving a more complete and accurate representation of that species' evolutionary family.
+            </p>
+          </li>
+        </ul>
+      </details>
+      <!-- What I Learned -->
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="whatilearned">What I Learned</span>
+        </summary>
+        <p>
+          My goal in building this script was not only to create something personally useful, but also to grow as a
+          developer in the process. I'd worked with many of the key concepts featured in this project before, but
+          developing PokeFamilyDex gave me the opportunity to explore them more deeply. Here are some of the major
+          skills and technologies I was able to strengthen along the way:
+        </p>
+        <ul>
+          <li>
+            <strong>API Integration & Data Normalization</strong>
+            <p>
+              While I've previously worked with RESTful APIs (including designing and using the backend for <a
+                href="/projects/flare/index.html" target="_self">Flare</a>), I hadn't had as much experience working
+              with third-party APIs that I didn't help build. One of my goals with this project was to practice
+              integrating with an external API — one that I had no control over.
+            </p>
+            <p>
+              This meant I had to work with the PokéAPI as-is and adapt my code to its structure, limitations, and
+              quirks. Parsing the JSON data returned by the API presented challenges around data consistency and
+              normalization. To handle this, I built my logic to be flexible and robust — especially in the face of
+              unusual edge cases, which I've discussed further in the <a href="#edgecases">Edge Case Handling</a>
+              section.
+            </p>
+          </li>
+          <li>
+            <strong>Caching Strategies</strong>
+            <p>
+              Optimizing the script to avoid excessive API requests was a high priority. To achieve this, I implemented
+              JSON caching early in development. By storing species and evolution chain data locally, I was able to
+              dramatically reduce load times and ensure the script could be run repeatedly without putting unnecessary
+              strain on the PokéAPI.
+            </p>
+            <p>
+              Before this project, I'd had little hands-on experience with caching. I was pleasantly surprised by how
+              simple and effective it was to integrate into a local scripting context.
+            </p>
+          </li>
+          <li>
+            <strong>Clean Code Practices</strong>
+            <p>
+              Writing clean, maintainable code is something I always strive for. I've worked on too many personal
+              projects in the past that became hard to read or extend because I rushed through early stages without
+              proper structure. This time, I was intentional about keeping the script well-organized from the start.
+            </p>
+            <p>
+              I focused on breaking the logic into clear, purpose-driven functions, minimizing global state, and
+              following consistent naming patterns. The result is a script that's easy to navigate and modify —
+              something I'll be able to extend confidently in the future.
+            </p>
+          </li>
+        </ul>
+      </details>
+      <!-- Upcoming Features -->
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="upcomingfeatures">Upcoming Features</span>
+        </summary>
+        <p>
+          My MVP (Minimum Viable Product) for PokeFamilyDex was intentionally limited. I knew I'd spend a significant
+          amount of time early on learning how to retrieve, clean, and cache the data. My goal for the initial version
+          was to ensure the script could do the following:
+        </p>
+        <ol>
+          <li>
+            <p>Retrieve data from the PokéAPI for all Pokémon forms that can be stored in Pokémon Home, including:</p>
+            <ul>
+              <li>All base Pokémon forms</li>
+              <li>All form differences (such as Deoxys and Deerling)</li>
+              <li>All regional variants of existing Pokémon (such as Alolan Raichu and Hisuian Basculin)</li>
+            </ul>
+          </li>
+          <li>Sort and organize the retrieved data</li>
+          <li>Cache data to speed up future runs and reduce unnecessary API calls</li>
+          <li>Flatten evolution chains into linear family lists</li>
+          <li>
+            Organize Pokémon using the following priority:
+            <ol>
+              <li>Pokémon Family</li>
+              <li>National Pokédex Numbering</li>
+            </ol>
+          </li>
+          <li>Output the data to a readable text file</li>
+        </ol>
+        <p>
+          Now that those core features are working, I can shift my focus to “nice-to-have” features that will make the
+          tool more customizable and collector-friendly. Here are some ideas I'd like to implement in the future:
+        </p>
+        <ul>
+          <li>Format the output file to include breaks between individual Pokémon boxes</li>
+          <li>Include Gigantamax forms in the output</li>
+          <li>
+            Add user-configurable options to include or exclude certain categories, such as:
+            <ul>
+              <li>Gender differences (e.g., Frillish, Indeedee, Basculegion)</li>
+              <li>Regional variants (e.g., Galarian Zigzagoon, Paldean Wooper)</li>
+              <li>Gigantamax forms</li>
+              <li>Alolan Totem Pokémon</li>
+              <li>Legendary Pokémon</li>
+              <li>Mythical Pokémon</li>
+            </ul>
+          </li>
+          <li>Allow users to export a visual representation of their organized Pokémon boxes</li>
+        </ul>
+      </details>
+      <p>This is an ongoing passion project of mine, so stay tuned for updates!</p>
+    </main>
+  </div>
+  <div id="footer-placeholder"></div>
+  <script src="/js/script.js"></script>
+</body>
+
+</html>

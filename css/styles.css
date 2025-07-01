@@ -8,6 +8,7 @@
     --nav-link-color: #000;
     --link-color-body: #007acc;
     --link-color-header: #000;
+    --pokemon-list-color: #3264E1;
     --footer-bg: #2E3338;
     --footer-text-color: #ccc;
     --link-hover-background: rgba(255, 255, 255, 0.2);
@@ -94,6 +95,46 @@ a {
     opacity: 0.85;
 }
 
+.bold-pre {
+    font-size: large;
+}
+
+
+pre code.hljs {
+    text-align: left;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    overflow-x: auto;
+}
+
+/* ========== UL and OL ========== */
+.pokemon-list {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid var(--pokemon-list-color);
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin: 1rem 0;
+    color: #fff;
+}
+
+.pokemon-list li {
+    margin-left: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.pokemon-list ul,
+.pokemon-list ul li::marker {
+    list-style-type: disc;
+}
+
+.pokemon-list ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+}
+
 /* ========== Images ========== */
 .responsive-img {
     max-width: 100%;
@@ -114,11 +155,10 @@ a {
 }
 
 .screenshot-img {
-    max-width: 300px;
+    width: 100%;
+    max-width: 100%;
     height: auto;
     border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-    flex-shrink: 0;
 }
 
 .screenshot-details {
@@ -241,8 +281,6 @@ img {
     transform: rotate(-45deg);
     top: 20px;
 }
-
-/* (Other rules like footer, table of contents, collapsible sections, and media queries remain unchanged) */
 
 /* ========== Footer ========== */
 .site-footer {
