@@ -43,7 +43,8 @@
         </button>
         <nav class="toc" id="toc-content">
           <ul>
-            <li><a href="#philosophy">Philosophy</a></li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#background">Background</a></li>
             <li><a href="#dexorder">My Problem with National Pokedex Order</a></li>
             <li><a href="#techstack">Tech Stack</a></li>
             <li><a href="#features">Key Features</a></li>
@@ -61,11 +62,43 @@
           </ul>
         </nav>
       </div>
+
       <details open class="collapsible-section">
         <summary>
-          <span class="summary-title" id="philosophy">Philosophy</span>
+          <span class="summary-title" id="overview">Overview</span>
         </summary>
-        <h1>TODO: ADD AN OVERVIEW SECTION FOR FAMILY POKEDEX ORDER AND INCLUDE SCREENSHOTS</h1>
+        <p>PokeFamilyDex is a project written in Python that helps to organize your Pokemon in a new, organic way.
+          This approach emphaizes grouping primarily by evolution family rather than National Pokedex order. Too
+          illustrate, let's first look at an example of a Pokemon box that is organized solely by National Pokedex
+          Order:</p>
+        <figure class="screenshot-figure">
+          <img src="/projects/pokefamilydex/images/national_order.JPG"
+            alt="An image showing Pokemon Home boxes organized solely by National Pokedex order" class="screenshot-img"
+            loading="lazy">
+          <figcaption class="screenshot-caption">Typical National Pokedex Box Organization</figcaption>
+        </figure>
+        <p>Thie approach is perfectly valid, and widely used. PokeFamilyDex helps to organize by National Pokedex order,
+          but prioritizes Pokemon Evolutionary Famililes first. Below is an example of what that same Pokemon Home box
+          looks like when using this type of ordering:</p>
+        <figure class="screenshot-figure">
+          <img src="/projects/pokefamilydex/images/family_order.JPG"
+            alt="An image showing Pokemon Home boxes organized with Family Pokedex order, where evolutionary family is prioritized before National Pokedex Number"
+            class="screenshot-img" loading="lazy">
+          <figcaption class="screenshot-caption">Pokemon Family Box Sorting</figcaption>
+        </figure>
+        <p>Sorting by Pokemon family differs from traditional National Pokedex sorting in the following ways:</p>
+        <ul>
+          <li>Grouping Pokemon families together who would otherwise be separated (such as Pichu, who is normally
+            grouped with the Johto Pokemon</li>
+          <li>Including alternate forms of pre-existing Pokemon (such as Alolan Raichu, who may not otherwise be
+            included as it is just a variation of the already-existing Raichu</li>
+        </ul>
+      </details>
+
+      <details open class="collapsible-section">
+        <summary>
+          <span class="summary-title" id="background">Background</span>
+        </summary>
         <p>
           I've enjoyed Pokémon since I was a child. I fondly remember going to
           my friend's house and playing <strong>Pokémon Red</strong> on his
