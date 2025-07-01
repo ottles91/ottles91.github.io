@@ -65,6 +65,7 @@
         <summary>
           <span class="summary-title" id="philosophy">Philosophy</span>
         </summary>
+        <h1>TODO: ADD AN OVERVIEW SECTION FOR FAMILY POKEDEX ORDER AND INCLUDE SCREENSHOTS</h1>
         <p>
           I've enjoyed Pokémon since I was a child. I fondly remember going to
           my friend's house and playing <strong>Pokémon Red</strong> on his
@@ -253,9 +254,6 @@
           <li>Then, <strong>National Pokédex order</strong></li>
         </ol>
       </details>
-
-      <h1>TODO: ADD SECTION FOR FAMILY POKEDEX ORDER AND INCLUDE SCREENSHOTS</h1>
-
 
       <details open class="collapsible-section">
         <summary>
@@ -607,24 +605,95 @@
 
       <details open class="collapsible-section">
         <summary>
-          <span class="summary-title" id="challenges">Implementation Challenges</span>
-        </summary>
-        <p>This is the implementation challenges section</p>
-      </details>
-
-      <details open class="collapsible-section">
-        <summary>
           <span class="summary-title" id="whatilearned">What I Learned</span>
         </summary>
-        <p>This is the what I learned section</p>
+        <p>My goal in building this script was not only to build something that I would find useful, but would also
+          learn from building. I've had exposure to many of the key features I implemented in this script, but I was
+          able to understand them more fully by building this. Here are some of the key concepts and technologies that I
+          was able to understand at a deeper level while building this application:</p>
+        <ul>
+          <li>
+            <strong>API Integration & Data Normalization</strong>
+            <p>While I've previously worked with RESTful API's (including building and utilizing the backend API for <a
+                href="/projects/flare/index.html" target="_self">Flare</a>), I haven't had as much experience working
+              with them as I would like. One of my primary goals with this project was to spend time working with an API
+              that I didn't explicitly help create. This meant that I couldn't make any changes to the API to fit any of
+              my own, niche needs; I had to work with the API in its current state. </p>
+            <p>Handling and parsing JSON data is another thing that I'd dealt with previously, but not to an extent that
+              I was satisfied with. Parsing the JSON data I got from the PokeAPI provided plenty of challenges for data
+              normalization. This challenged me to build my code in such a away that allowed it to be flexible when it
+              encountered unusal edge cases, which I've discussed extensively in <a href="#edgecases">Edge Case
+                Handling</a> section above.</p>
+          </li>
+          <li>
+            <strong>Caching Strategies</strong>
+            <p>It was very important to me to optimize the script so that it didn't make an excessive number of requests
+              to the PokeAPI. To help with this, I implemented JSON caching fairly early on in development. By storing
+              species data and evolution chains locally, I was able to reduce load times while also making it possible
+              to run the script consecutive times without having to burden the PokeAPI with excessive calls.</p>
+            <p>I'd previously had little to no experience with any serious data caching, and I was pleasantly surprised
+              by just how
+              easy it was to implement for this script.</p>
+          </li>
+          <li>
+            <strong>Clean Code Practices</strong>
+            <p>Building a project that is clean and well-architected is always one of my highest priorities. Few things
+              bother me more than having to work on a codebase that I didn't organize efficiently, so I made it a
+              priority to build this project efficiently from the start. I prioritized building code that was cleanly
+              broken down into smaller, concise functions. This not only makes it easier to follow the flow of the
+              application, but it enables future expansion without having to retool the entire application.</p>
+          </li>
+        </ul>
       </details>
 
       <details open class="collapsible-section">
         <summary>
           <span class="summary-title" id="upcomingfeatures">Upcoming Features</span>
         </summary>
-        <p>This is the upcoming features section</p>
+        <p>My MVP (Minimum Viable Product) for PokeFamilyDex was intentionally limited. I knew that I would likely spend
+          a lot of initial development time learning to retrieve, clean and cache the data. My goal was for the initial
+          version of my scirpt to do the following:</p>
+        <ol>
+          <li>
+            <p>Retrieve data from the PokeAPI for all Pokemon forms that can be stored in Pokemon Home, including:</p>
+            <ul>
+              <li>All base Pokemon forms</li>
+              <li>All form differences (such as Deoxys and Deerling)</li>
+              <li>All regional variants of existing Pokemon (such as as Alolan Raichu and Hisuian Basculin)</li>
+            </ul>
+          </li>
+          <li>Sort and organize the retrieved data</li>
+          <li>Cache data to speed up future runs and prevent excessive API calls</li>
+          <li>Flatten the retrieved data</li>
+          <li>Organize Pokemon in the following priority:
+            <ol>
+              <li>Pokemon Family</li>
+              <li>National Pokedex Numbering</li>
+            </ol>
+          </li>
+          <li>Output the data to a text file</li>
+        </ol>
+        <p>With that worked out I'm able to shift my focus to future features that I'd like to implement that "nice
+          to have" rather than essential. Here are some of the features that I'm interested in implementing going
+          forward:</p>
+        <ul>
+          <li>Format the output file to show breaks between individual Pokemon boxes</li>
+          <li>Include Gigantamax Pokemon in the output file</li>
+          <li>
+            Allow the user to choose to include/exclude different forms of Pokemon, such as:
+            <ul>
+              <li>Gender differences (such as Frillish, Indeedee and Basculegion)</li>
+              <li>Regional Variants of existing Pokemon (such as Zigzagoon and Wooper)</li>
+              <li>Gigantamax Forms</li>
+              <li>Alolan Totam Pokemon</li>
+              <li>Legendary Pokemon</li>
+              <li>Mythical Pokemon</li>
+            </ul>
+          </li>
+          <li>Allow users to export a visualization of what their organized Pokemon boxes</li>
+        </ul>
       </details>
+      <p>This is an ongoing passion project of mine, so stay tuned for updates!</p>
     </main>
   </div>
   <div id="footer-placeholder"></div>
