@@ -19,7 +19,7 @@
 
     /* Layout & Spacing */
     --content-max-width: 800px;
-    --padding: 1rem;
+    --padding: 2rem;
     --nav-gap: 1.5rem;
     --header-height: 64px;
     --body-margin: 0;
@@ -280,6 +280,48 @@ img {
 .menu-toggle.open .bar:nth-child(3) {
     transform: rotate(-45deg);
     top: 20px;
+}
+
+/* ========== Brand Bar ========== */
+.brand-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem var(--padding);
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.site-logo {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.main-nav {
+    background-color: transparent;
+    border: none;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.main-nav .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--nav-gap);
+    padding: 0.75rem var(--padding);
+    list-style: none;
+    margin: 0;
+}
+
+.main-nav .nav-links a {
+    font-weight: 500;
+    color: #000;
+    text-decoration: none;
+}
+
+.main-nav .nav-links a:hover {
+    text-decoration: underline;
 }
 
 /* ========== Footer ========== */
