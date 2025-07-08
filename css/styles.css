@@ -21,7 +21,7 @@
     --content-max-width: 800px;
     --padding: 2rem;
     --nav-gap: 1.5rem;
-    --header-height: 120px;
+    --header-height: 175px;
     --body-margin: 0;
 
     /* Effects */
@@ -285,8 +285,7 @@ img {
 /* ========== Brand Bar ========== */
 .brand-bar {
     display: flex;
-    /* justify-content: space-between; */
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     padding: 0.75rem var(--padding);
     background-color: transparent;
@@ -320,7 +319,6 @@ img {
 .main-nav {
     background-color: transparent;
     border: none;
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 .main-nav .nav-links {
