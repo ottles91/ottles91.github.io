@@ -19,10 +19,10 @@
 
     /* Layout & Spacing */
     --content-max-width: 800px;
-    --padding: 2rem;
+    --padding: 1.25rem;
     --nav-gap: 1.5rem;
-    --header-height: 175px;
-    --body-margin: 0;
+    --header-total-height: calc(3rem + 2 * var(--padding));
+    --footer-height: 4rem;
 
     /* Effects */
     --shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -38,10 +38,12 @@
 }
 
 body {
-    margin: var(--body-margin);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
     font-family: var(--font-family);
     line-height: var(--body-line-height);
-    min-height: 100vh;
     background-color: var(--body-background-color);
 }
 
@@ -50,15 +52,15 @@ body {
     min-height: 100vh;
 }
 
-#header-placeholder {
-    height: var(--header-height);
+[id] {
+    scroll-margin-top: var(--header-total-height);
 }
 
 .content {
     flex: 1;
     max-width: var(--content-max-width);
-    margin: 2rem auto;
-    padding: var(--padding);
+    padding: calc(var(--header-total-height) + var(--padding)) var(--padding) var(--footer-height);
+    margin: 0 auto;
     background-color: var(--body-background-color);
     color: var(--body-text-color);
 }
@@ -89,7 +91,6 @@ a {
     font-style: italic;
     font-weight: 500;
     font-size: 1.1rem;
-    margin-top: -0.5rem;
     margin-bottom: 1.5rem;
     color: var(--body-text-color);
     opacity: 0.85;
@@ -98,7 +99,6 @@ a {
 .bold-pre {
     font-size: large;
 }
-
 
 pre code.hljs {
     text-align: left;
@@ -159,6 +159,7 @@ pre code.hljs {
     max-width: 100%;
     height: auto;
     border-radius: 12px;
+    margin-bottom: 1rem;
 }
 
 .screenshot-details {
@@ -188,6 +189,7 @@ img {
     background-image: linear-gradient(to right, #f39953, #D76464, #3264E1);
     color: var(--link-color-header);
     padding: var(--padding);
+    margin-bottom: 1rem;
     box-shadow: var(--shadow);
     position: relative;
     overflow: visible;
@@ -203,6 +205,8 @@ img {
     justify-content: space-between;
     align-items: center;
 }
+
+/* (rest unchanged) */
 
 .nav-links {
     list-style: none;
@@ -312,7 +316,6 @@ img {
     font-size: 0.9rem;
     font-weight: normal;
     color: var(--h1-h2-color);
-    margin-top: 0.25rem;
     opacity: 0.85;
 }
 
@@ -477,8 +480,7 @@ details[open] .screenshot-section {
     }
 
     .content {
-        margin: 1rem;
-        padding: 0.75rem;
+        padding: 1rem;
     }
 
     .menu-toggle {
