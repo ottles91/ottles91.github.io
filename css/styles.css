@@ -513,7 +513,8 @@ details[open] .screenshot-section {
         border-radius: 0 0 8px 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         z-index: 999;
-        padding: 0;
+        padding: 0 !important;
+        border: none !important;
         transition: max-height 0.3s ease, padding 0.3s ease;
     }
 
@@ -521,10 +522,12 @@ details[open] .screenshot-section {
         max-height: 500px;
         padding: 1rem;
         border: 1px solid rgba(0, 0, 0, 0.1);
+        background-color: var(--nav-dropdown-bg);
     }
 
     .nav-links li {
         margin-bottom: 0.75rem;
+        margin-top: 0.75rem;
     }
 
     .screenshot-section {
