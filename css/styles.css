@@ -288,15 +288,15 @@ img {
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem var(--padding);
-    background-color: #1e1e1e;
+    background-color: transparent;
     color: white;
 }
 
 .site-logo {
-    font-size: 1.25rem;
+    font-size: 1.7rem;
     font-weight: bold;
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 .main-nav {
