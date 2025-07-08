@@ -317,8 +317,7 @@ img {
 
 .site-tagline {
     font-size: 0.9rem;
-    color: var(--footer-text-color);
-    color: var(--h1-h2-color);
+    color: #dbe6f1
 }
 
 /* ========== Navbar ========== */
