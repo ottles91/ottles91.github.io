@@ -206,8 +206,6 @@ img {
     align-items: center;
 }
 
-/* (rest unchanged) */
-
 .nav-links {
     list-style: none;
     display: flex;
@@ -286,6 +284,11 @@ img {
     top: 20px;
 }
 
+#header-placeholder {
+    /* Prevent layout snappping when loading pages */
+    height: var(--header-total-height);
+}
+
 /* ========== Brand Bar ========== */
 .brand-bar {
     display: flex;
@@ -314,10 +317,11 @@ img {
 
 .site-tagline {
     font-size: 0.9rem;
-    font-weight: normal;
+    color: var(--footer-text-color);
     color: var(--h1-h2-color);
-    opacity: 0.85;
 }
+
+/* ========== Navbar ========== */
 
 .main-nav {
     background-color: transparent;
