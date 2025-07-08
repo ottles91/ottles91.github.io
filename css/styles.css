@@ -285,7 +285,8 @@ img {
 /* ========== Brand Bar ========== */
 .brand-bar {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: flex-start;
     align-items: center;
     padding: 0.75rem var(--padding);
     background-color: transparent;
@@ -293,10 +294,27 @@ img {
 }
 
 .site-logo {
+    display: inline-block;
     font-size: 1.7rem;
     font-weight: bold;
     text-decoration: none;
     color: black;
+}
+
+/* ========== Brand Bar Tagline ========== */
+
+.brand-logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.site-tagline {
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: var(--h1-h2-color);
+    margin-top: 0.25rem;
+    opacity: 0.85;
 }
 
 .main-nav {
@@ -325,6 +343,7 @@ img {
 }
 
 /* ========== Footer ========== */
+
 .site-footer {
     background-color: var(--footer-bg);
     color: var(--footer-text-color);
