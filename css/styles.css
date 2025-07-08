@@ -479,6 +479,11 @@ details[open] .screenshot-section {
 
 /* ========== Mobile Styles ========== */
 @media (max-width: 768px) {
+    :root {
+        /* Mobile fix. May replace with JS later */
+        --header-total-height: 11rem;
+    }
+
     .container {
         flex-direction: column;
     }
