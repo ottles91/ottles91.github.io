@@ -60,7 +60,6 @@ body {
     flex: 1;
     max-width: var(--content-max-width);
     padding: calc(var(--header-total-height) + var(--padding)) var(--padding) var(--footer-height);
-    margin: 0 auto;
     background-color: var(--body-background-color);
     color: var(--body-text-color);
 }
