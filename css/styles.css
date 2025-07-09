@@ -58,8 +58,15 @@ body {
 
 .content {
     flex: 1;
+    width: 100%;
     max-width: var(--content-max-width);
-    padding: calc(var(--header-total-height) + var(--padding)) var(--padding) var(--footer-height);
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: var(--header-total-height);
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+    padding-bottom: var(--footer-height);
+    box-sizing: border-box;
     background-color: var(--body-background-color);
     color: var(--body-text-color);
 }
