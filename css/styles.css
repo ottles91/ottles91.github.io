@@ -380,6 +380,24 @@ img {
     font-size: 0.9rem;
 }
 
+/* Footer Github Link */
+.footer-github-link {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+}
+
+.footer-github-icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.footer-github-icon:hover {
+    opacity: 1;
+}
+
 /* ========== Table of Contents ========== */
 .toc-wrapper {
     margin-bottom: 1.5rem;
