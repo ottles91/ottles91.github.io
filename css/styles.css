@@ -1,26 +1,37 @@
 /* ========== CSS Variables ========== */
 :root {
-    /* Color Palette */
+    /* Base Colors */
     --body-background-color: #4C5259;
-    /* --body-text-color: white; */
     --body-text-color: #f9f7f7;
-    --h1-h2-color: #ffffff;
+
+    /* Typography */
     --h1-h2-color: #f9f7f7;
-    --nav-dropdown-bg: #f2f2f2;
+
+    /* Navigation */
     --nav-link-color: #f9f7f7;
+    --nav-dropdown-bg: #2E3338;
+    --header-bg: #3f72af;
+
+    /* Links */
     --link-color-body: #007acc;
     --link-color-header: #000;
-    --pokemon-list-color: #3264E1;
-    --header-bg: #3f72af;
+    --link-hover-background: rgba(255, 255, 255, 0.2);
+
+    /* Brand */
     --site-logo-color: #f9f7f7;
     --site-tagline-color: #f9f7f7;
+
+    /* Thematic Elements */
+    --pokemon-list-color: #3264E1;
+
+    /* Footer */
     --footer-bg: #2E3338;
     --footer-text-color: #ccc;
-    --link-hover-background: rgba(255, 255, 255, 0.2);
 
     /* Typography */
     --font-family: sans-serif;
     --body-line-height: 1.6;
+    --font-family-header: 'Orbitron', sans-serif;
 
     /* Layout & Spacing */
     --content-max-width: 800px;
@@ -307,12 +318,11 @@ img {
     align-items: center;
     padding: 0.75rem var(--padding);
     background-color: transparent;
-    color: white;
 }
 
 .site-logo {
     display: inline-block;
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-family-header);
     font-size: 1.7rem;
     font-weight: 300;
     letter-spacing: 0.15em;
