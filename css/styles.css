@@ -330,6 +330,12 @@ img {
     color: var(--site-logo-color);
 }
 
+.social-icons {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
 /* ========== Brand Bar Tagline ========== */
 
 .brand-logo-wrapper {
