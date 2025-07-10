@@ -2,13 +2,18 @@
 :root {
     /* Color Palette */
     --body-background-color: #4C5259;
-    --body-text-color: white;
+    /* --body-text-color: white; */
+    --body-text-color: #f9f7f7;
     --h1-h2-color: #ffffff;
+    --h1-h2-color: #f9f7f7;
     --nav-dropdown-bg: #f2f2f2;
-    --nav-link-color: #000;
+    --nav-link-color: #f9f7f7;
     --link-color-body: #007acc;
     --link-color-header: #000;
     --pokemon-list-color: #3264E1;
+    --header-bg: #3f72af;
+    --site-logo-color: #f9f7f7;
+    --site-tagline-color: #f9f7f7;
     --footer-bg: #2E3338;
     --footer-text-color: #ccc;
     --link-hover-background: rgba(255, 255, 255, 0.2);
@@ -192,7 +197,7 @@ img {
 
 /* ========== Header ========== */
 .site-header {
-    background-image: linear-gradient(to right, #f39953, #D76464, #3264E1);
+    background-color: var(--header-bg);
     color: var(--link-color-header);
     padding: var(--padding);
     margin-bottom: 1rem;
@@ -307,10 +312,12 @@ img {
 
 .site-logo {
     display: inline-block;
+    font-family: 'Orbitron', sans-serif;
     font-size: 1.7rem;
-    font-weight: bold;
+    font-weight: 300;
+    letter-spacing: 0.15em;
     text-decoration: none;
-    color: black;
+    color: var(--site-logo-color);
 }
 
 /* ========== Brand Bar Tagline ========== */
@@ -323,7 +330,8 @@ img {
 
 .site-tagline {
     font-size: 0.9rem;
-    color: #dbe6f1
+    opacity: 0.8;
+    color: var(--site-tagline-color)
 }
 
 /* ========== Navbar ========== */
@@ -344,7 +352,7 @@ img {
 
 .main-nav .nav-links a {
     font-weight: 500;
-    color: #000;
+    color: var(--nav-link-color);
     text-decoration: none;
 }
 
