@@ -504,7 +504,7 @@ details[open] .screenshot-section {
 @media (max-width: 768px) {
     :root {
         /* Mobile fix. May replace with JS later */
-        --header-total-height: 11rem;
+        --header-total-height: 14rem;
     }
 
     .container {
