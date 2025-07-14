@@ -132,6 +132,14 @@ pre code.hljs {
     overflow-x: auto;
 }
 
+.tech-sublist {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-top: 0.25rem;
+    font-size: 0.95rem;
+    color: #ccc;
+}
+
 /* ========== UL and OL ========== */
 .pokemon-list {
     background-color: rgba(255, 255, 255, 0.05);
