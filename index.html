@@ -1,105 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cameron Ottley</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <script src="js/script.js"></script>
-    <script src="/js/includes.js"></script>
-  </head>
-  <body>
-    <div id="header-placeholder"></div>
-    <div class="container">
-      <div class="content">
-        <h1>Hello! 👋 I'm Cameron Ottley</h1>
-        <p>
-          Welcome! Here I'll share info about myself, my interests, and personal
-          projects.
-        </p>
 
-        <h2>About Me</h2>
-        <ul>
-          <li>
-            🎓 Graduated cum laude from Utah Valley University in 2025 with a
-            Bachelor's degree in Software Engineering
-          </li>
-          <li>
-            📱 Love building software to solve oddly specific problems in my
-            life
-          </li>
-          <li>
-            🌆 Running a self-hosted Immich server to dodge Google Drive storage
-            subscriptions
-          </li>
-          <li>
-            🍿 Always tweaking my Plex setup instead of actually watching
-            anything
-          </li>
-          <li>
-            🎮 Retro gaming nerd—constantly fiddling with my EmulationStation
-            setup
-          </li>
-          <li>🥾 Probably out hiking on the weekend if the weather's decent</li>
-        </ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cameron Ottley</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/script.js"></script>
+  <script src="/js/includes.js"></script>
+</head>
 
-        <h2>Languages</h2>
-        <ul>
-          <li>📱 Swift</li>
-          <li>💻 C#</li>
-          <li>🐍 Python</li>
-          <li>⚙️ C++</li>
-          <li>🔧 C</li>
-          <li>🗄️ SQL</li>
-          <li>🌐 HTML/CSS</li>
-          <li>🦆 Ducky Script</li>
-        </ul>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="container">
+    <div class="content">
 
-        <h2>How I Work</h2>
-        <ul>
-          <li>Agile and SCRUM environments</li>
-          <li>Version control with Git</li>
-          <li>Test-driven development</li>
-          <li>Always tweaking my code to be more efficient</li>
-        </ul>
+      <h1>Hi, I'm Cameron Ottley</h1>
 
-        <h2>Projects</h2>
-        <ul>
-          <li>
-            <strong>🔥 Flare iOS App</strong> - Swift-based social app. (Details
-            coming soon)
-          </li>
-          <li>
-            <a href="projects/shortcuts/" target="_self">🍎 Apple Shortcuts</a>
-            – Making my phone work for me
-          </li>
-        </ul>
-
-        <h2>Contact</h2>
-        <ul>
-          <li>
-            ✉️ Email:
-            <a href="mailto:cameron.ottley@gmail.com"
-              >cameron.ottley@gmail.com</a
-            >
-          </li>
-          <li>
-            💼 LinkedIn:
-            <a
-              href="https://www.linkedin.com/in/cameron-ottley/"
-              target="_blank"
-              >linkedin.com/in/cameron-ottley</a
-            >
-          </li>
-          <li>
-            👨‍💻 GitHub:
-            <a href="https://github.com/ottles91" target="_blank"
-              >github.com/ottles91</a
-            >
-          </li>
-        </ul>
+      <div class="screenshot-section">
+        <figure class="screenshot-figure">
+          <img src="/images/profile.jpg" alt="Photo of Cameron Ottley" class="screenshot-img" loading="lazy">
+        </figure>
+        <div class="screenshot-details">
+          <p class="tagline">Software engineer with a passion for writing software to solve random problems in my life.
+          </p>
+          <a href="/documents/Cameron Ottley Resume.pdf" class="button" target="_blank" rel="noopener">View my
+            Resume</a>
+        </div>
       </div>
+
+      <!-- CONTACT ME -->
+      <h2>Contact Me</h2>
+      <ul>
+        <li>
+          ✉️ Email:
+          <a href="mailto:cameron.ottley@gmail.com">cameron.ottley@gmail.com</a>
+        </li>
+        <li>
+          💼 LinkedIn:
+          <a href="https://www.linkedin.com/in/cameron-ottley/" target="_blank">linkedin.com/in/cameron-ottley</a>
+        </li>
+        <li>
+          👨‍💻 GitHub:
+          <a href="https://github.com/ottles91" target="_blank">github.com/ottles91</a>
+        </li>
+      </ul>
+
+      <!-- Featured Projects -->
+      <h2>Featured Projects</h2>
+
+      <!-- Flare -->
+      <p><img src="/projects/flare/images/flare-icon.png" alt="Flare logo"
+          style="height: 1.5em; vertical-align: middle; margin-right: 0.5em" />
+        <strong>Flare</strong> - Swift-based social iOS app with backend
+        API written in C#
+      </p>
+      <ul class="tech-sublist">
+        <li><strong>Swift:</strong> Built to take advantage of the newest technologies avaialble on iOS</li>
+        <li><strong>Swift UI:</strong> Used to create a responsive UI that feels natural and intuitive to iPhone users
+        </li>
+        <li><strong>C#:</strong> API development using .NET Core</li>
+        <li><strong>Docker:</strong> Used for API containerization and local deployment</li>
+        <li><strong>AWS:</strong> Used for mass API deployment</li>
+        <li><strong>MySQL:</strong> Used for data storage and user relationships</li>
+        <li><strong>Links:</strong>
+          <ul>
+            <li><a href="/projects/flare/index.html">Project Page</a></li>
+            <li><a href="https://github.com/ottles91/flare-frontend" target="_blank" rel="noopener">iOS Frontend
+                Repository</a></li>
+            <li><a href="https://github.com/ottles91/flare-api" target="_blank" rel="noopener">API Repository</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- PokeFamilyDex -->
+      <p><strong>PokéFamilyDex</strong> - A script to aid in organizing Pokémon HOME boxes based on National Dex and
+        evolution family.</p>
+      <ul class="tech-sublist">
+        <li>Used <strong>Python</strong> for data retrieval, normalization, and sorting</li>
+        <li>Integrates with the <strong><a href="https://pokeapi.co/">PokéAPI</a></strong> to pull and cache Pokémon
+          evolutionary data</li>
+        <li>Build to handle edge cases, such as alternate forms and split evolutions</li>
+        <li>Focused on clean architecture and reusability</li>
+        <li><strong>Links:</strong>
+          <ul>
+            <li><a href="/projects/pokefamilydex/index.html">Project Page</a></li>
+            <li><a href="https://github.com/ottles91/PokeFamilyDex" target="_blank">Repository</a></li>
+          </ul>
+      </ul>
+      </ul>
+
+      <!-- Tech Stack -->
+      <h2>My Tech Stack</h2>
+      <h3>Languages</h3>
+      <ul>
+        <li>C#</li>
+        <li>Python</li>
+        <li>C++ / C</li>
+        <li>SQL</li>
+        <li>HTML/CSS/JavaScript</li>
+        <li>Rust</li>
+        <li>Java</li>
+        <li>Bash</li>
+        <li>DuckyScript</li>
+      </ul>
+      <!-- Tools & Platforms -->
+      <h3>Tools & Platforms</h3>
+      <ul>
+        <li>Visual Studio/Visual Studio Code</li>
+        <li>Xcode</li>
+        <li>Git & GitHub</li>
+        <li>Jira</li>
+        <li>Figma</li>
+        <li>MySQL Workbench</li>
+        <li>Docker</li>
+      </ul>
+      <!-- Frameworks & Libraries -->
+      <h3>Frameworks & Libraries</h3>
+      <ul>
+        <li>SwiftUI/UIKit</li>
+        <li>.NET Core</li>
+        <li>Entity Framework</li>
+        <li>Pandas/Requests/Flask (Python)</li>
+        <li>Highlight.js</li>
+      </ul>
+      <!-- How I Work -->
+      <h2>How I Work</h2>
+      <ul>
+        <li>I use <strong>Git</strong> for version control and collaboration, following feature-branch workflows and
+          frequent commits.</li>
+        <li>I've worked in <strong>Agile/SCRUM</strong> teams, participating in sprint planning, standups, and
+          retrospectives.
+        </li>
+        <li>I have experience utilizing <strong>Test-Driven Development (TDD)</strong> and write unit tests to ensure my
+          code is reliable and maintainable.</li>
+        <li>I've built and tested <strong>RESTful APIs</strong> using tools like <strong>Postman</strong> and
+          <strong>Swagger</strong>.
+        </li>
+        <li>I design interfaces with a <strong>human-centered mindset</strong>, focusing on clarity, usability, and
+          accessibility.</li>
+      </ul>
+      <!-- Development Philosophy -->
+      <h2>My Development Philosophy</h2>
+      <p>My software development journey began in 2007 when I accidentally landed in a high school Computer Science
+        class. I could have dropped it, but I was instantly hooked by the idea that I could create something
+        functional—even something as simple as a Fahrenheit-to-Celsius converter. I've always thrived on the feeling of
+        writing code and seeing it actually work. Over the years, I've picked up new languages, tools, and experiences
+        that have shaped me into a stronger developer. Along the way, I've also developed a personal philosophy around
+        how I approach building software. Here are a few of the values that guide my work:</p>
+      <ul>
+        <li><strong>Clean, maintainable code: </strong>I prefer to be clear rather than clever. I want my code to be
+          readable, reusable, and easy to debug—especially for future me</li>
+        <li><strong>Building for edge cases: </strong>I've always enjoyed anticipating and handling strange inputs,
+          incomplete data, and inconsistent formatting</li>
+        <li><strong>Iterate & Refine: </strong>I like to quickly build something that works, then gradually improve it
+          until it aligns with my vision</li>
+        <li><strong>Automate the Boring Stuff: </strong>I don't need to write boilerplate code for the 314th time. If I
+          find myself repeating something too often, I'll find a way to automate it</li>
+        <li><strong>Software with a Purpose: </strong>Most of my projects are driven by a desire to solve a specific
+          problem in my own life. My hope is that others are looking for similar solutions</li>
+        <li><strong>Generative AI as an Aid: </strong>I use generative AI to help myself work more efficiently; I allow
+          it to do what it does best and I do what I do best</li>
+        <li><strong>Human-First Design: </strong>I value intuitive, accessible interfaces that empower users—regardless
+          of their technical prowess</li>
+      </ul>
+      <!-- Tech Hobbies -->
+      <h2>My Tech-Related Hobbies</h2>
+      <!-- Immich -->
+      <h3>Immich Photo Server</h3>
+      <p>
+        You know how iOS and Android try to be helpful by automatically backing up all your photos? I think that's
+        great—I love the peace of mind that comes from knowing I won't lose everything if my phone takes a swim while
+        I'm rafting. But I'm also frugal, and I'm not a fan of paying Apple or Google's inflated cloud storage prices.
+      </p>
+      <p>
+        Immich is a self-hosted alternative to Google Photos that offers automatic backups and a familiar browsing
+        experience. With a little tech know-how and a Docker container, you can set up your own private photo server and
+        get most of the same features—without the monthly subscription.
+      </p>
+      <ul>
+        <li>
+          You can learn more about Immich <a href="https://immich.app/" target="_blank" rel="noopener">here</a>.
+        </li>
+        <li>
+          Check out the official Immich GitHub repository <a href="https://github.com/immich-app/immich" target="_blank"
+            rel="noopener">here</a>.
+        </li>
+      </ul>
+      <!-- Android Rooting -->
+      <h3>Android Rooting</h3>
+      <p>
+        While I use an iPhone as my daily driver, I picked up a Google Pixel 6a on sale a few years ago out of
+        curiosity. I never planned to use it as my main phone—I just wanted to experiment with rooting without the risk
+        of bricking my primary device.
+      </p>
+      <p>
+        As a developer, I love how rooting lets me dig beneath the surface of Android and customize the experience down
+        to the smallest details. I've explored tools like <strong>Magisk</strong> and <strong>Tasker</strong> to
+        automate tasks, tweak system behavior, and streamline the interface. It's incredibly satisfying to work with the
+        OS at such a low level and see the impact of my changes in real time. </p>
+      <!-- Retro Gaming -->
+      <h3>Emulation Station & RetroArch</h3>
+      <p>
+        I've had a fascination with retro games for as long as I can remember. As I've grown older, I've become
+        increasingly interested in game preservation. Many of the titles I loved growing up have become difficult—or
+        outright expensive—to access, and the companies that could preserve them (hi, Nintendo! 👋) don't always seem
+        interested in making their older catalogs available. How am I supposed to play <em>Pokémon Alpha Sapphire</em>
+        without shelling out for a used 3DS and an overpriced cartridge on eBay?
+      </p>
+      <p>Enter <strong>Emulation Station</strong> and <strong>RetroArch</strong>, which gave me the tools to build a
+        highly customizable retro gaming setup. I picked up a <a
+          href="https://www.goretroid.com/products/retroid-pocket-5-handheld" target="_blank" rel="noopener">Retroid
+          Pocket 5</a>, and with a little bit of tinkering, I turned it into a fantastic portable emulation device. I
+        enjoyed fine-tuning button mappings, aspect ratios, and performance settings to create a system tailored to my
+        preferences.</p>
+      <p>As an added bonus, the Retroid Pocket 5 runs Android, so many of the skills I developed while rooting and
+        customizing my Pixel 6a carried over. It's been a great way to blend my love of retro gaming with my passion for
+        low-level software customization.</p>
+      <ul>
+        <li>You can learn more about Emulation Station <a href="https://es-de.org/" target="_blank"
+            rel="noopener">here</a></li>
+        <li>You can learn more about RetroArch <a href="https://www.retroarch.com/" target="_blank"
+            rel="noopener">here</a></li>
+        <li>Check out more Retroid devices <a href="https://www.goretroid.com/" target="_blank" rel="noopener">here</a>
+        </li>
+      </ul>
     </div>
-    <div id="footer-placeholder"></div>
-  </body>
+  </div>
+  <div id="footer-placeholder"></div>
+</body>
+
 </html>
