@@ -117,9 +117,40 @@
 
             <h3>Dynamic Header and Footer Loading</h3>
             Rather than repeating HTML across every page, I use JavaScript to dynamically load shared header and footer
-            content. This makes it easy to update navigation or layout site-wide without needing to touch every single
-            file—keeping things consistent and a lot more maintainable.
-            <!-- TODO: ADD HIGHLIGHT JS CODE SHOWING HOW THE HEADER IS LOADED -->
+            content. Every page on my website includes the following HTML snippet:
+
+
+            <pre><code class="language-html">&lt;div id="header-placeholder"&gt;&lt;/div&gt;</code></pre>
+
+            <p>I then wrote a simple JavaScript function that allows me to dynamically replace HTML components into a
+                page:</p>
+
+            <pre><code class="language-javascript">
+function includeHTML(selector, url, callback) {
+fetch(url)
+    .then(response => response.text())
+    .then(data => {
+    const container = document.querySelector(selector);
+    if (container) {
+        container.innerHTML = data;
+        if (typeof callback === "function") {
+        callback();
+        }
+    }
+    })
+    .catch(error => {
+    console.error(`Failed to include ${url}:`, error);
+    });
+}
+            </code></pre>
+
+            <p>This script does the following:</p>
+            <ol>
+                <li>Takes a CSS selector (such as the <code>#header-placeholder</code> in my HTML)</li>
+                <li>Fetches an external HTML file (such as my <code>header.html</code> file)</li>
+                <li>Dynamically injects the content of that file into any matching CSS selectors</li>
+                <li>Optionally, runs a callback after injection</li>
+            </ol>
 
 
             <h3>Reusable Components</h3>
