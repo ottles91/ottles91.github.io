@@ -125,25 +125,25 @@
             <p>I then wrote a simple JavaScript function that allows me to dynamically replace HTML components into a
                 page:</p>
 
-            <pre><code class="language-javascript">
-function includeHTML(selector, url, callback) {
-fetch(url)
-    .then(response => response.text())
-    .then(data => {
-    const container = document.querySelector(selector);
-    if (container) {
-        container.innerHTML = data;
-        if (typeof callback === "function") {
-        callback();
-        }
-    }
-    })
-    .catch(error => {
-    console.error(`Failed to include ${url}:`, error);
-    });
-}
-            </code></pre>
-
+            <pre><code class="language-javascript" data-code-id="include-html"></code></pre>
+            <script type="text/plain" data-code-id="include-html">
+            function includeHTML(selector, url, callback) {
+                fetch(url)
+                    .then(response => response.text())
+                    .then(data => {
+                        const container = document.querySelector(selector);
+                        if (container) {
+                            container.innerHTML = data;
+                            if (typeof callback === "function") {
+                                callback();
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error(`Failed to include ${url}:`, error);
+                    });
+            }
+            </script>
             <p>This script does the following:</p>
             <ol>
                 <li>Takes a CSS selector (such as the <code>#header-placeholder</code> in my HTML)</li>
@@ -183,6 +183,7 @@ fetch(url)
         </main>
     </div>
     <script src="/js/includes.js"></script>
+    <script src="/js/script.js"></script>
     <div id="footer-placeholder"></div>
 </body>
 
