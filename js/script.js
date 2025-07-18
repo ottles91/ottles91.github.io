@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   
+  // Fix indentation for code blocks
   document.addEventListener("DOMContentLoaded", () => {
   // Find all <code> blocks with a data-code-id
   document.querySelectorAll('code[data-code-id]').forEach(codeBlock => {
