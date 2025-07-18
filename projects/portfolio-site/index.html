@@ -115,15 +115,16 @@
                 mobile phones. I've used flexible containers and media queries to ensure content resizes and reflows
                 naturally, maintaining readability and usability no matter the screen size.</p>
 
-            <h3>Dynamic Header and Footer Loading</h3>
-            Rather than repeating HTML across every page, I use JavaScript to dynamically load shared header and footer
-            content. Every page on my website includes the following HTML snippet:
+            <!-- TODO: INCLUDE SOMETHING ABOUT THE HAMBURGER MENU!!!! -->
 
+            <h3>Dynamic Header and Footer Loading</h3>
+
+            <p>Rather than repeating HTML across every page, I use JavaScript to dynamically load shared header and
+                footer content. Every page on my website includes the following HTML snippet:</p>
 
             <pre><code class="language-html">&lt;div id="header-placeholder"&gt;&lt;/div&gt;</code></pre>
-
-            <p>I then wrote a simple JavaScript function that allows me to dynamically replace HTML components into a
-                page:</p>
+            <p>I then wrote a simple JavaScript function that dynamically loads and injects external HTML into the page:
+            </p>
 
             <pre><code class="language-javascript" data-code-id="include-html"></code></pre>
             <script type="text/plain" data-code-id="include-html">
@@ -144,13 +145,17 @@
                     });
             }
             </script>
+
             <p>This script does the following:</p>
             <ol>
-                <li>Takes a CSS selector (such as the <code>#header-placeholder</code> in my HTML)</li>
-                <li>Fetches an external HTML file (such as my <code>header.html</code> file)</li>
-                <li>Dynamically injects the content of that file into any matching CSS selectors</li>
-                <li>Optionally, runs a callback after injection</li>
+                <li>Takes a CSS selector (such as <code>#header-placeholder</code>)</li>
+                <li>Fetches an external HTML file (like <code>header.html</code>)</li>
+                <li>Injects the content of that file into the matching element on the page</li>
+                <li>Optionally executes a callback function after the injection</li>
             </ol>
+            <p>This allows me to store the header and footer in their own separate HTML files and dynamically insert
+                them into each page at load time. It's a clean way to follow the DRY (Don't Repeat Yourself) principle
+                while sticking to plain HTML, CSS, and JavaScript.</p>
 
 
             <h3>Reusable Components</h3>
