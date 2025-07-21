@@ -168,19 +168,66 @@
             <h3>Reusable Components</h3>
             I've started building out small reusable components to speed up development and reduce clutter. A great
             example is the Table of Contents element, which I add on longer project pages. It not only helps with
-            navigation, but keeps the layout feeling consistent and organized.
-            <!-- TODO: SHOW OFF ToC CODE ELEMENT -->
+            navigation, but keeps the layout feeling consistent and organized. This Table of Contents begins with an
+            unordered list in HTML, an example of which is shown below:
+
+            <pre><code class="language-html" data-code-id="toc-snippet"></code></pre>
+            <script type="text/plain" data-code-id="toc-snippet">
+      <div class="toc-wrapper">
+        <button class="toc-master-toggle" aria-expanded="true">
+          Table of Contents
+        </button>
+        <nav class="toc" id="toc-content">
+          <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#background">Background</a></li>
+            <li><a href="#dexorder">My Problem with National Pokedex Order</a></li>
+            <li><a href="#techstack">Tech Stack</a></li>
+            <li><a href="#features">Key Features</a></li>
+            <li>
+              <a href="#details">Technical Details</a>
+              <ul>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#algorithm">Algorithm Design</a></li>
+                <li><a href="#edgecases">Edge Case Handling</a></li>
+              </ul>
+            </li>
+            <li><a href="#whatilearned">What I Learned</a></li>
+            <li><a href="#upcomingfeatures">Upcoming Features</a></li>
+          </ul>
+        </nav>
+      </div>
+            </script>
+
+            <p>This is combined with some CSS to help with the styling to make the Table of Contents element fit in
+                nicely on the page.</p>
+
+            <h3>Code snippets</h3>
+            <p>I've also created a reusable element that I use to show off code snippets, such as the Table of Contents
+                snippet seen above. This setup allows me to utilize <a href="https://highlightjs.org/" target="_blank">
+                    Highlight.js</a> to display code snippets in a way that is both readable and familiar to anyone who
+                has spent any amount of time devloping software.
+            </p>
 
             <h3>CSS Theming</h3>
-            <p>To keep things both visually cohesive and easy to tweak, I rely heavily on CSS variables. This lets me
-                maintain a consistent color palette across the site and quickly adjust things like font sizes, link
-                colors, or backgrounds—all from one place.</p>
-
-            <h3>Code Syntax Highlighting</h3>
-            <p>When discussing technical topics, clean and readable code blocks are a must. I've integrated code syntax
-                highlighting (using <a href="https://highlightjs.org/" target="_blank">Highlight JS</a>) so that code
-                samples stand out with proper formatting and color-coding. It makes the code easier to scan and just
-                looks better overall.</p>
+            <p>
+                To keep things both visually cohesive and easy to tweak, I rely heavily on CSS custom properties
+                (variables). These variables are defined at the root level and act as a central source of truth for
+                common values like colors, fonts, and spacing. This allows me to apply a consistent theme across the
+                site while making future changes fast and painless—if I decide to try a different accent color or adjust
+                padding, I only need to update a single variable.
+            </p>
+            <p>
+                For example, my color palette includes variables like <code>--header-bg</code>,
+                <code>--footer-bg</code>, and <code>--link-color-body</code>, which control site-wide elements. I also
+                use variables for typography and layout—such as <code>--font-family-header</code> and
+                <code>--padding</code>—to keep things flexible and readable.
+            </p>
+            <p>
+                This approach not only promotes maintainability, but also lays the groundwork for future enhancements
+                like light/dark mode toggles or user-selectable themes, which can be implemented simply by swapping
+                variable values in a different theme context.
+            </p>
 
 
             <h2>Challenges</h2>
