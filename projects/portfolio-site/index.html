@@ -111,20 +111,24 @@
                 usability, accessibility, and the overall user experience.</p>
 
             <h3>Responsive Layout</h3>
+            <p>One of the first large updates I tackled related to design was to ensure that the website performed well
+                on phones and tablets. For the most part this simply involves creating specific CSS rules for instances
+                where the screen size dips below a certain threshold. This helps ensure that text remains readable on
+                small screens, and specific elements, like images render in a way that increases their visibility on
+                smaller screens</p>
 
-            <p>The site is built to look great across a wide range of devices, from large desktop monitors to compact
-                mobile phones. I've used flexible containers and relative units to allow content to resize smoothly,
-                along with targeted media queries to adjust layouts at common breakpoints (e.g., 768px for tablets,
-                480px for phones).</p>
+            <p>I created some desktop-specific CSS rules around images. On certain pages, the page content will be
+                allowed to "wrap" around the right side of an image on the desktop version of the page, but on mobile
+                the images and text will be stacked vertically. This allows for a more dynamic layout that better takes
+                advantage of the additional screen space available on desktop browsers, while also allowing the mobile
+                site to prioritize readability for a small screen.</p>
 
-            <p>On smaller screens, navigation switches to a hamburger menu for better usability, and certain elements
-                like social icons shift position to avoid clutter. Font sizes, padding, and margins adapt to improve
-                readability and touch accessibility. While the layout is responsive, I've also tried to ensure that
-                performance and visual hierarchy are preserved regardless of the screen size.</p>
+            <p>On the desktop version of the website I have enough room to display links to the different site sections
+                across the top of the navigation header. On mobile, horizontal space is much more limited. Because of
+                this I implemented a "Hamburger Menu" on mobile, which keeps the different sections of the site
+                accessible without taking away from screen space unnecessarily</p>
 
-            <!-- TODO: INCLUDE SOMETHING ABOUT THE HAMBURGER MENU!!!! -->
-
-            <h3>Dynamic Header and Footer Loading</h3>
+            <h3>Dynamic Header and Footer Injection</h3>
 
             <p>Rather than repeating HTML across every page, I use JavaScript to dynamically load shared header and
                 footer content. Every page on my website includes the following HTML snippet:</p>
@@ -203,11 +207,12 @@
                 nicely on the page.</p>
 
             <h3>Code snippets</h3>
-            <p>I've also created a reusable element that I use to show off code snippets, such as the Table of Contents
-                snippet seen above. This setup allows me to utilize <a href="https://highlightjs.org/" target="_blank">
-                    Highlight.js</a> to display code snippets in a way that is both readable and familiar to anyone who
-                has spent any amount of time devloping software.
-            </p>
+            <p>I wanted a system that allowed me to share snippets of my own code in a way that
+                maintained the formatting and readibility that you'd find in any modern IDE. HTML does include support
+                for simple code tags, but that didn't give me the depth and flexibility that I was looking for. As
+                dicussed previously, I turned to <a href="https://highlightjs.org/" target="_blank"> Highlight.js</a> to
+                help me format and highlight my code blocks in a way that would be readable to anyone familiar with
+                programming.</p>
 
             <h3>CSS Theming</h3>
             <p>
@@ -229,47 +234,6 @@
                 variable values in a different theme context.
             </p>
 
-
-            <h2>Challenges</h2>
-            <p>This has been both my biggest overall web project as well as the first web project I've taken on in
-                several years. As of the time of writing I've been working on this project for a little over a month
-                now, with multiple commits to my repository during each weekday. Even at this early stage I've overcome
-                multiple challenges and learned many new skills that have helped me learn and grow as a developer.</p>
-
-            <h3>Responsive Design</h3>
-            <p>One of the first large updates I tackled related to design was to ensure that the website performed well
-                on phones and tablets. For the most part this simply involves creating specific CSS rules for instances
-                where the screen size dips below a certain threshold. This helps ensure that text remains readable on
-                small screens, and specific elements, like images render in a way that increases their visibility on
-                smaller screens</p>
-
-            <p>I created some desktop-specific CSS rules around images. On certain pages, the page content will be
-                allowed to "wrap" around the right side of an image on the desktop version of the page, but on mobile
-                the images and text will be stacked vertically. This allows for a more dynamic layout that better takes
-                advantage of the additional screen space available on desktop browsers, while also allowing the mobile
-                site to prioritize readability for a small screen.</p>
-
-            <p>On the desktop version of the website I have enough room to display links to the different site sections
-                across the top of the navigation header. On mobile, horizontal space is much more limited. Because of
-                this I implemented a "Hamburger Menu" on mobile, which keeps the different sections of the site
-                accessible without taking away from screen space unnecessarily</p>
-
-            <h3>Dynamic Content Injection</h3>
-            <p>Because I'm relying on vanilla HTML, CSS and JavaScript (at least for this inital version of the site) I
-                wanted a way to reduce the amount of repeated code segments on the site. I quickly realized that both my
-                site header and footer were always going to be universal elements that wouldn't change between pages. I
-                didn't want to have update them across every page whenever I wanted to make a small change to their
-                implementation. To address this, I created a system that dynamically injects my stand-along header and
-                footer HTML files into each page.</p>
-
-            <h3>Code Block Formatting</h3>
-            <p>As discussed previously, I wanted a system that allowed me to share snippets of my own code in a way that
-                maintained the formatting and readibility that you'd find in any modern IDE. HTML does include support
-                for simple code tags, but that didn't give me the depth and flexibility that I was looking for. As
-                dicussed previously, I turned to <a href="https://highlightjs.org/" target="_blank"> Highlight.js</a> to
-                help me format and highlight my code blocks in a way that would be readable to anyone familiar with
-                programming.</p>
-
             <h3>Design & UX Decisions</h3>
             <p>While I am creating this website largely to showcase my technical skills, it was important to me to
                 ensure that I created a design that was approachable to all users. I wanted the basic building blocks,
@@ -284,7 +248,7 @@
                 personal brand, as well as to try to stay within in the norms of general website design that I observed
                 elsewhere on the internet. </p>
 
-            <h2>Future Updates</h2>
+            <h2>Conclusion & Future Updates</h2>
             <p>While I initially envisioned this website as a simple way for me to showcase personal projects, it has
                 quickly become much more than that. I've found that it's now something unique that I really enjoy
                 working on. I'm always thinking of new tweaks and changes that I want to make to further my own web
