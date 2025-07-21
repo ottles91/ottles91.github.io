@@ -255,8 +255,20 @@
                 accessible without taking away from screen space unnecessarily</p>
 
             <h3>Dynamic Content Injection</h3>
+            <p>Because I'm relying on vanilla HTML, CSS and JavaScript (at least for this inital version of the site) I
+                wanted a way to reduce the amount of repeated code segments on the site. I quickly realized that both my
+                site header and footer were always going to be universal elements that wouldn't change between pages. I
+                didn't want to have update them across every page whenever I wanted to make a small change to their
+                implementation. To address this, I created a system that dynamically injects my stand-along header and
+                footer HTML files into each page.</p>
 
             <h3>Code Block Formatting</h3>
+            <p>As discussed previously, I wanted a system that allowed me to share snippets of my own code in a way that
+                maintained the formatting and readibility that you'd find in any modern IDE. HTML does include support
+                for simple code tags, but that didn't give me the depth and flexibility that I was looking for. As
+                dicussed previously, I turned to <a href="https://highlightjs.org/" target="_blank"> Highlight.js</a> to
+                help me format and highlight my code blocks in a way that would be readable to anyone familiar with
+                programming.</p>
 
             <h3>Design & UX Decisions</h3>
             <!-- TODO: Talk about duel-layer header -->
