@@ -44,6 +44,7 @@
     --shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     --link-border-radius: 4px;
     --header-link-hover-radius: 8px;
+    --screenshot-border: rgba(0, 0, 0, 0.3);
 }
 
 /* ========== Base ========== */
@@ -184,12 +185,23 @@ pre code.hljs {
     flex-wrap: wrap;
 }
 
+/* .screenshot-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+} */
+
 .screenshot-img {
     width: 100%;
     max-width: 100%;
     height: auto;
     border-radius: 12px;
     margin-bottom: 1rem;
+    border: 1px solid var(--screenshot-border);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    background-color: #111;
 }
 
 .screenshot-details {
