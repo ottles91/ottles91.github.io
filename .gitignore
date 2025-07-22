@@ -11,3 +11,6 @@ DerivedData/
 
 # SwiftPM
 .build/
+
+# Color palette reference
+color_palette.jpg
