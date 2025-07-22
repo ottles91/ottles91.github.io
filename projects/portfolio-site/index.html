@@ -5,11 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio Website - Cameron Ottley</title>
+    <script src="/js/script.js" defer></script>
+    <script src="/js/includes.js" defer></script>
     <!-- Highlight.js styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
     <!-- Highlight.js script -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+    <script defer>hljs.highlightAll();</script>
     <link rel="stylesheet" href="../../css/styles.css" />
 </head>
 
@@ -34,8 +36,7 @@
                     </div>
                 </li>
             </ul>
-
-
+            <!-- Table of Contents -->
             <div class="toc-wrapper">
                 <button class="toc-master-toggle" aria-expanded="true">
                     Table of Contents
@@ -61,7 +62,7 @@
                     </ul>
                 </nav>
             </div>
-
+            <!-- Introduction -->
             <details open class="collapsible-section">
                 <summary>
                     <span class="summary-title" id="introduction">Introduction</span>
@@ -93,7 +94,7 @@
                     on.
                 </p>
             </details>
-
+            <!-- Goals -->
             <details open class="collapsible-section">
                 <summary>
                     <span class="summary-title" id="goals">Goals</span>
@@ -115,8 +116,7 @@
                     <li>Have some fun building a website from scratch</li>
                 </ul>
             </details>
-
-
+            <!-- Tech Stack -->
             <details open class="collapsible-section">
                 <summary>
                     <span class="summary-title" id="techstack">Tech Stack</span>
@@ -141,7 +141,7 @@
                     <li><strong>GitHub Pages</strong> - Hosting</li>
                 </ul>
             </details>
-
+            <!-- Design Philosophy -->
             <details open class="collapsible-section">
                 <summary>
                     <span class="summary-title" id="designphilosophy">Design Philosophy</span>
@@ -166,7 +166,7 @@
                     sure the site scales elegantly—even on the smallest phones currently available.
                 </p>
             </details>
-
+            <!-- Key Features -->
             <details open class="collapsible-section">
                 <summary>
                     <span class="summary-title" id="keyfeatures">Key Features</span>
@@ -177,7 +177,7 @@
                     once they're gone, you definitely notice. Below are some of the key features I've added to improve
                     usability, accessibility, and the overall user experience.</p>
             </details>
-
+            <!-- Responsive Design -->
             <details open class="collapsible-section">
                 <summary>
                     <span class="summary-title" id="responsivedesign">Responsive Design</span>
@@ -212,7 +212,6 @@
                         </p>
                     </div>
                 </div>
-
                 <p>
                     On the desktop version of the site, there's enough horizontal space to display links to different
                     site
@@ -223,8 +222,7 @@
                     real estate.
                 </p>
             </details>
-
-
+            <!-- Dynamic Header and Footer Injection -->
             <details open class="collapsible-section">
                 <summary>
                     <span class="summary-title" id="injection">Dynamic Header and Footer Injection</span>
@@ -257,7 +255,6 @@
                     });
             }
             </script>
-
                 <p>This script handles the following steps:</p>
                 <ol>
                     <li>Takes a CSS selector (such as <code>#header-placeholder</code>)</li>
@@ -271,12 +268,11 @@
                     principle—without
                     relying on any frameworks or build tools.</p>
             </details>
-
+            <!-- Reusable Components -->
             <details open class="collapsible-section">
                 <summary>
                     <span class="summary-title" id="components">Reusable Components</span>
                 </summary>
-                <!-- <h3>Reusable Components</h3> -->
                 <p>I've started building small reusable components to speed up development and reduce clutter. A great
                     example is the Table of Contents element, which I include on longer project pages. It not only
                     improves
@@ -284,7 +280,6 @@
 
                 <p>The Table of Contents begins as a basic unordered list in HTML, an example of which is shown below.
                 </p>
-
                 <pre><code class="language-html" data-code-id="toc-snippet"></code></pre>
                 <script type="text/plain" data-code-id="toc-snippet">
       <div class="toc-wrapper">
@@ -327,25 +322,21 @@
                     </div>
                 </div>
             </details>
-
-
+            <!-- Code Snippets -->
             <details open class="collapsible-section">
                 <summary>
                     <span class="summary-title" id="codesnippets">Code Snippets</span>
                 </summary>
-                <!-- <h3>Code Snippets</h3> -->
                 <p>I wanted a way to share code snippets that preserved the formatting and readability you'd expect from
                     a
                     modern IDE. While HTML includes basic <code>&lt;code&gt;</code> tags, they didn't offer the level of
                     clarity or control I was looking for.</p>
-
-
                 <p>I turned to <a href="https://highlightjs.org/" target="_blank">Highlight.js</a> to
                     format and highlight my code blocks. Highlight.js provides syntax-aware highlighting across multiple
                     languages, making my code easier to read and more visually engaging for anyone familiar with
                     programming.</p>
             </details>
-
+            <!-- CSS Theming -->
             <details open class="collapsible-section">
                 <summary>
                     <span class="summary-title" id="csstheming">CSS Theming</span>
@@ -374,7 +365,7 @@
                     variable values in a different theme context.
                 </p>
             </details>
-
+            <!-- Design & UX Decisions -->
             <details open class="collapsible-section">
                 <summary>
                     <span class="summary-title" id="designux">Design & UX Decisions</span>
@@ -395,16 +386,15 @@
                     more closely with the design patterns users already expect to see online.
                 </p>
             </details>
-
+            <!-- Conclusion & Future Updates -->
             <details open class="collapsible-section">
                 <summary>
                     <span class="summary-title" id="conclusion">Conclusion & Future Updates</span>
                 </summary>
-                <!-- <h2>Conclusion & Future Updates</h2> -->
                 <p>
                     While I initially envisioned this website as a simple way to showcase my personal projects, it's
                     grown
-                    into something much more meaningful. I've found that I genuinely enjoy working on it—it’s become a
+                    into something much more meaningful. I've found that I genuinely enjoy working on it—it's become a
                     space
                     for creativity, learning, and continual refinement. I'm always coming up with new tweaks and ideas
                     to
@@ -416,8 +406,6 @@
 
         </main>
     </div>
-    <script src="/js/includes.js"></script>
-    <script src="/js/script.js"></script>
     <div id="footer-placeholder"></div>
 </body>
 
