@@ -406,6 +406,13 @@ img {
     font-size: 0.9rem;
 }
 
+.site-footer a {
+    background-color: var(--footer-bg);
+    color: var(--footer-text-color);
+    text-decoration: underline;
+    font-size: 0.9rem;
+}
+
 /* Footer Github Link */
 .footer-github-link {
     display: inline-block;

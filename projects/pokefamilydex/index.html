@@ -5,12 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PokeFamilyDex - Cameron Ottley</title>
-  <script src="/js/includes.js"></script>
+  <script src="/js/script.js" defer></script>
+  <script src="/js/includes.js" defer></script>
   <!-- Highlight.js styles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
   <!-- Highlight.js script -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+  <script defer>hljs.highlightAll();</script>
   <link rel="stylesheet" href="/css/styles.css" />
 </head>
 
@@ -18,7 +19,11 @@
   <div id="header-placeholder"></div>
   <div class="container">
     <main class="content">
-      <h1>PokeFamilyDex</h1>
+      <h1>
+        <img src="/projects/pokefamilydex/images/pokeball.png" alt=""
+          style="height: 1.5em; vertical-align: middle; margin-right: 0.5em" />
+        PokéFamilyDex
+      </h1>
       <p>
         This Python script generates a clean, human-readable National
         Dex-ordered list of Pokémon grouped by evolutionary family. This is a
@@ -746,7 +751,6 @@
     </main>
   </div>
   <div id="footer-placeholder"></div>
-  <script src="/js/script.js"></script>
 </body>
 
 </html>
