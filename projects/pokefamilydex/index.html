@@ -387,17 +387,18 @@ def flatten_chain(chain):
               The script checks the <code>varieties</code> field for alternate forms (e.g., Galarian, Hisuian, Alolan).
               When one is detected, it modifies the display name to include the form label.
             </p>
-            <pre><code class="language-python">
-            def get_display_name(species):
-                name = species["name"].title()
-                if "galar" in name.lower():
-                    return f"{name} (Galar)"
-                if "hisui" in name.lower():
-                    return f"{name} (Hisui)"
-                if "alola" in name.lower():
-                    return f"{name} (Alola)" 
-                return name
-                  </code></pre>
+            <pre><code class="language-python" data-code-id="get_display_name"></code></pre>
+            <script type="text/plain" data-code-id="get_display_name">
+def get_display_name(species):
+    name = species["name"].title()
+    if "galar" in name.lower():
+        return f"{name} (Galar)"
+    if "hisui" in name.lower():
+        return f"{name} (Hisui)"
+    if "alola" in name.lower():
+        return f"{name} (Alola)" 
+    return name
+                </script>
           </li>
           <li>
             <strong>Local file caching</strong>
