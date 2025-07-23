@@ -372,13 +372,14 @@
               For each evolution chain, the script walks the structure recursively to flatten it into a linear list of
               Pokémon. This ensures that branched evolutions and multi-stage families remain grouped.
             </p>
-            <pre><code class="language-python">
-            def flatten_chain(chain):
-                names = [get_display_name(chain["species"])]
-                for evo in chain.get("evolves_to", []):
-                    names.extend(flatten_chain(evo))
-                return names
-                  </code></pre>
+            <pre><code class="language-python" data-code-id="flatten-chain"></code></pre>
+            <script type="text/plain" data-code-id="flatten-chain">
+def flatten_chain(chain):
+    names = [get_display_name(chain["species"])]
+    for evo in chain.get("evolves_to", []):
+        names.extend(flatten_chain(evo))
+    return names
+            </script>
           </li>
           <li>
             <strong>Account for alternate forms</strong>
