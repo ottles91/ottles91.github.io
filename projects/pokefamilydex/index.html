@@ -304,7 +304,8 @@
           Once the data is retrieved from PokéAPI, the script generates a plain-text output file. Here's a sample of the
           formatted results you can expect:
         </p>
-        <pre class="bold-pre">
+        <pre><code class="language-plaintext" data-code-id="output_sample"></code></pre>
+        <script type="text/plain" data-code-id="output_sample">
           Voltorb
           Voltorb (Hisui)
           Electrode
@@ -330,8 +331,7 @@
           Horsea
           Seadra   
           Kingdra
-          </pre>
-        </pre>
+          </script>
       </details>
       <!-- Technical Details -->
       <details open class="collapsible-section">
@@ -374,11 +374,11 @@
             </p>
             <pre><code class="language-python" data-code-id="flatten-chain"></code></pre>
             <script type="text/plain" data-code-id="flatten-chain">
-def flatten_chain(chain):
-    names = [get_display_name(chain["species"])]
-    for evo in chain.get("evolves_to", []):
-        names.extend(flatten_chain(evo))
-    return names
+              def flatten_chain(chain):
+                  names = [get_display_name(chain["species"])]
+                  for evo in chain.get("evolves_to", []):
+                      names.extend(flatten_chain(evo))
+                  return names
             </script>
           </li>
           <li>
@@ -389,15 +389,15 @@ def flatten_chain(chain):
             </p>
             <pre><code class="language-python" data-code-id="get_display_name"></code></pre>
             <script type="text/plain" data-code-id="get_display_name">
-def get_display_name(species):
-    name = species["name"].title()
-    if "galar" in name.lower():
-        return f"{name} (Galar)"
-    if "hisui" in name.lower():
-        return f"{name} (Hisui)"
-    if "alola" in name.lower():
-        return f"{name} (Alola)" 
-    return name
+              def get_display_name(species):
+                  name = species["name"].title()
+                  if "galar" in name.lower():
+                      return f"{name} (Galar)"
+                  if "hisui" in name.lower():
+                      return f"{name} (Hisui)"
+                  if "alola" in name.lower():
+                      return f"{name} (Alola)" 
+                  return name
                 </script>
           </li>
           <li>
@@ -431,13 +431,13 @@ def get_display_name(species):
             <p>Example:</p>
             <pre><code class="language-plaintext" data-code-id="generate_output_file"></code></pre>
             <script type="text/plain" data-code-id="generate_output_file">
-Voltorb
-Voltorb (Hisui)
-Electrode
-Electrode (Hisui)
-Exeggcute
-Exeggutor
-Exeggutor (Alola)
+              Voltorb
+              Voltorb (Hisui)
+              Electrode
+              Electrode (Hisui)
+              Exeggcute
+              Exeggutor
+              Exeggutor (Alola)
             </script>
           </li>
         </ol>

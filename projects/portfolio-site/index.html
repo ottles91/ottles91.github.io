@@ -214,22 +214,21 @@
                 </p>
                 <pre><code class="language-javascript" data-code-id="include-html"></code></pre>
                 <script type="text/plain" data-code-id="include-html">
-function includeHTML(selector, url, callback) {
-    fetch(url)
-        .then(response => response.text())
-        .then(data => {
-            const container = document.querySelector(selector);
-            if (container) {
-                container.innerHTML = data;
-                if (typeof callback === "function") {
-                    callback();
-                }
-            }
-        })
-        .catch(error => {
-            console.error(`Failed to include ${url}:`, error);
-        });
-}
+                    function includeHTML(selector, url, callback) {
+                        fetch(url)
+                            .then(response => response.text())
+                            .then(data => {
+                                const container = document.querySelector(selector);
+                                if (container) {
+                                    container.innerHTML = data;
+                                    if (typeof callback === "function") {
+                                        callback();
+                                    }
+                                }
+                            })
+                            .catch(error => {
+                                console.error(`Failed to include ${url}:`, error);
+                            });
             </script>
                 <p>This script handles the following steps:</p>
                 <ol>
@@ -259,30 +258,30 @@ function includeHTML(selector, url, callback) {
                 </p>
                 <pre><code class="language-html" data-code-id="toc-snippet"></code></pre>
                 <script type="text/plain" data-code-id="toc-snippet">
-<div class="toc-wrapper">
-    <button class="toc-master-toggle" aria-expanded="true">
-    Table of Contents
-    </button>
-    <nav class="toc" id="toc-content">
-    <ul>
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#background">Background</a></li>
-        <li><a href="#dexorder">My Problem with National Pokedex Order</a></li>
-        <li><a href="#techstack">Tech Stack</a></li>
-        <li><a href="#features">Key Features</a></li>
-        <li>
-        <a href="#details">Technical Details</a>
-        <ul>
-            <li><a href="#architecture">Architecture</a></li>
-            <li><a href="#algorithm">Algorithm Design</a></li>
-            <li><a href="#edgecases">Edge Case Handling</a></li>
-        </ul>
-        </li>
-        <li><a href="#whatilearned">What I Learned</a></li>
-        <li><a href="#upcomingfeatures">Upcoming Features</a></li>
-    </ul>
-    </nav>
-</div>
+                    <div class="toc-wrapper">
+                        <button class="toc-master-toggle" aria-expanded="true">
+                        Table of Contents
+                        </button>
+                        <nav class="toc" id="toc-content">
+                        <ul>
+                            <li><a href="#overview">Overview</a></li>
+                            <li><a href="#background">Background</a></li>
+                            <li><a href="#dexorder">My Problem with National Pokedex Order</a></li>
+                            <li><a href="#techstack">Tech Stack</a></li>
+                            <li><a href="#features">Key Features</a></li>
+                            <li>
+                            <a href="#details">Technical Details</a>
+                            <ul>
+                                <li><a href="#architecture">Architecture</a></li>
+                                <li><a href="#algorithm">Algorithm Design</a></li>
+                                <li><a href="#edgecases">Edge Case Handling</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="#whatilearned">What I Learned</a></li>
+                            <li><a href="#upcomingfeatures">Upcoming Features</a></li>
+                        </ul>
+                        </nav>
+                    </div>
             </script>
                 <p>
                     I combine it with some custom CSS to ensure it fits cleanly into the design of each page while
