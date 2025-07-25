@@ -312,6 +312,58 @@
                     highlight my code blocks. Highlight.js provides syntax-aware highlighting across multiple languages,
                     making my code easier to read and more visually engaging for anyone familiar with programming.
                 </p>
+                <p>
+                    While implementing the Highlight.js code, I ran into a small problem: it did a great job formatting
+                    and theming my code snippets in a way that made them easy to read and understand, but it also
+                    preserved the indentation from the surrounding HTML. This caused some code blocks to appear
+                    over-indented, which didn't look natural on the page. To fix this, I wrote a small JavaScript
+                    function to correct the indentation:
+                </p>
+                <pre><code class="language-javascript" data-code-id="fix-indentation"></code></pre>
+                <script type="text/plain" data-code-id="fix-indentation">
+                    document.addEventListener("DOMContentLoaded", () => {
+                    document.querySelectorAll('code[data-code-id]').forEach(codeBlock => {
+                        const codeId = codeBlock.getAttribute('data-code-id');
+                        const rawScript = document.querySelector(`script[type="text/plain"][data-code-id="${codeId}"]`);
+
+                        if (rawScript) {
+                        let code = rawScript.textContent.replace(/\t/g, '  ').split('\n');
+
+                        // Remove empty lines at start and end
+                        while (code.length && code[0].trim() === '') code.shift();
+                        while (code.length && code[code.length - 1].trim() === '') code.pop();
+
+                        // Find minimum indentation
+                        const minIndent = code.reduce((min, line) => {
+                            if (line.trim() === '') return min; // Ignore blank lines
+                            const leadingSpaces = line.match(/^ */)[0].length;
+                            return min === null ? leadingSpaces : Math.min(min, leadingSpaces);
+                        }, null);
+
+                        // Remove minIndent spaces from each line
+                        code = code.map(line => line.slice(minIndent));
+
+                        codeBlock.textContent = code.join('\n');
+                        hljs.highlightElement(codeBlock);
+                        }
+                    });
+                    });
+                </script>
+                <p>This code finds all HTML code blocks that have a specific <code>data-code-id</code> and does the
+                    following for each one:</p>
+                <ul>
+                    <li>Looks for a matching <code>&lt;script type="text/plain"&gt;</code> with a matching
+                        <code>data-code-id</code>
+                    </li>
+                    <li>Converts that code into an array of lines</li>
+                    <li>Replaces tabs with spaces in order to standardize spacing</li>
+                    <li>Removes any blank lines from both the beginning and the end</li>
+                    <li>Determines the smallest indentation level across all non-empty lines. This allows it to
+                        determine how much space to remove from each line</li>
+                    <li>Removes that calculated amount of indentation from every line</li>
+                    <li>Joins all the lines back together</li>
+                    <li>Enables highlighting with <code>Highlight.js</code></li>
+                </ul>
             </details>
             <!-- CSS Theming -->
             <details open class="collapsible-section">
