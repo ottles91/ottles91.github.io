@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Other Projects - Cameron Ottley</title>
+    <script src="/js/script.js" defer></script>
+    <script src="/js/includes.js" defer></script>
+    <!-- Highlight.js styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+    <script defer>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="../../css/styles.css" />
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+    <div class="container">
+        <main class="content">
+            <h1>Other Projects</h1>
+            <ul>
+                <li>Find me on GitHub <a href="https://github.com/ottles91" target="_blank">here!</a></li>
+            </ul>
+            <p>One of the blessings (and curses) that comes with an interest in software development is that I
+                <del>occasionally</del> <em>often</em> run into little annoyances/issues in everyday life, and instead
+                of going
+                out and finding an existing piece of software (like a normal person) to solve my problem, I create my
+                own solution. The upside of this is that I have have a pool of different projects that I can pull from
+                when I need to demonstrate my development skills. This page will provide a brief overview of
+                various projects that I've worked on that haven't quite graduated to having their own page...yet
+            </p>
+            <!-- Table of Contents -->
+            <div class="toc-wrapper">
+                <button class="toc-master-toggle" aria-expanded="true">Table of Contents</button>
+                <nav class="toc" id="toc-content">
+                    <ul>
+                        <li><a href="#plextakeout">Plex Music Data Takeout</a></li>
+                        <li><a href="#linecounter">Project Line Counter</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <hr>
+            <!-- Plex Music Takeout -->
+            <h2 id="plextakeout">Plex Music Data Takeout</h2>
+            <ul>
+                <li><a href="https://github.com/ottles91/Plex-Music-Data-Takeout" target="_blank">GitHub</a></li>
+            </ul>
+            <h3>Tech Stack</h3>
+            <ul>
+                <li>Python</li>
+                <li>
+                    <a href="https://pandas.pydata.org/" target="_blank">Pandas</a>
+                </li>
+            </ul>
+            <h3>Overview</h3>
+            <p>
+                Plex Music Data Takeout is a Python tool that lets you export your entire Plex music library into a
+                clean,
+                portable format. The script safely copies and queries Plex's internal SQLite database to gather detailed
+                track information such as title, album, artist, release date, duration, and more, without interfering
+                with the running server. The results are written to both CSV and (optionally) Excel, making it easy to
+                browse, filter, or analyze your collection outside of Plex. This project is ideal for anyone who wants
+                to catalog their library, create backups of metadata, or gain new insights into their listening
+                collection.
+            </p>
+            <h3>Features</h3>
+            <ul>
+                <li>Reads your Plex <strong>SQLite database</strong> (<code>com.plexapp.plugins.library.db</code>)
+                    safely.</li>
+                <li>Exports details <strong>all music tracks</strong> with details including:
+                    <ul>
+                        <li>Track Title</li>
+                        <li>Artist</li>
+                        <li>Album</li>
+                        <li>Release Year</li>
+                        <li>Duration</li>
+                        <li>Added timestamp</li>
+                    </ul>
+                </li>
+                <li>Optionally outputs to Excel (<code>.xlsx</code>) in addition to <code>.csv</code>.</li>
+                <li>Makes a safe copy of your Plex database before querying, so the live server is unaffected</li>
+            </ul>
+            <hr>
+            <!-- Project Line Counter -->
+            <h2 id="linecounter">Project Line Counter</h2>
+            <ul>
+                <li><a href="https://github.com/ottles91/project-line-counter" target="_blank">GitHub</a></li>
+            </ul>
+            <h3>Tech Stack</h3>
+            <ul>
+                <li>Python</li>
+            </ul>
+            <h3>Overview</h3>
+            <p>
+                Project Line Counter is a lightweight Python command-line utility designed to help developers quickly
+                analyze the size and structure of their codebases. It recursively scans a project directory, counts
+                lines of code across multiple file types, and provides both a total line count and a breakdown by file
+                extension. With options to include or exclude hidden files, skip specific directories or file types, and
+                ignore non-text/binary files, it's a flexible tool for getting a clearer picture of your project's
+                composition without the overhead of a full-featured code metrics suite.
+            </p>
+            <h3>Features</h3>
+            <ul>
+                <li>Scans a directory and its subdirectories</li>
+                <li>
+                    Supports <strong>multiple file extensions</strong> (e.g. <code>.py</code>, <code>.cs</code>,
+                    <code>.js</code>,
+                    <code>.swift</code>)
+                </li>
+                <li>Counts all files if no <code>--ext</code> argument is provided</li>
+                <li>Optionally include hidden files and directories with <code>--include-hidden</code></li>
+                <li>Optionally exclude certain file extensions or directories when counting all files</li>
+                <li>Skips unreadable or binary files (such as images)</li>
+                <li>Provides a <strong>breakdown of lines by file type</strong></li>
+                <li>Reports the number of skipped non-text/binary files</li>
+            </ul>
+            <h3>Example Output</h3>
+            <pre><code class="language-plaintext" data-code-id="example_output"></code></pre>
+            <script type="text/plain" data-code-id="example_output">
+                Counting total lines of code in ./my_project...
+
+                Total lines of code: 2500
+
+                Lines by file type:
+                .css: 667
+                .html: 2204
+                .js: 91
+                .md: 43
+                No Extension: 30
+
+                Skipped 10 non-text/binary files.
+            </script>
+
+        </main>
+    </div>
+    <div id="footer-placeholder"></div>
+</body>
+
+</html>
