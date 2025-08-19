@@ -54,8 +54,33 @@
                 </ul>
             </ul>
             <h3>Overview</h3>
+            <p>
+                Plex Music Takeout is a Python tool that lets you export your entire Plex music library into a clean,
+                portable format. The script safely copies and queries Plex's internal SQLite database to gather detailed
+                track information such as title, album, artist, release date, duration, and more, without interfering
+                with the running server. The results are written to both CSV and (optionally) Excel, making it easy to
+                browse, filter, or analyze your collection outside of Plex. This project is ideal for anyone who wants
+                to catalog their library, create backups of metadata, or gain new insights into their listening
+                collection.
+            </p>
+            <h3>Features</h3>
+            <ul>
+                <li>Reads your Plex <strong>SQLite database</strong> (<code>com.plexapp.plugins.library.db</code>)
+                    safely.</li>
+                <li>Exports details <strong>all music tracks</strong> with details including:
+                    <ul>
+                        <li>Track Title</li>
+                        <li>Artist</li>
+                        <li>Album</li>
+                        <li>Release Year</li>
+                        <li>Duration</li>
+                        <li>Added timestamp</li>
+                    </ul>
+                </li>
+                <li>Optionally outputs to Excel (<code>.xlsx</code>) in addition to <code>.csv</code>.</li>
+                <li>Makes a safe copy of your Plex database before querying, so the live server is unaffected</li>
+            </ul>
             <hr>
-
             <!-- Project Line Counter -->
             <h2 id="linecounter">Project Line Counter</h2>
             <ul>
