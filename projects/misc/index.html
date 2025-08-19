@@ -5,9 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Other Projects - Cameron Ottley</title>
-    <link rel="stylesheet" href="../../css/styles.css" />
     <script src="/js/script.js" defer></script>
     <script src="/js/includes.js" defer></script>
+    <!-- Highlight.js styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+    <script defer>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="../../css/styles.css" />
 </head>
 
 <body>
@@ -70,8 +75,36 @@
                 composition without the overhead of a full-featured code metrics suite.
             </p>
             <h3>Features</h3>
+            <ul>
+                <li>Scans a directory and its subdirectories</li>
+                <li>
+                    Supports <strong>multiple file extensions</strong> (e.g. <code>.py</code>, <code>.cs</code>,
+                    <code>.js</code>,
+                    <code>.swift</code>)
+                </li>
+                <li>Counts all files if no <code>--ext</code> argument is provided</li>
+                <li>Optionally include hidden files and directories with <code>--include-hidden</code></li>
+                <li>Optionally exclude certain file extensions or directories when counting all files</li>
+                <li>Skips unreadable or binary files (such as images)</li>
+                <li>Provides a <strong>breakdown of lines by file type</strong></li>
+                <li>Reports the number of skipped non-text/binary files</li>
+            </ul>
+            <h3>Example Output</h3>
+            <pre><code class="language-plaintext" data-code-id="example_output"></code></pre>
+            <script type="text/plain" data-code-id="example_output">
+                Counting total lines of code in ./my_project...
 
+                Total lines of code: 2500
 
+                Lines by file type:
+                .css: 667
+                .html: 2204
+                .js: 91
+                .md: 43
+                No Extension: 30
+
+                Skipped 10 non-text/binary files.
+            </script>
 
         </main>
     </div>
